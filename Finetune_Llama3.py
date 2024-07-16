@@ -35,7 +35,7 @@ This notebook uses the `Llama-3` format for conversation style finetunes. We use
 
 from unsloth import FastLanguageModel
 import torch
-max_seq_length = 2048 # Choose any! We auto support RoPE Scaling internally!
+max_seq_length = 20480 # Choose any! We auto support RoPE Scaling internally!
 dtype = None # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 for Ampere+
 load_in_4bit = True # Use 4bit quantization to reduce memory usage. Can be False.
 
@@ -77,69 +77,74 @@ model = FastLanguageModel.get_peft_model(
     loftq_config = None, # And LoftQ
 )
 
-"""<a name="Data"></a>
-### Data Prep
-We now use the `Llama-3` format for conversation style finetunes. We use [Open Assistant conversations](https://huggingface.co/datasets/philschmid/guanaco-sharegpt-style) in ShareGPT style. Llama-3 renders multi turn conversations like below:
-
-```
-<|begin_of_text|><|start_header_id|>user<|end_header_id|>
-
-Hello!<|eot_id|><|start_header_id|>assistant<|end_header_id|>
-
-Hey there! How are you?<|eot_id|><|start_header_id|>user<|end_header_id|>
-
-I'm great thanks!<|eot_id|>
-```
-
-**[NOTE]** To train only on completions (ignoring the user's input) read TRL's docs [here](https://huggingface.co/docs/trl/sft_trainer#train-on-completions-only).
-
-We use our `get_chat_template` function to get the correct chat template. We support `zephyr, chatml, mistral, llama, alpaca, vicuna, vicuna_old` and our own optimized `unsloth` template.
-
-Note ShareGPT uses `{"from": "human", "value" : "Hi"}` and not `{"role": "user", "content" : "Hi"}`, so we use `mapping` to map it.
-
-For text completions like novel writing, try this [notebook](https://colab.research.google.com/drive/1ef-tab5bhkvWmBOObepl1WgJvfvSzn5Q?usp=sharing).
-"""
-
-from unsloth.chat_templates import get_chat_template
-
-tokenizer = get_chat_template(
-    tokenizer,
-    chat_template = "llama-3", # Supports zephyr, chatml, mistral, llama, alpaca, vicuna, vicuna_old, unsloth
-    mapping = {"role" : "from", "content" : "value", "user" : "human", "assistant" : "gpt"}, # ShareGPT style
-)
-
-def formatting_prompts_func(examples):
-    convos = examples["conversations"]
-    texts = [tokenizer.apply_chat_template(convo, tokenize = False, add_generation_prompt = False) for convo in convos]
-    return { "text" : texts, }
-pass
-
 import json
 from datasets import Dataset
+from unsloth.chat_templates import get_chat_template
+
 def load_custom_dataset(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
-    # 创建适合 datasets 库的数据结构
+    # Create a dataset structure suitable for the datasets library
     formatted_data = {
         "conversations": [
-            {
-                "from": message["role"],
-                "value": message["content"]
-            } for convo in data for message in convo["messages"]
+            convo["messages"] for convo in data
         ]
     }
     
-    return Dataset.from_dict(formatted_data)
+    # Convert the dataset into the Hugging Face datasets format
+    dataset = Dataset.from_dict(formatted_data)
+    return dataset
 
-# 加载自定义数据集
+def format_conversations(conversation):
+    formatted_convo = []
+    for message in conversation:
+        formatted_message = {
+            "from": message["role"],
+            "value": message["content"]
+        }
+        formatted_convo.append(formatted_message)
+    return formatted_convo
+
+def formatting_prompts_func(examples):
+    convos = examples["conversations"]
+    texts = []
+    for convo in convos:
+        formatted_convo = format_conversations(convo)
+        try:
+            text = tokenizer.apply_chat_template(formatted_convo, tokenize=False, add_generation_prompt=False)
+            texts.append(text)
+        except Exception as e:
+            print(f"Error processing conversation: {convo}")
+            raise e
+    return {"text": texts}
+
+# Initialize the tokenizer with the correct chat template
+tokenizer = get_chat_template(
+    tokenizer,
+    chat_template="llama-3",
+    mapping={"role": "from", "content": "value", "user": "human", "assistant": "gpt"},
+)
+
+# Load and format the custom dataset
 dataset = load_custom_dataset("dataset.json")
+dataset = dataset.map(formatting_prompts_func, batched=True)
 
-# 打印第 5 个对话
+# Print the 5th conversation
 print(dataset[5]["conversations"])
 
-# 打印格式化后的文本
-print(dataset[5])
+# Print the formatted text
+print(dataset[5]["text"])
+
+
+# 确保所有数据都已处理
+assert "text" in dataset.features
+
+train_size = int(0.995 * len(dataset))
+test_size = len(dataset) - train_size
+
+train_dataset = dataset.select(range(train_size))
+test_dataset = dataset.select(range(train_size, len(dataset)))
 
 """If you're looking to make your own chat template, that also is possible! You must use the Jinja templating regime. We provide our own stripped down version of the `Unsloth template` which we find to be more efficient, and leverages ChatML, Zephyr and Alpaca styles.
 
@@ -181,7 +186,7 @@ from unsloth import is_bfloat16_supported
 trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
-    train_dataset = dataset,
+    train_dataset = train_dataset,
     dataset_text_field = "text",
     max_seq_length = max_seq_length,
     dataset_num_proc = 2,
@@ -268,7 +273,7 @@ inputs = tokenizer.apply_chat_template(
 
 from transformers import TextStreamer
 text_streamer = TextStreamer(tokenizer)
-_ = model.generate(input_ids = inputs, streamer = text_streamer, max_new_tokens = 128, use_cache = True)
+_ = model.generate(input_ids = inputs, streamer = text_streamer, max_new_tokens = 12800, use_cache = True)
 
 """<a name="Save"></a>
 ### Saving, loading finetuned models
@@ -305,6 +310,25 @@ inputs = tokenizer.apply_chat_template(
 from transformers import TextStreamer
 text_streamer = TextStreamer(tokenizer)
 _ = model.generate(input_ids = inputs, streamer = text_streamer, max_new_tokens = 128, use_cache = True)
+
+# my own test
+for i, conversation in enumerate(test_dataset):
+    messages = [
+        {"from": message["role"], "value": message["content"]}
+        for message in conversation["conversations"]
+        if message["role"] != 'assistant'
+    ]
+    inputs = tokenizer.apply_chat_template(
+        messages,
+        tokenize=True,
+        add_generation_prompt=True, # Must add for generation
+        return_tensors="pt",
+    ).to("cuda")
+
+    outputs = model.generate(input_ids=inputs, max_new_tokens=64, use_cache=True)
+    generated_text = tokenizer.batch_decode(outputs)
+    print(f"Test conversation {i+1}:")
+    print(generated_text)
 
 """You can also use Hugging Face's `AutoModelForPeftCausalLM`. Only use this if you do not have `unsloth` installed. It can be hopelessly slow, since `4bit` model downloading is not supported, and Unsloth's **inference is 2x faster**."""
 
