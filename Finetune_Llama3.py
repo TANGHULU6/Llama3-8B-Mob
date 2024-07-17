@@ -329,10 +329,16 @@ for i, conversation in enumerate(test_dataset):
     generated_text = tokenizer.batch_decode(outputs)
     print(f"Test conversation {i+1}:")
     print(generated_text)
+    assistant_responses = []
+    for text in generated_text:
+        split_text = text.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
+        clean_text = split_text.replace(tokenizer.eos_token, "").strip()[3:-3]  # 移除结束符
+        assistant_json = json.loads(clean_text)
+        assistant_responses.append(assistant_json)
     
-    # 保存为JSON文件
-    with open('generated_text.json', 'w', encoding='utf-8') as f:
-        json.dump(generated_text, f, ensure_ascii=False, indent=4)
+# 保存为JSON文件
+with open('generated_text.json', 'w', encoding='utf-8') as f:
+    json.dump(assistant_responses, f, ensure_ascii=False, indent=4)
     
 
 """You can also use Hugging Face's `AutoModelForPeftCausalLM`. Only use this if you do not have `unsloth` installed. It can be hopelessly slow, since `4bit` model downloading is not supported, and Unsloth's **inference is 2x faster**."""
