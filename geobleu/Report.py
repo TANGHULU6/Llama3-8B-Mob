@@ -1,7 +1,7 @@
 import csv
 import os
 
-from utils import geobleu
+import geobleu
 
 
 def report_geobleu_dtw(pred, targets, num_uids):

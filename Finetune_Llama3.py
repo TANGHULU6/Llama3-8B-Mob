@@ -33,7 +33,7 @@ This notebook uses the `Llama-3` format for conversation style finetunes. We use
 * [**NEW**] We make Phi-3 Medium / Mini **2x faster**! See our [Phi-3 Medium notebook](https://colab.research.google.com/drive/1hhdhBa1j_hsymiW9m-WzxQtgqTH_NHqi?usp=sharing)
 """
 
-from utils.geobleu.Report import report_geobleu_dtw_gpt
+from geobleu.Report import report_geobleu_dtw_gpt
 from unsloth import FastLanguageModel
 import torch
 max_seq_length = 20480 # Choose any! We auto support RoPE Scaling internally!
