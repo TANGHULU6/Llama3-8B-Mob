@@ -33,6 +33,7 @@ This notebook uses the `Llama-3` format for conversation style finetunes. We use
 * [**NEW**] We make Phi-3 Medium / Mini **2x faster**! See our [Phi-3 Medium notebook](https://colab.research.google.com/drive/1hhdhBa1j_hsymiW9m-WzxQtgqTH_NHqi?usp=sharing)
 """
 
+from utils.geobleu.Report import report_geobleu_dtw_gpt
 from unsloth import FastLanguageModel
 import torch
 max_seq_length = 20480 # Choose any! We auto support RoPE Scaling internally!
@@ -127,7 +128,7 @@ tokenizer = get_chat_template(
 )
 
 # Load and format the custom dataset
-dataset = load_custom_dataset("dataset.json")
+dataset = load_custom_dataset("dataset10000.json")
 dataset = dataset.map(formatting_prompts_func, batched=True)
 
 # Print the 5th conversation
@@ -312,11 +313,17 @@ text_streamer = TextStreamer(tokenizer)
 _ = model.generate(input_ids = inputs, streamer = text_streamer, max_new_tokens = 128, use_cache = True)
 
 # my own test
+results = []
 for i, conversation in enumerate(test_dataset):
     messages = [
         {"from": message["role"], "value": message["content"]}
         for message in conversation["conversations"]
         if message["role"] != 'assistant'
+    ]
+    reference_responses = [
+        message["content"]
+        for message in conversation["conversations"]
+        if message["role"] == 'assistant'
     ]
     inputs = tokenizer.apply_chat_template(
         messages,
@@ -330,15 +337,24 @@ for i, conversation in enumerate(test_dataset):
     print(f"Test conversation {i+1}:")
     print(generated_text)
     assistant_responses = []
-    for text in generated_text:
-        split_text = text.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
-        clean_text = split_text.replace(tokenizer.eos_token, "").strip()[3:-3]  # 移除结束符
+    for generated, reference in zip(generated_text, reference_responses):
+        split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
+        clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
         assistant_json = json.loads(clean_text)
+        geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json, reference_responses)
         assistant_responses.append(assistant_json)
+        
+        results.append({
+            "conversation_id": i + 1,
+            "generated_response": assistant_json,
+            "reference_response": reference,
+            "geobleu": geobleu_val,
+            "dtw": dtw_val
+        })
     
-# 保存为JSON文件
+# 保存为 JSON 文件
 with open('generated_text.json', 'w', encoding='utf-8') as f:
-    json.dump(assistant_responses, f, ensure_ascii=False, indent=4)
+    json.dump(results, f, ensure_ascii=False, indent=4)
     
 
 """You can also use Hugging Face's `AutoModelForPeftCausalLM`. Only use this if you do not have `unsloth` installed. It can be hopelessly slow, since `4bit` model downloading is not supported, and Unsloth's **inference is 2x faster**."""
