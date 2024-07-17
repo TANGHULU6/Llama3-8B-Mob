@@ -273,7 +273,7 @@ inputs = tokenizer.apply_chat_template(
 
 from transformers import TextStreamer
 text_streamer = TextStreamer(tokenizer)
-_ = model.generate(input_ids = inputs, streamer = text_streamer, max_new_tokens = 12800, use_cache = True)
+_ = model.generate(input_ids = inputs, streamer = text_streamer, max_new_tokens = 128, use_cache = True)
 
 """<a name="Save"></a>
 ### Saving, loading finetuned models
@@ -325,7 +325,7 @@ for i, conversation in enumerate(test_dataset):
         return_tensors="pt",
     ).to("cuda")
 
-    outputs = model.generate(input_ids=inputs, max_new_tokens=64, use_cache=True)
+    outputs = model.generate(input_ids=inputs, max_new_tokens=6400, use_cache=True)
     generated_text = tokenizer.batch_decode(outputs)
     print(f"Test conversation {i+1}:")
     print(generated_text)
