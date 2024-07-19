@@ -346,8 +346,8 @@ for i, conversation in enumerate(test_dataset):
         try:
             geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json['prediction'], reference_json['prediction'])
         except Exception as e:
-            print(f"Error in {i} test: {e}")
-        
+            geobleu_val, dtw_val = float('nan'), float('nan')
+            print(f"Error in {i + 1} test conversation: {e}")
         
         results.append({
             "conversation_id": i + 1,

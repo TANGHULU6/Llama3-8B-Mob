@@ -50,3 +50,63 @@ def save_geobleu_dtw(log_dir, geobleu_scores, dtw_scores, avg_geobleu, avg_dtw):
         for uid, (geobleu, dtw) in enumerate(zip(geobleu_scores, dtw_scores)):
             writer.writerow([uid, geobleu, dtw])
         writer.writerow(['Average', avg_geobleu, avg_dtw])
+
+import json
+import numpy as np
+
+def analyze_conversations(file_path):
+    """
+    Analyzes the conversation data from a JSON file and returns the count of normal cases and the average DTW and GeoBLEU.
+
+    Parameters:
+    file_path (str): The path to the JSON file containing the conversation data.
+
+    Returns:
+    tuple: A tuple containing the count of normal cases, the average DTW value, and the average GeoBLEU value.
+    """
+    try:
+        # Load JSON data from file
+        with open(file_path, 'r') as file:
+            data = json.load(file)
+
+        # Initialize variables to store normal cases, DTW values, and GeoBLEU values
+        normal_cases = 0
+        failed = 0
+        dtw_values = []
+        geobleu_values = []
+
+        # Iterate through each conversation in the data
+        for conversation in data:
+            dtw = conversation.get('dtw', None)
+            geobleu = conversation.get('geobleu', None)
+            if dtw is not None and not np.isnan(dtw) and dtw < 500:
+                normal_cases += 1
+                dtw_values.append(dtw)
+                print(dtw)
+            else:
+                failed += 1
+            if geobleu is not None and not np.isnan(geobleu):
+                geobleu_values.append(geobleu)
+
+        # Calculate average DTW and GeoBLEU
+        average_dtw = np.mean(dtw_values) if dtw_values else 0
+        average_geobleu = np.mean(geobleu_values) if geobleu_values else 0
+
+        return normal_cases, failed, average_dtw, average_geobleu
+    except FileNotFoundError:
+        print(f"File not found: {file_path}")
+        return None
+    except json.JSONDecodeError:
+        print(f"Error decoding JSON from file: {file_path}")
+        return None
+
+if __name__ == "__main__":
+    file_path = 'generated_text.json'
+    result = analyze_conversations(file_path)
+    if result:
+        normal_cases, failed, average_dtw, average_geobleu = result
+        print(f"Normal cases: {normal_cases}")
+        print(f"Failed cases: {failed}")
+        print(f"Average DTW: {average_dtw}")
+        print(f"Average GeoBLEU: {average_geobleu}")
+
