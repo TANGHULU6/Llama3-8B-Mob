@@ -336,18 +336,23 @@ for i, conversation in enumerate(test_dataset):
     generated_text = tokenizer.batch_decode(outputs)
     print(f"Test conversation {i+1}:")
     print(generated_text)
-    assistant_responses = []
     for generated, reference in zip(generated_text, reference_responses):
         split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
         clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
         assistant_json = json.loads(clean_text)
-        geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json, reference_responses)
-        assistant_responses.append(assistant_json)
+        reference_json = json.loads(reference.strip()[7:-3])
+        print(assistant_json)
+        print(reference_json)
+        try:
+            geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json['prediction'], reference_json['prediction'])
+        except Exception as e:
+            print(f"Error in {i} test: {e}")
+        
         
         results.append({
             "conversation_id": i + 1,
             "generated_response": assistant_json,
-            "reference_response": reference,
+            "reference_response": reference_json,
             "geobleu": geobleu_val,
             "dtw": dtw_val
         })
