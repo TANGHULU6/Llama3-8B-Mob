@@ -1,4 +1,6 @@
 import json
+
+from geobleu.Report import report_geobleu_dtw_gpt
 from unsloth import FastLanguageModel
 from datasets import Dataset
 from unsloth.chat_templates import get_chat_template
@@ -20,6 +22,7 @@ _, tokenizer = FastLanguageModel.from_pretrained(
 
 # 加载 LoRA 模型
 model = FastLanguageModel.from_pretrained("lora_model")[0]  # 只取模型对象
+FastLanguageModel.for_inference(model)
 
 # 设置分词器的聊天模板
 tokenizer = get_chat_template(
@@ -27,6 +30,7 @@ tokenizer = get_chat_template(
     chat_template="llama-3",
     mapping={"role": "from", "content": "value", "user": "human", "assistant": "gpt"},
 )
+# tokenizer.chat_template = tokenizer.chat_template["default"]
 
 def load_custom_dataset(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -75,7 +79,7 @@ dataset = dataset.map(formatting_prompts_func, batched=True)
 assert "text" in dataset.features
 
 # 划分训练集和测试集
-train_size = int(0.995 * len(dataset))
+train_size = int(0 * len(dataset))
 test_size = len(dataset) - train_size
 
 train_dataset = dataset.select(range(train_size))
@@ -85,31 +89,53 @@ test_dataset = dataset.select(range(train_size, len(dataset)))
 generated_results = []
 
 # my own test
+results = []
 for i, conversation in enumerate(test_dataset):
-    messages = [
-        {"from": message["role"], "value": message["content"]}
-        for message in conversation["conversations"]
-        if message["role"] != 'assistant'
-    ]
-    inputs = tokenizer.apply_chat_template(
-        messages,
-        tokenize=True,
-        add_generation_prompt=True, # Must add for generation
-        return_tensors="pt",
-    ).to("cuda")
+    try:
+        messages = [
+            {"from": message["role"], "value": message["content"]}
+            for message in conversation["conversations"]
+            if message["role"] != 'assistant'
+        ]
+        reference_responses = [
+            message["content"]
+            for message in conversation["conversations"]
+            if message["role"] == 'assistant'
+        ]
+        inputs = tokenizer.apply_chat_template(
+            messages,
+            tokenize=True,
+            add_generation_prompt=True, # Must add for generation
+            return_tensors="pt",
+        ).to("cuda")
 
-    outputs = model.generate(input_ids=inputs, max_new_tokens=6400, use_cache=True)
-    generated_text = tokenizer.batch_decode(outputs)
-    print(f"Test conversation {i+1}:")
-    print(generated_text)
-    assistant_responses = []
-    for text in generated_text:
-        split_text = text.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
-        clean_text = split_text.replace(tokenizer.eos_token, "").strip()[3:-3]  # 移除结束符
-        assistant_json = json.loads(clean_text)
-        assistant_responses.append(assistant_json)
-    
-
-# 保存所有结果为一个JSON文件
-with open('all_generated_text.json', 'w', encoding='utf-8') as f:
-    json.dump(generated_results, f, ensure_ascii=False, indent=4)
+        outputs = model.generate(input_ids=inputs, max_new_tokens=6400, use_cache=True)
+        generated_text = tokenizer.batch_decode(outputs)
+        print(f"Test conversation {i+1}:")
+        print(generated_text)
+        for generated, reference in zip(generated_text, reference_responses):
+            split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
+            clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
+            assistant_json = json.loads(clean_text)
+            reference_json = json.loads(reference.strip()[7:-3])
+            print(assistant_json)
+            print(reference_json)
+            try:
+                geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json['prediction'], reference_json['prediction'])
+            except Exception as e:
+                geobleu_val, dtw_val = float('nan'), float('nan')
+                print(f"Error in {i + 1} test conversation: {e}")
+            
+            results.append({
+                "conversation_id": i + 1,
+                "generated_response": assistant_json,
+                "reference_response": reference_json,
+                "geobleu": geobleu_val,
+                "dtw": dtw_val
+            })
+    except Exception as e:
+        print(f"Unknown error in {i + 1} test conversation: {e}")
+        
+# 保存为 JSON 文件
+with open('generated.json', 'w', encoding='utf-8') as f:
+    json.dump(results, f, ensure_ascii=False, indent=4)
