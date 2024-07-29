@@ -4,11 +4,8 @@
 #SBATCH --qos=a100            # 指定QOS
 #SBATCH -J llmJob       # 作业名
 #SBATCH --nodes=1                 # 请求1个节点
-#SBATCH --ntasks-per-node=1       # 每个节点1个任务
-#SBATCH --cpus-per-task=24        # 假设每个节点有24个CPU核心
-#SBATCH --mem=125G                # 假设每个节点有xGB可用内存
-#SBATCH --gres=gpu:4
-#SBATCH --time=2-00:00:00         # 请求运行时间为2天
+#SBATCH --ntasks-per-node=12       # 每个节点12个任务
+#SBATCH --gres=gpu:1
 
-source activate pytorch-1.6.0
+source activate unsloth_env
 python Finetune_Llama3.py

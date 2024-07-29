@@ -132,10 +132,10 @@ dataset = load_custom_dataset("dataset10000.json")
 dataset = dataset.map(formatting_prompts_func, batched=True)
 
 # Print the 5th conversation
-print(dataset[5]["conversations"])
+# print(dataset[5]["conversations"])
 
 # Print the formatted text
-print(dataset[5]["text"])
+# print(dataset[5]["text"])
 
 
 # 确保所有数据都已处理
@@ -193,11 +193,10 @@ trainer = SFTTrainer(
     dataset_num_proc = 2,
     packing = False, # Can make training 5x faster for short sequences.
     args = TrainingArguments(
-        per_device_train_batch_size = 5,
+        per_device_train_batch_size = 2,
         gradient_accumulation_steps = 4,
         warmup_steps = 5,
-        max_steps = 1000,
-        num_train_epochs = 1,
+        num_train_epochs = 10,
         learning_rate = 2e-4,
         fp16 = not is_bfloat16_supported(),
         bf16 = is_bfloat16_supported(),
@@ -338,13 +337,13 @@ for i, conversation in enumerate(test_dataset):
     print(f"Test conversation {i+1}:")
     print(generated_text)
     for generated, reference in zip(generated_text, reference_responses):
-        split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
-        clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
-        assistant_json = json.loads(clean_text)
-        reference_json = json.loads(reference.strip()[7:-3])
-        print(assistant_json)
-        print(reference_json)
         try:
+            split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
+            clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
+            assistant_json = json.loads(clean_text)
+            reference_json = json.loads(reference.strip()[7:-3])
+            print(assistant_json)
+            print(reference_json)
             geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json['prediction'], reference_json['prediction'])
         except Exception as e:
             geobleu_val, dtw_val = float('nan'), float('nan')
