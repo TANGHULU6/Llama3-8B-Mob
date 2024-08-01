@@ -128,24 +128,28 @@ tokenizer = get_chat_template(
 )
 
 # Load and format the custom dataset
-dataset = load_custom_dataset("dataset10000.json")
-dataset = dataset.map(formatting_prompts_func, batched=True)
+train_dataset = load_custom_dataset("dataset60000.json")
+train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
+test_dataset = load_custom_dataset("dataset60000-79999.json")
+test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
+# dataset = load_custom_dataset("dataset10000.json")
+# dataset = dataset.map(formatting_prompts_func, batched=True)
 
-# Print the 5th conversation
-# print(dataset[5]["conversations"])
+# # Print the 5th conversation
+# # print(dataset[5]["conversations"])
 
-# Print the formatted text
-# print(dataset[5]["text"])
+# # Print the formatted text
+# # print(dataset[5]["text"])
 
 
-# 确保所有数据都已处理
-assert "text" in dataset.features
+# # 确保所有数据都已处理
+# assert "text" in dataset.features
 
-train_size = int(0.995 * len(dataset))
-test_size = len(dataset) - train_size
+# train_size = int(0.995 * len(dataset))
+# test_size = len(dataset) - train_size
 
-train_dataset = dataset.select(range(train_size))
-test_dataset = dataset.select(range(train_size, len(dataset)))
+# train_dataset = dataset.select(range(train_size))
+# test_dataset = dataset.select(range(train_size, len(dataset)))
 
 """If you're looking to make your own chat template, that also is possible! You must use the Jinja templating regime. We provide our own stripped down version of the `Unsloth template` which we find to be more efficient, and leverages ChatML, Zephyr and Alpaca styles.
 

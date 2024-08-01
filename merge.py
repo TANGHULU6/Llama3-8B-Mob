@@ -23,8 +23,8 @@ def merge_json_files(directory_path, output_file):
     print(f"All JSON files have been merged into {output_file}")
 
 # 指定文件夹路径和输出文件路径
-directory_path = './'
-output_file = './dataset80000.json'
+directory_path = 'data'
+output_file = 'dataset60000.json'
 
 # 合并JSON文件
 merge_json_files(directory_path, output_file)
