@@ -12,7 +12,7 @@ def merge_json_files(directory_path, output_file):
             with open(file_path, 'r', encoding='utf-8') as file:
                 try:
                     data = json.load(file)
-                    merged_data.append(data)
+                    merged_data.extend(data)
                 except json.JSONDecodeError as e:
                     print(f"Error decoding JSON from file {file_path}: {e}")
     
@@ -23,8 +23,8 @@ def merge_json_files(directory_path, output_file):
     print(f"All JSON files have been merged into {output_file}")
 
 # 指定文件夹路径和输出文件路径
-directory_path = 'data'
-output_file = 'dataset60000.json'
+directory_path = 'test_data'
+output_file = 'data60000-79999.json'
 
 # 合并JSON文件
 merge_json_files(directory_path, output_file)
