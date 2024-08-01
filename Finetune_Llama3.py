@@ -129,6 +129,7 @@ tokenizer = get_chat_template(
 
 # Load and format the custom dataset
 train_dataset = load_custom_dataset("dataset60000.json")
+train_dataset = train_dataset.select(range(20000))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
 test_dataset = load_custom_dataset("dataset60000-79999.json")
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
@@ -194,13 +195,13 @@ trainer = SFTTrainer(
     train_dataset = train_dataset,
     dataset_text_field = "text",
     max_seq_length = max_seq_length,
-    dataset_num_proc = 2,
+    dataset_num_proc = 8,
     packing = False, # Can make training 5x faster for short sequences.
     args = TrainingArguments(
         per_device_train_batch_size = 2,
         gradient_accumulation_steps = 4,
         warmup_steps = 5,
-        num_train_epochs = 10,
+        num_train_epochs = 1,
         learning_rate = 2e-4,
         fp16 = not is_bfloat16_supported(),
         bf16 = is_bfloat16_supported(),
@@ -318,6 +319,8 @@ _ = model.generate(input_ids = inputs, streamer = text_streamer, max_new_tokens 
 
 # my own test
 results = []
+geobleu_scores = []
+dtw_scores = []
 for i, conversation in enumerate(test_dataset):
     messages = [
         {"from": message["role"], "value": message["content"]}
@@ -341,26 +344,37 @@ for i, conversation in enumerate(test_dataset):
     print(f"Test conversation {i+1}:")
     print(generated_text)
     for generated, reference in zip(generated_text, reference_responses):
+        split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
+        clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
         try:
-            split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
-            clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
             assistant_json = json.loads(clean_text)
             reference_json = json.loads(reference.strip()[7:-3])
             print(assistant_json)
             print(reference_json)
             geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json['prediction'], reference_json['prediction'])
+            geobleu_scores.append(geobleu_val)
+            dtw_scores.append(dtw_val)
+            results.append({
+                "conversation_id": i + 1,
+                "generated_response": assistant_json,
+                "reference_response": reference_json,
+                "geobleu": geobleu_val,
+                "dtw": dtw_val
+            })
         except Exception as e:
             geobleu_val, dtw_val = float('nan'), float('nan')
             print(f"Error in {i + 1} test conversation: {e}")
-        
-        results.append({
-            "conversation_id": i + 1,
-            "generated_response": assistant_json,
-            "reference_response": reference_json,
-            "geobleu": geobleu_val,
-            "dtw": dtw_val
-        })
-    
+            results.append({
+                "conversation_id": i + 1,
+                "generated_response": generated,
+                "reference_response": reference,
+                "geobleu": geobleu_val,
+                "dtw": dtw_val
+            })
+            
+avg_geobleu = sum(geobleu_scores) / len(geobleu_scores)
+avg_dtw = sum(dtw_scores) / len(dtw_scores)
+print(f"avg {len(dtw_scores)} dtw: {avg_dtw}; avg {len(geobleu_scores)} geobleu: {avg_geobleu}.")
 # 保存为 JSON 文件
 with open('generated_text.json', 'w', encoding='utf-8') as f:
     json.dump(results, f, ensure_ascii=False, indent=4)

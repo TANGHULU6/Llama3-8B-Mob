@@ -16,17 +16,17 @@
   "megatron_core": "megatron.core",
   "modules_to_save": null,
   "peft_type": "LORA",
-  "r": 64,
+  "r": 16,
   "rank_pattern": {},
   "revision": "unsloth",
   "target_modules": [
     "o_proj",
+    "q_proj",
+    "k_proj",
     "up_proj",
     "gate_proj",
-    "q_proj",
-    "v_proj",
     "down_proj",
-    "k_proj"
+    "v_proj"
   ],
   "task_type": "CAUSAL_LM",
   "use_dora": false,
