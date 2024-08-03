@@ -71,61 +71,62 @@ def formatting_prompts_func(examples):
     return {"text": texts}
 
 
-# 加载并格式化自定义数据集
-dataset = load_custom_dataset("dataset.json")
-dataset = dataset.map(formatting_prompts_func, batched=True)
+# # 加载并格式化自定义数据集
+# dataset = load_custom_dataset("dataset.json")
+# dataset = dataset.map(formatting_prompts_func, batched=True)
 
-# 确保所有数据都已处理
-assert "text" in dataset.features
+# # 确保所有数据都已处理
+# assert "text" in dataset.features
 
-# 划分训练集和测试集
-train_size = int(0 * len(dataset))
-test_size = len(dataset) - train_size
+# # 划分训练集和测试集
+# train_size = int(0 * len(dataset))
+# test_size = len(dataset) - train_size
 
-train_dataset = dataset.select(range(train_size))
-test_dataset = dataset.select(range(train_size, len(dataset)))
+# train_dataset = dataset.select(range(train_size))
+# test_dataset = dataset.select(range(train_size, len(dataset)))
+test_dataset = load_custom_dataset("dataset60000-79999.json")
+test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
 
 # 推理并保存结果为JSON文件
 generated_results = []
 
 # my own test
 results = []
+geobleu_scores = []
+dtw_scores = []
 for i, conversation in enumerate(test_dataset):
-    try:
-        messages = [
-            {"from": message["role"], "value": message["content"]}
-            for message in conversation["conversations"]
-            if message["role"] != 'assistant'
-        ]
-        reference_responses = [
-            message["content"]
-            for message in conversation["conversations"]
-            if message["role"] == 'assistant'
-        ]
-        inputs = tokenizer.apply_chat_template(
-            messages,
-            tokenize=True,
-            add_generation_prompt=True, # Must add for generation
-            return_tensors="pt",
-        ).to("cuda")
+    messages = [
+        {"from": message["role"], "value": message["content"]}
+        for message in conversation["conversations"]
+        if message["role"] != 'assistant'
+    ]
+    reference_responses = [
+        message["content"]
+        for message in conversation["conversations"]
+        if message["role"] == 'assistant'
+    ]
+    inputs = tokenizer.apply_chat_template(
+        messages,
+        tokenize=True,
+        add_generation_prompt=True, # Must add for generation
+        return_tensors="pt",
+    ).to("cuda")
 
-        outputs = model.generate(input_ids=inputs, max_new_tokens=6400, use_cache=True)
-        generated_text = tokenizer.batch_decode(outputs)
-        print(f"Test conversation {i+1}:")
-        print(generated_text)
-        for generated, reference in zip(generated_text, reference_responses):
-            split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
-            clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
+    outputs = model.generate(input_ids=inputs, max_new_tokens=6400, use_cache=True)
+    generated_text = tokenizer.batch_decode(outputs)
+    print(f"Test conversation {i+1}:")
+    print(generated_text)
+    for generated, reference in zip(generated_text, reference_responses):
+        split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
+        clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
+        try:
             assistant_json = json.loads(clean_text)
             reference_json = json.loads(reference.strip()[7:-3])
             print(assistant_json)
             print(reference_json)
-            try:
-                geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json['prediction'], reference_json['prediction'])
-            except Exception as e:
-                geobleu_val, dtw_val = float('nan'), float('nan')
-                print(f"Error in {i + 1} test conversation: {e}")
-            
+            geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json['prediction'], reference_json['prediction'])
+            geobleu_scores.append(geobleu_val)
+            dtw_scores.append(dtw_val)
             results.append({
                 "conversation_id": i + 1,
                 "generated_response": assistant_json,
@@ -133,9 +134,20 @@ for i, conversation in enumerate(test_dataset):
                 "geobleu": geobleu_val,
                 "dtw": dtw_val
             })
-    except Exception as e:
-        print(f"Unknown error in {i + 1} test conversation: {e}")
-        
+        except Exception as e:
+            geobleu_val, dtw_val = float('nan'), float('nan')
+            print(f"Error in {i + 1} test conversation: {e}")
+            results.append({
+                "conversation_id": i + 1,
+                "generated_response": generated,
+                "reference_response": reference,
+                "geobleu": geobleu_val,
+                "dtw": dtw_val
+            })
+            
+avg_geobleu = sum(geobleu_scores) / len(geobleu_scores)
+avg_dtw = sum(dtw_scores) / len(dtw_scores)
+print(f"avg {len(dtw_scores)} dtw: {avg_dtw}; avg {len(geobleu_scores)} geobleu: {avg_geobleu}.")
 # 保存为 JSON 文件
-with open('generated.json', 'w', encoding='utf-8') as f:
+with open('generated_text.json', 'w', encoding='utf-8') as f:
     json.dump(results, f, ensure_ascii=False, indent=4)
