@@ -3,7 +3,7 @@
 **/*.safetensors
 data/*.json
 test_data/*.json
-data60000.json
+data60000*.json
 data60000-79999.json
 dataset60000.json
 dataset60000-79999.json

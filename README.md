@@ -4,19 +4,44 @@ llama finetune
 python -m geobleu.Report
 
 CUDA_VISIBLE_DEVICES=0 python Finetune_Llama3.py
+step15
 0 C
-20000 1000
+20000 1000 avg 998 dtw: 37.58780972872229; avg 998 geobleu: 0.3543073341040421.
 1 D
-10000 1000
+10000 1000 avg 996 dtw: 38.00798067938628; avg 996 geobleu: 0.34553670583005763.
 2 E
 10000 20000
 3 F
-10000 100
+10000 100 avg 100 dtw: 41.596766534685784; avg 100 geobleu: 0.37677905778815707.
 1 G
-10000 1000 假设有dtw先验知识
+10000 1000 假设有dtw先验知识 avg 996 dtw: 38.074253253844546; avg 996 geobleu: 0.34522383411717794.
 3 H
-10000 1000 加上dtw算法
+10000 1000 加上dtw算法 avg 993 dtw: 38.38159222539796; avg 993 geobleu: 0.3434524795637539.
+0 B
+20000 20000
 
+2000 1000 Error in 1000 test conversation: Day and time are not the same at step 4, d=61 and t=19 for generated while d=60 and t=44 for reference. avg 607 dtw: 166.23722222046672; avg 607 geobleu: 0.29707873061388385.
+
+5000 1000 Error in 1000 test conversation: Day and time are not the same at step 4, d=61 and t=19 for generated while d=60 and t=44 for reference. avg 955 dtw: 40.12522075308081; avg 955 geobleu: 0.32647736938679506.
+
+6000 1000 avg 959 dtw: 39.576335547487105; avg 959 geobleu: 0.3273559183417486.
+
+8000 1000 avg 954 dtw: 39.162873392587656; avg 954 geobleu: 0.3276230239291083.
 
 辅助 算dtw放入loss？
+
+complete
+失误用了清洗后的数据
+
+
+
+
+
+
+
+
+
+
+
+
 
