@@ -128,10 +128,10 @@ tokenizer = get_chat_template(
 )
 
 # Load and format the custom dataset
-train_dataset = load_custom_dataset("dataset60000.json")
-train_dataset = train_dataset.select(range(6000))
+train_dataset = load_custom_dataset("dataset60000_not_completed.json")
+train_dataset = train_dataset.select(range(10000))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
-test_dataset = load_custom_dataset("dataset60000-79999.json")
+test_dataset = load_custom_dataset("dataset60000-79999_not_completed.json")
 test_dataset = test_dataset.select(range(1000))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
 # dataset = load_custom_dataset("dataset10000.json")
@@ -199,7 +199,7 @@ trainer = SFTTrainer(
     dataset_num_proc = 8,
     packing = False, # Can make training 5x faster for short sequences.
     args = TrainingArguments(
-        per_device_train_batch_size = 2,
+        per_device_train_batch_size = 1,
         gradient_accumulation_steps = 4,
         warmup_steps = 5,
         num_train_epochs = 1,
