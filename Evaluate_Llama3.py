@@ -68,7 +68,7 @@ def formatting_prompts_func(examples):
 
 
 test_dataset = load_custom_dataset("dataset60000-79999_not_completed.json")
-test_dataset = test_dataset.select(range(1000))
+test_dataset = test_dataset.select(range(100))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
 
 # 推理并保存结果为JSON文件

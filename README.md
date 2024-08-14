@@ -18,7 +18,7 @@ step15
 3 H
 10000 1000 加上dtw算法 avg 993 dtw: 38.38159222539796; avg 993 geobleu: 0.3434524795637539.
 0 B
-20000 20000
+20000 20000 X
 
 2000 1000 Error in 1000 test conversation: Day and time are not the same at step 4, d=61 and t=19 for generated while d=60 and t=44 for reference. avg 607 dtw: 166.23722222046672; avg 607 geobleu: 0.29707873061388385.
 
@@ -30,12 +30,16 @@ step15
 
 辅助 算dtw放入loss？
 
-complete
+not complete
 失误用了清洗后的数据
 1 D
-10000 20000
+10000 20000 X
 3 F
-10000 1000
+10000 1000 avg 708 dtw: 33.565460210207014; avg 708 geobleu: 0.32057442014510507.
+0 C 
+15000 100
+1 D
+10000 100 
 
 
 
