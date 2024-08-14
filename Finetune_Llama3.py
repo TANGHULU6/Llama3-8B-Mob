@@ -129,7 +129,7 @@ tokenizer = get_chat_template(
 
 # Load and format the custom dataset
 train_dataset = load_custom_dataset("dataset60000_not_completed.json")
-train_dataset = train_dataset.select(range(10000))
+train_dataset = train_dataset.select(range(15000))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
 test_dataset = load_custom_dataset("dataset60000-79999_not_completed.json")
 test_dataset = test_dataset.select(range(100))
@@ -289,7 +289,7 @@ To save the final model as LoRA adapters, either use Huggingface's `push_to_hub`
 **[NOTE]** This ONLY saves the LoRA adapters, and not the full model. To save to 16bit or GGUF, scroll down!
 """
 
-model.save_pretrained("lora_model_0814_not_completed_10000") # Local saving
+model.save_pretrained("lora_model_0814_not_completed_15000") # Local saving
 # model.push_to_hub("your_name/lora_model", token = "...") # Online saving
 
 """Now if you want to load the LoRA adapters we just saved for inference, set `False` to `True`:"""
