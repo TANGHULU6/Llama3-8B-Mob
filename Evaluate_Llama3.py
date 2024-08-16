@@ -8,12 +8,12 @@ from unsloth.chat_templates import get_chat_template
 import torch
 
 # 假设 `model` 和 `tokenizer` 已经初始化
-max_seq_length = 20480  # Choose any! We auto support RoPE Scaling internally!
+max_seq_length = 204800  # Choose any! We auto support RoPE Scaling internally!
 dtype = None  # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 for Ampere+
 load_in_4bit = True  # Use 4bit quantization to reduce memory usage. Can be False.
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "lora_model", # YOUR MODEL YOU USED FOR TRAINING
+    model_name = "lora_model_0814_not_completed_10000", # YOUR MODEL YOU USED FOR TRAINING
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -68,7 +68,7 @@ def formatting_prompts_func(examples):
 
 
 test_dataset = load_custom_dataset("dataset60000-79999_not_completed.json")
-test_dataset = test_dataset.select(range(100))
+test_dataset = test_dataset.select(range(10))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
 
 # 推理并保存结果为JSON文件
@@ -150,6 +150,6 @@ for i, conversation in enumerate(test_dataset):
 avg_geobleu = sum(geobleu_scores) / len(geobleu_scores)
 avg_dtw = sum(dtw_scores) / len(dtw_scores)
 print(f"avg {len(dtw_scores)} dtw: {avg_dtw}; avg {len(geobleu_scores)} geobleu: {avg_geobleu}.")
-# 保存为 JSON 文件
-with open('generated_text.json', 'w', encoding='utf-8') as f:
-    json.dump(results, f, ensure_ascii=False, indent=4)
+# # 保存为 JSON 文件
+# with open('generated_text.json', 'w', encoding='utf-8') as f:
+#     json.dump(results, f, ensure_ascii=False, indent=4)
