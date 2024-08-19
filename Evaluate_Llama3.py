@@ -68,7 +68,7 @@ def formatting_prompts_func(examples):
 
 
 test_dataset = load_custom_dataset("dataset60000-79999_not_completed.json")
-test_dataset = test_dataset.select(range(10))
+test_dataset = test_dataset.select(range(100))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
 
 # 推理并保存结果为JSON文件
@@ -78,6 +78,7 @@ generated_results = []
 results = []
 geobleu_scores = []
 dtw_scores = []
+failed = []
 for i, conversation in enumerate(test_dataset):
     start_time = time.time()
     try:
@@ -105,31 +106,35 @@ for i, conversation in enumerate(test_dataset):
         for generated, reference in zip(generated_text, reference_responses):
             split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
             clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
-            try:
-                assistant_json = json.loads(clean_text)
-                reference_json = json.loads(reference.strip()[7:-3])
-                print(assistant_json)
-                print(reference_json)
-                geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json['prediction'], reference_json['prediction'])
-                geobleu_scores.append(geobleu_val)
-                dtw_scores.append(dtw_val)
-                results.append({
-                    "conversation_id": i + 1,
-                    "generated_response": assistant_json,
-                    "reference_response": reference_json,
-                    "geobleu": geobleu_val,
-                    "dtw": dtw_val
-                })
-            except Exception as e:
-                geobleu_val, dtw_val = float('nan'), float('nan')
-                print(f"Error in {i + 1} test conversation: {e}")
-                results.append({
-                    "conversation_id": i + 1,
-                    "generated_response": generated,
-                    "reference_response": reference,
-                    "geobleu": geobleu_val,
-                    "dtw": dtw_val
-                })
+            max_retries = 10
+            for attempt in range(max_retries):
+                try:
+                    assistant_json = json.loads(clean_text)
+                    reference_json = json.loads(reference.strip()[7:-3])
+                    print(assistant_json)
+                    print(reference_json)
+                    geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json['prediction'], reference_json['prediction'])
+                    geobleu_scores.append(geobleu_val)
+                    dtw_scores.append(dtw_val)
+                    results.append({
+                        "conversation_id": i + 1,
+                        "generated_response": assistant_json,
+                        "reference_response": reference_json,
+                        "geobleu": geobleu_val,
+                        "dtw": dtw_val
+                    })
+                    break
+                except Exception as e:
+                    geobleu_val, dtw_val = float('nan'), float('nan')
+                    print(f"Error in {i + 1} test conversation: {e}")
+                    results.append({
+                        "conversation_id": i + 1,
+                        "generated_response": generated,
+                        "reference_response": reference,
+                        "geobleu": geobleu_val,
+                        "dtw": dtw_val
+                    })
+                    failed.append(i+1)
         end_time = time.time()
         elapsed_time = end_time - start_time
 
@@ -150,6 +155,7 @@ for i, conversation in enumerate(test_dataset):
 avg_geobleu = sum(geobleu_scores) / len(geobleu_scores)
 avg_dtw = sum(dtw_scores) / len(dtw_scores)
 print(f"avg {len(dtw_scores)} dtw: {avg_dtw}; avg {len(geobleu_scores)} geobleu: {avg_geobleu}.")
+print(set(failed))
 # # 保存为 JSON 文件
 # with open('generated_text.json', 'w', encoding='utf-8') as f:
 #     json.dump(results, f, ensure_ascii=False, indent=4)
