@@ -289,7 +289,7 @@ To save the final model as LoRA adapters, either use Huggingface's `push_to_hub`
 **[NOTE]** This ONLY saves the LoRA adapters, and not the full model. To save to 16bit or GGUF, scroll down!
 """
 
-model.save_pretrained("lora_model_0820_fixedSeq") # Local saving
+model.save_pretrained("lora_model_0821_fixedSeq") # Local saving
 # model.push_to_hub("your_name/lora_model", token = "...") # Online saving
 
 """Now if you want to load the LoRA adapters we just saved for inference, set `False` to `True`:"""
@@ -323,32 +323,34 @@ results = []
 geobleu_scores = []
 dtw_scores = []
 for i, conversation in enumerate(test_dataset):
-    try:
-        messages = [
-            {"from": message["role"], "value": message["content"]}
-            for message in conversation["conversations"]
-            if message["role"] != 'assistant'
-        ]
-        reference_responses = [
-            message["content"]
-            for message in conversation["conversations"]
-            if message["role"] == 'assistant'
-        ]
-        inputs = tokenizer.apply_chat_template(
-            messages,
-            tokenize=True,
-            add_generation_prompt=True, # Must add for generation
-            return_tensors="pt",
-        ).to("cuda")
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            messages = [
+                {"from": message["role"], "value": message["content"]}
+                for message in conversation["conversations"]
+                if message["role"] != 'assistant'
+            ]
+            reference_responses = [
+                message["content"]
+                for message in conversation["conversations"]
+                if message["role"] == 'assistant'
+            ]
+            inputs = tokenizer.apply_chat_template(
+                messages,
+                tokenize=True,
+                add_generation_prompt=True, # Must add for generation
+                return_tensors="pt",
+            ).to("cuda")
 
-        outputs = model.generate(input_ids=inputs, max_new_tokens=6400, use_cache=True)
-        generated_text = tokenizer.batch_decode(outputs)
-        print(f"Test conversation {i+1}:")
-        print(generated_text)
-        for generated, reference in zip(generated_text, reference_responses):
-            split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
-            clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
-            try:
+            outputs = model.generate(input_ids=inputs, max_new_tokens=16400, use_cache=True)
+            generated_text = tokenizer.batch_decode(outputs)
+            print(f"Test conversation {i+1}:")
+            print(generated_text)
+            for generated, reference in zip(generated_text, reference_responses):
+                split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
+                clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
+
                 assistant_json = json.loads(clean_text)
                 reference_json = json.loads(reference.strip()[7:-3])
                 print(assistant_json)
@@ -363,29 +365,9 @@ for i, conversation in enumerate(test_dataset):
                     "geobleu": geobleu_val,
                     "dtw": dtw_val
                 })
-            except Exception as e:
-                geobleu_val, dtw_val = float('nan'), float('nan')
-                print(f"Error in {i + 1} test conversation: {e}")
-                results.append({
-                    "conversation_id": i + 1,
-                    "generated_response": generated,
-                    "reference_response": reference,
-                    "geobleu": geobleu_val,
-                    "dtw": dtw_val
-                })
-                
-    except Exception as e:
-        print(f"Exception in conversation {i + 1}: {e}")
-        print(f"Length of input_ids: {inputs['input_ids'].shape[1]}")
-        print(f"Input tokens: {inputs}")
-        results.append({
-            "conversation_id": i + 1,
-            "generated_response": "Error",
-            "reference_response": conversation["conversations"],
-            "geobleu": float('nan'),
-            "dtw": float('nan')
-        })
-        
+            break
+        except Exception as e:
+            print(f"Exception in conversation {i + 1}: {e}")
             
 avg_geobleu = sum(geobleu_scores) / len(geobleu_scores)
 avg_dtw = sum(dtw_scores) / len(dtw_scores)
