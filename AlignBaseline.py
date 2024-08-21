@@ -14,6 +14,7 @@ def convert_json_to_target_format(input_json):
             "x": {i: entry["future_x"][i] for i in range(len(entry["future_x"]))},
             "y": {i: entry["future_y"][i] for i in range(len(entry["future_y"]))}
         }
+        input_str += "\n".join([f"{d} {t} 999 999" for d, t, x, y in future_data])
 
         output_list.append({
             "input_str": input_str,

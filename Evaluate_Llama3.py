@@ -13,7 +13,7 @@ dtype = None  # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 fo
 load_in_4bit = True  # Use 4bit quantization to reduce memory usage. Can be False.
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "lora_model_0814_not_completed_10000", # YOUR MODEL YOU USED FOR TRAINING
+    model_name = "lora_model_0820_fixedSeq", # YOUR MODEL YOU USED FOR TRAINING
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -67,8 +67,10 @@ def formatting_prompts_func(examples):
     return {"text": texts}
 
 
-test_dataset = load_custom_dataset("dataset60000-79999_not_completed.json")
-test_dataset = test_dataset.select(range(100))
+test_dataset = load_custom_dataset("dataset_test.json")
+# test_dataset = test_dataset.select(range(100))
+# test_dataset = test_dataset.select(range(92, 94))
+# test_dataset = test_dataset.select(range(11, 12))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
 
 # 推理并保存结果为JSON文件
@@ -81,76 +83,57 @@ dtw_scores = []
 failed = []
 for i, conversation in enumerate(test_dataset):
     start_time = time.time()
-    try:
-        messages = [
-            {"from": message["role"], "value": message["content"]}
-            for message in conversation["conversations"]
-            if message["role"] != 'assistant'
-        ]
-        reference_responses = [
-            message["content"]
-            for message in conversation["conversations"]
-            if message["role"] == 'assistant'
-        ]
-        inputs = tokenizer.apply_chat_template(
-            messages,
-            tokenize=True,
-            add_generation_prompt=True, # Must add for generation
-            return_tensors="pt",
-        ).to("cuda")
+    max_retries = 5
+    for attempt in range(max_retries):
+        try:
+            messages = [
+                {"from": message["role"], "value": message["content"]}
+                for message in conversation["conversations"]
+                if message["role"] != 'assistant'
+            ]
+            reference_responses = [
+                message["content"]
+                for message in conversation["conversations"]
+                if message["role"] == 'assistant'
+            ]
+            inputs = tokenizer.apply_chat_template(
+                messages,
+                tokenize=True,
+                add_generation_prompt=True, # Must add for generation
+                return_tensors="pt",
+            ).to("cuda")
 
-        outputs = model.generate(input_ids=inputs, max_new_tokens=6400, use_cache=True)
-        generated_text = tokenizer.batch_decode(outputs)
-        print(f"Test conversation {i+1}:")
-        print(generated_text)
-        for generated, reference in zip(generated_text, reference_responses):
-            split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
-            clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
-            max_retries = 10
-            for attempt in range(max_retries):
-                try:
-                    assistant_json = json.loads(clean_text)
-                    reference_json = json.loads(reference.strip()[7:-3])
-                    print(assistant_json)
-                    print(reference_json)
-                    geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json['prediction'], reference_json['prediction'])
-                    geobleu_scores.append(geobleu_val)
-                    dtw_scores.append(dtw_val)
-                    results.append({
-                        "conversation_id": i + 1,
-                        "generated_response": assistant_json,
-                        "reference_response": reference_json,
-                        "geobleu": geobleu_val,
-                        "dtw": dtw_val
-                    })
-                    break
-                except Exception as e:
-                    geobleu_val, dtw_val = float('nan'), float('nan')
-                    print(f"Error in {i + 1} test conversation: {e}")
-                    results.append({
-                        "conversation_id": i + 1,
-                        "generated_response": generated,
-                        "reference_response": reference,
-                        "geobleu": geobleu_val,
-                        "dtw": dtw_val
-                    })
-                    failed.append(i+1)
-        end_time = time.time()
-        elapsed_time = end_time - start_time
+            outputs = model.generate(input_ids=inputs, max_new_tokens=16400, use_cache=True)
+            generated_text = tokenizer.batch_decode(outputs)
+            print(f"Test conversation {i+1}:")
+            print(generated_text)
+            for generated, reference in zip(generated_text, reference_responses):
+                split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
+                clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # 移除结束符
 
-        print(f"{i + 1} test conversation: {elapsed_time}s") 
-        
-    except Exception as e:
-        print(f"Exception in conversation {i + 1}: {e}")
-        print(f"Length of input_ids: {inputs['input_ids'].shape[1]}")
-        print(f"Input tokens: {inputs}")
-        results.append({
-            "conversation_id": i + 1,
-            "generated_response": "Error",
-            "reference_response": conversation["conversations"],
-            "geobleu": float('nan'),
-            "dtw": float('nan')
-        })
+                assistant_json = json.loads(clean_text)
+                reference_json = json.loads(reference.strip()[7:-3])
+                print(assistant_json)
+                print(reference_json)
+                geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json['prediction'], reference_json['prediction'])
+                geobleu_scores.append(geobleu_val)
+                dtw_scores.append(dtw_val)
+                results.append({
+                    "conversation_id": i + 1,
+                    "generated_response": assistant_json,
+                    "reference_response": reference_json,
+                    "geobleu": geobleu_val,
+                    "dtw": dtw_val
+                })
+
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+
+            print(f"{i + 1} test conversation: {elapsed_time}s") 
+            break
+        except Exception as e:
+            print(f"Exception in conversation {i + 1}: {e}")
+            failed.append(i+1)
             
 avg_geobleu = sum(geobleu_scores) / len(geobleu_scores)
 avg_dtw = sum(dtw_scores) / len(dtw_scores)
