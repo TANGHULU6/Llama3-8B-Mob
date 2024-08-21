@@ -14,7 +14,7 @@ def convert_json_to_target_format(input_json):
             "x": {i: entry["future_x"][i] for i in range(len(entry["future_x"]))},
             "y": {i: entry["future_y"][i] for i in range(len(entry["future_y"]))}
         }
-        input_str += "\n".join([f"{d} {t} 999 999" for d, t, x, y in future_data])
+        input_str += "\n" + "\n".join([f"{future_data['d'][i]} {future_data['t'][i]} 999 999" for i in range(len(future_data['d']))])
 
         output_list.append({
             "input_str": input_str,
@@ -24,14 +24,14 @@ def convert_json_to_target_format(input_json):
     return output_list
 
 # 从JSON文件读取数据
-with open('test_data.json', 'r') as file:
+with open('train_data.json', 'r') as file:
     input_json = json.load(file)
 
 # 转换数据格式
 converted_data = convert_json_to_target_format(input_json)
 
 # 输出转换后的数据
-with open('data_test.json', 'w') as file:
+with open('data_train.json', 'w') as file:
     json.dump(converted_data, file, indent=4)
 
 # 打印输出结果
