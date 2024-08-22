@@ -110,32 +110,6 @@ tokenizer = get_chat_template(
     mapping={"role": "from", "content": "value", "user": "human", "assistant": "gpt"},
 )
 
-# Load and format the custom dataset
-train_dataset = load_custom_dataset("dataset60000_not_completed.json")
-# train_dataset = train_dataset.select(range(10000))
-train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
-test_dataset = load_custom_dataset("dataset60000-79999_not_completed.json")
-# test_dataset = test_dataset.select(range(100))
-test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
-# dataset = load_custom_dataset("dataset10000.json")
-# dataset = dataset.map(formatting_prompts_func, batched=True)
-
-# # Print the 5th conversation
-# # print(dataset[5]["conversations"])
-
-# # Print the formatted text
-# # print(dataset[5]["text"])
-
-
-# # 确保所有数据都已处理
-# assert "text" in dataset.features
-
-# train_size = int(0.995 * len(dataset))
-# test_size = len(dataset) - train_size
-
-# train_dataset = dataset.select(range(train_size))
-# test_dataset = dataset.select(range(train_size, len(dataset)))
-
 """If you're looking to make your own chat template, that also is possible! You must use the Jinja templating regime. We provide our own stripped down version of the `Unsloth template` which we find to be more efficient, and leverages ChatML, Zephyr and Alpaca styles.
 
 More info on chat templates on [our wiki page!](https://github.com/unslothai/unsloth/wiki#chat-templates)
@@ -160,54 +134,73 @@ unsloth_eos_token = "eos_token"
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Calculate the length of each input and reference response in tokens
-input_lengths = []
-reference_lengths = []
+def calculate_token_lengths(dataset, tokenizer):
+    input_lengths = []
+    reference_lengths = []
 
-for i, conversation in enumerate(test_dataset):
-    try:
-        # Concatenate all input messages into a single string
-        input_text = ""
-        for message in conversation["conversations"]:
-            if message["role"] != 'assistant':
-                input_text += message["content"] + " "
+    for i, conversation in enumerate(dataset):
+        try:
+            # Concatenate all input messages into a single string
+            input_text = ""
+            for message in conversation["conversations"]:
+                if message["role"] != 'assistant':
+                    input_text += message["content"] + " "
 
-        # Tokenize the concatenated input string
-        tokenized_input_length = len(tokenizer.encode(input_text.strip()))
-        input_lengths.append(tokenized_input_length)
-        
-        # Extract reference responses from the conversation
-        reference_responses = [
-            message["content"]
-            for message in conversation["conversations"]
-            if message["role"] == 'assistant'
-        ]
-        
-        # Calculate the token length of each reference response
-        for reference in reference_responses:
-            tokenized_length = len(tokenizer.encode(reference))
-            reference_lengths.append(tokenized_length)
+            # Tokenize the concatenated input string
+            tokenized_input_length = len(tokenizer.encode(input_text.strip()))
+            input_lengths.append(tokenized_input_length)
             
-    except Exception as e:
-        print(f"Exception in conversation {i + 1}: {e}")
+            # Extract reference responses from the conversation
+            reference_responses = [
+                message["content"]
+                for message in conversation["conversations"]
+                if message["role"] == 'assistant'
+            ]
+            
+            # Calculate the token length of each reference response
+            for reference in reference_responses:
+                tokenized_length = len(tokenizer.encode(reference))
+                reference_lengths.append(tokenized_length)
+                
+        except Exception as e:
+            print(f"Exception in conversation {i + 1}: {e}")
+    
+    return input_lengths, reference_lengths
 
-# Plotting the histograms for both input lengths and reference response lengths
+# List of dataset file names
+datasets = ["datasetD_train_0-2399.json", "datasetD_eval_2400-2999.json", "datasetD_test_3000-5999.json"]
+
+# Colors for different datasets
+colors = ['blue', 'green', 'purple']
+
+# Initialize plot
 plt.figure(figsize=(12, 8))
 
-# Plot histogram for input lengths
-sns.histplot(input_lengths, bins=50, kde=False, color='blue', label='Input Tokens')
+# Loop over datasets
+for idx, dataset_name in enumerate(datasets):
+    # Load and format the dataset
+    dataset = load_custom_dataset(dataset_name)
+    dataset = dataset.map(formatting_prompts_func, batched=True)
+    
+    # Calculate token lengths
+    input_lengths, reference_lengths = calculate_token_lengths(dataset, tokenizer)
+    
+    # Plot histogram for input lengths
+    sns.histplot(input_lengths, bins=50, kde=False, color=colors[idx], label=f'{dataset_name} - Input Tokens', alpha=0.5)
+    
+    # Plot histogram for reference response lengths
+    sns.histplot(reference_lengths, bins=50, kde=False, color=colors[idx], label=f'{dataset_name} - Reference Tokens', alpha=0.8)
 
-# Plot histogram for reference response lengths
-sns.histplot(reference_lengths, bins=50, kde=False, color='red', label='Reference Response Tokens')
-
-plt.title('Distribution of Input and Reference Response Lengths (in Tokens)')
+# Customize plot
+plt.title('Distribution of Input and Reference Response Lengths (in Tokens) Across Multiple Datasets')
 plt.xlabel('Number of Tokens')
 plt.ylabel('Frequency')
 plt.legend()
 
 # Save the plot to a file
-plt.savefig('input_and_reference_response_lengths_histogram.png')
+plt.savefig('input_and_reference_response_lengths_histogram_cityD.png')
 
-print("Histogram saved as 'input_and_reference_response_lengths_histogram.png'")
+print("Histogram saved as 'input_and_reference_response_lengths_histogram_cityX.png'")
+
 
 
