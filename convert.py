@@ -46,4 +46,4 @@ def convert_to_dialog_format(input_file, output_file):
     print(f"对话格式数据已保存到 {output_file}")
 
 if __name__ == "__main__":
-    convert_to_dialog_format("data_train.json", "dataset_train.json")
+    convert_to_dialog_format("dataD_test_3000-5999.json", "datasetD_test_3000-5999.json")
