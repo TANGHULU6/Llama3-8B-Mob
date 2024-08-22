@@ -9,3 +9,7 @@ dataset60000.json
 dataset60000-79999.json
 dataset60000*.json
 **train**.json
+dataB_eval_17600-21999.json
+dataC_eval_13600-16999.json
+dataD_test_3000-5999.json
+HuMob2024/cityA_groundtruthdata.csv.gz
