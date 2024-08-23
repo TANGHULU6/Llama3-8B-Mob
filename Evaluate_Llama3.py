@@ -8,12 +8,12 @@ from unsloth.chat_templates import get_chat_template
 import torch
 
 # 假设 `model` 和 `tokenizer` 已经初始化
-max_seq_length = 204800  # Choose any! We auto support RoPE Scaling internally!
+max_seq_length = 30000  # Choose any! We auto support RoPE Scaling internally!
 dtype = None  # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 for Ampere+
 load_in_4bit = True  # Use 4bit quantization to reduce memory usage. Can be False.
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "lora_model", # YOUR MODEL YOU USED FOR TRAINING
+    model_name = "lora_model_cityD", # YOUR MODEL YOU USED FOR TRAINING
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -67,10 +67,10 @@ def formatting_prompts_func(examples):
     return {"text": texts}
 
 
-test_dataset = load_custom_dataset("dataset2025-2385.json")
+test_dataset = load_custom_dataset("datasetD_eval_2400-2999.json")
 # test_dataset = test_dataset.select(range(100))
 # test_dataset = test_dataset.select(range(92, 94))
-test_dataset = test_dataset.select(range(36, 37))
+test_dataset = test_dataset.select(range(35, 38))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
 
 # 推理并保存结果为JSON文件
@@ -83,7 +83,7 @@ dtw_scores = []
 failed = []
 for i, conversation in enumerate(test_dataset):
     start_time = time.time()
-    max_retries = 5
+    max_retries = 1
     for attempt in range(max_retries):
         try:
             messages = [
@@ -102,6 +102,8 @@ for i, conversation in enumerate(test_dataset):
                 add_generation_prompt=True, # Must add for generation
                 return_tensors="pt",
             ).to("cuda")
+
+            print(f"Input sequence length: {inputs.size()}")
 
             outputs = model.generate(input_ids=inputs, max_new_tokens=16400, use_cache=True)
             generated_text = tokenizer.batch_decode(outputs)
@@ -139,6 +141,6 @@ avg_geobleu = sum(geobleu_scores) / len(geobleu_scores)
 avg_dtw = sum(dtw_scores) / len(dtw_scores)
 print(f"avg {len(dtw_scores)} dtw: {avg_dtw}; avg {len(geobleu_scores)} geobleu: {avg_geobleu}.")
 print(set(failed))
-# 保存为 JSON 文件
-with open('generated_text_fixSeq.json', 'w', encoding='utf-8') as f:
-    json.dump(results, f, ensure_ascii=False, indent=4)
+# # 保存为 JSON 文件
+# with open('generated_text_fixSeq.json', 'w', encoding='utf-8') as f:
+#     json.dump(results, f, ensure_ascii=False, indent=4)
