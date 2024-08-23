@@ -129,10 +129,10 @@ tokenizer = get_chat_template(
 
 # Load and format the custom dataset
 train_dataset = load_custom_dataset("datasetD_train_0-2399.json")
-# train_dataset = train_dataset.select(range(10000, 20000))
+train_dataset = train_dataset.select(range(0, 20))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
 test_dataset = load_custom_dataset("datasetD_eval_2400-2999.json")
-# test_dataset = test_dataset.select(range(100))
+test_dataset = test_dataset.select(range(35, 37))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
 # dataset = load_custom_dataset("dataset10000.json")
 # dataset = dataset.map(formatting_prompts_func, batched=True)
