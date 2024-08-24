@@ -36,7 +36,7 @@ This notebook uses the `Llama-3` format for conversation style finetunes. We use
 from geobleu.Report import report_geobleu_dtw_gpt
 from unsloth import FastLanguageModel
 import torch
-max_seq_length = 30000 # Choose any! We auto support RoPE Scaling internally!
+max_seq_length = 204800 # Choose any! We auto support RoPE Scaling internally!
 dtype = None # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 for Ampere+
 load_in_4bit = True # Use 4bit quantization to reduce memory usage. Can be False.
 
@@ -129,10 +129,10 @@ tokenizer = get_chat_template(
 
 # Load and format the custom dataset
 train_dataset = load_custom_dataset("datasetD_train_0-2399.json")
-train_dataset = train_dataset.select(range(0, 20))
+# train_dataset = train_dataset.select(range(0, 20))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
 test_dataset = load_custom_dataset("datasetD_eval_2400-2999.json")
-test_dataset = test_dataset.select(range(35, 37))
+# test_dataset = test_dataset.select(range(35, 37))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
 # dataset = load_custom_dataset("dataset10000.json")
 # dataset = dataset.map(formatting_prompts_func, batched=True)
@@ -289,7 +289,7 @@ To save the final model as LoRA adapters, either use Huggingface's `push_to_hub`
 **[NOTE]** This ONLY saves the LoRA adapters, and not the full model. To save to 16bit or GGUF, scroll down!
 """
 
-model.save_pretrained("lora_model_cityD") # Local saving
+model.save_pretrained("lora_model_cityD_Long") # Local saving
 # model.push_to_hub("your_name/lora_model", token = "...") # Online saving
 
 """Now if you want to load the LoRA adapters we just saved for inference, set `False` to `True`:"""
