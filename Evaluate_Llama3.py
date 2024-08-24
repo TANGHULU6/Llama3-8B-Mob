@@ -13,7 +13,7 @@ dtype = None  # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 fo
 load_in_4bit = True  # Use 4bit quantization to reduce memory usage. Can be False.
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "lora_model_cityD", # YOUR MODEL YOU USED FOR TRAINING
+    model_name = "lora_model_cityC", # YOUR MODEL YOU USED FOR TRAINING
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -66,11 +66,10 @@ def formatting_prompts_func(examples):
             raise e
     return {"text": texts}
 
-
-test_dataset = load_custom_dataset("datasetD_eval_2400-2999.json")
-# test_dataset = test_dataset.select(range(100))
-# test_dataset = test_dataset.select(range(92, 94))
-test_dataset = test_dataset.select(range(35, 38))
+# test_dataset = load_custom_dataset("datasetB_eval_17600-21999.json")
+test_dataset = load_custom_dataset("datasetC_eval_13600-16999.json")
+# test_dataset = load_custom_dataset("datasetD_eval_2400-2999.json")
+test_dataset = test_dataset.select(range(100))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
 
 # 推理并保存结果为JSON文件
