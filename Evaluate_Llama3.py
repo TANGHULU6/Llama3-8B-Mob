@@ -8,12 +8,12 @@ from unsloth.chat_templates import get_chat_template
 import torch
 
 # 假设 `model` 和 `tokenizer` 已经初始化
-max_seq_length = 30000  # Choose any! We auto support RoPE Scaling internally!
+max_seq_length = 204800  # Choose any! We auto support RoPE Scaling internally!
 dtype = None  # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 for Ampere+
 load_in_4bit = True  # Use 4bit quantization to reduce memory usage. Can be False.
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "lora_model_cityC", # YOUR MODEL YOU USED FOR TRAINING
+    model_name = "lora_model_cityD_Long", # YOUR MODEL YOU USED FOR TRAINING
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -67,8 +67,8 @@ def formatting_prompts_func(examples):
     return {"text": texts}
 
 # test_dataset = load_custom_dataset("datasetB_eval_17600-21999.json")
-test_dataset = load_custom_dataset("datasetC_eval_13600-16999.json")
-# test_dataset = load_custom_dataset("datasetD_eval_2400-2999.json")
+# test_dataset = load_custom_dataset("datasetC_eval_13600-16999.json")
+test_dataset = load_custom_dataset("datasetD_eval_2400-2999.json")
 test_dataset = test_dataset.select(range(100))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
 
@@ -82,7 +82,7 @@ dtw_scores = []
 failed = []
 for i, conversation in enumerate(test_dataset):
     start_time = time.time()
-    max_retries = 1
+    max_retries = 3
     for attempt in range(max_retries):
         try:
             messages = [
@@ -103,6 +103,8 @@ for i, conversation in enumerate(test_dataset):
             ).to("cuda")
 
             print(f"Input sequence length: {inputs.size()}")
+            # if (inputs.size(1) < 20000):
+            #     continue
 
             outputs = model.generate(input_ids=inputs, max_new_tokens=16400, use_cache=True)
             generated_text = tokenizer.batch_decode(outputs)
