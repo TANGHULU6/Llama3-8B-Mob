@@ -66,10 +66,12 @@ def formatting_prompts_func(examples):
             raise e
     return {"text": texts}
 
-# test_dataset = load_custom_dataset("datasetB_eval_17600-21999.json")
-# test_dataset = load_custom_dataset("datasetC_eval_13600-16999.json")
-test_dataset = load_custom_dataset("datasetD_eval_2400-2999.json")
-test_dataset = test_dataset.select(range(100))
+l_idx, r_idx = 0, 100
+city = "datasetD_eval_2400-2999.json"
+# city = "datasetB_eval_17600-21999.json"
+# city = "datasetC_eval_13600-16999.json"
+test_dataset = load_custom_dataset(city)
+test_dataset = test_dataset.select(range(l_idx, r_idx))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
 
 # 推理并保存结果为JSON文件
@@ -142,6 +144,6 @@ avg_geobleu = sum(geobleu_scores) / len(geobleu_scores)
 avg_dtw = sum(dtw_scores) / len(dtw_scores)
 print(f"avg {len(dtw_scores)} dtw: {avg_dtw}; avg {len(geobleu_scores)} geobleu: {avg_geobleu}.")
 print(set(failed))
-# # 保存为 JSON 文件
-# with open('generated_text_fixSeq.json', 'w', encoding='utf-8') as f:
-#     json.dump(results, f, ensure_ascii=False, indent=4)
+# 保存为 JSON 文件
+with open(f'generated_{city[:-5]}_range({l_idx}, {r_idx}).json', 'w', encoding='utf-8') as f:
+    json.dump(results, f, ensure_ascii=False, indent=4)
