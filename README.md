@@ -79,7 +79,13 @@ Long 204800
 
 
 2024.08.27
-3 lora_model_cityD_Long logF avg 95 dtw: 91.38142090885317; avg 95 geobleu: 0.27232597487444526.
-3 lora_model_cityD logE avg 99 dtw: 46.276444397487786; avg 99 geobleu: 0.28771896214091947.
-0 lora_model_cityC_maxseq_40000 logC4w 
+3 lora_model_cityD_Long logD20w avg 95 dtw: 91.38142090885317; avg 95 geobleu: 0.27232597487444526.
+3 lora_model_cityD logD5w avg 99 dtw: 46.276444397487786; avg 99 geobleu: 0.28771896214091947.
+0 lora_model_cityC_maxseq_40000 logC4w avg 99 dtw: 23.102840705191067; avg 99 geobleu: 0.28551740664123815.
+0 lora_model_cityC logC5w 
+3 lora_model_cityC_short logC3w 
+
+2024.08.28
+1 B5w B
+2 B4w C
 

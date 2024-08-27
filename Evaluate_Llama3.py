@@ -8,12 +8,12 @@ from unsloth.chat_templates import get_chat_template
 import torch
 
 # 假设 `model` 和 `tokenizer` 已经初始化
-max_seq_length = 50000  # Choose any! We auto support RoPE Scaling internally!
+max_seq_length = 30000  # Choose any! We auto support RoPE Scaling internally!
 dtype = None  # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 for Ampere+
 load_in_4bit = True  # Use 4bit quantization to reduce memory usage. Can be False.
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "lora_model_cityC", # YOUR MODEL YOU USED FOR TRAINING
+    model_name = "lora_model_cityC_short", # YOUR MODEL YOU USED FOR TRAINING
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
