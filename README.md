@@ -66,10 +66,10 @@ D 0-2399  2400-2999   3000-5999
 
 2024.08.25
 gpuId seq_len
-0 204800 sessionD logD-max204800
-3 50000 sessionF logD-max50000
-1 40000
-2 50000
+0 204800 sessionD logD-max204800 lora_model_cityD_Long avg 553 dtw: 158.10875792981912; avg 553 geobleu: 0.25758785539726936.
+3 50000 sessionF logD-max50000 lora_model_cityD avg 588 dtw: 45.70598136917201; avg 588 geobleu: 0.27541527757604484.
+1 40000 lora_model_cityC_maxseq_40000
+2 50000 lora_model_cityC
 
 max seq length
 short 30000
@@ -78,6 +78,8 @@ maxseq_40000
 Long 204800
 
 
-
-
+2024.08.27
+3 lora_model_cityD_Long logF avg 95 dtw: 91.38142090885317; avg 95 geobleu: 0.27232597487444526.
+3 lora_model_cityD logE avg 99 dtw: 46.276444397487786; avg 99 geobleu: 0.28771896214091947.
+0 lora_model_cityC_maxseq_40000 logC4w 
 
