@@ -82,10 +82,13 @@ Long 204800
 3 lora_model_cityD_Long logD20w avg 95 dtw: 91.38142090885317; avg 95 geobleu: 0.27232597487444526.
 3 lora_model_cityD logD5w avg 99 dtw: 46.276444397487786; avg 99 geobleu: 0.28771896214091947.
 0 lora_model_cityC_maxseq_40000 logC4w avg 99 dtw: 23.102840705191067; avg 99 geobleu: 0.28551740664123815.
-0 lora_model_cityC logC5w 
-3 lora_model_cityC_short logC3w 
+0 lora_model_cityC logC5w avg 100 dtw: 20.890870670777293; avg 100 geobleu: 0.2835503867911617.
+3 lora_model_cityC_short logC3w avg 100 dtw: 22.15791613469313; avg 100 geobleu: 0.27197438894498105.
 
 2024.08.28
+gpu len session
 1 B5w B
 2 B4w C
+0 A0-10000 A 在B上eval
+3 A0-2000*5 F
 

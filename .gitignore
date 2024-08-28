@@ -15,3 +15,5 @@ dataD_test_3000-5999.json
 HuMob2024/cityA_groundtruthdata.csv.gz
 datasetB_eval_17600-21999.json
 datasetD_test_3000-5999.json
+dataA.json
+datasetA.json
