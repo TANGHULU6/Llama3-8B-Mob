@@ -128,8 +128,8 @@ tokenizer = get_chat_template(
 )
 
 # Load and format the custom dataset
-train_dataset = load_custom_dataset("datasetB_train_0-17599.json")
-# train_dataset = train_dataset.select(range(0, 20))
+train_dataset = load_custom_dataset("datasetA.json")
+train_dataset = train_dataset.select(range(0, 2000))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
 test_dataset = load_custom_dataset("datasetB_eval_17600-21999.json")
 test_dataset = test_dataset.select(range(0, 100))
@@ -202,7 +202,7 @@ trainer = SFTTrainer(
         per_device_train_batch_size = 1,
         gradient_accumulation_steps = 4,
         warmup_steps = 5,
-        num_train_epochs = 1,
+        num_train_epochs = 5,
         learning_rate = 2e-4,
         fp16 = not is_bfloat16_supported(),
         bf16 = is_bfloat16_supported(),
@@ -289,7 +289,7 @@ To save the final model as LoRA adapters, either use Huggingface's `push_to_hub`
 **[NOTE]** This ONLY saves the LoRA adapters, and not the full model. To save to 16bit or GGUF, scroll down!
 """
 
-model.save_pretrained("lora_model_cityB_maxseq_50000") # Local saving
+model.save_pretrained("lora_model_cityA_maxseq_50000_0-2000*5") # Local saving
 # model.push_to_hub("your_name/lora_model", token = "...") # Online saving
 
 """Now if you want to load the LoRA adapters we just saved for inference, set `False` to `True`:"""

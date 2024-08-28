@@ -2057,7 +2057,7 @@
     "input_ids",
     "attention_mask"
   ],
-  "model_max_length": 50000,
+  "model_max_length": 40000,
   "pad_token": "<|reserved_special_token_250|>",
   "padding_side": "right",
   "tokenizer_class": "PreTrainedTokenizerFast"
