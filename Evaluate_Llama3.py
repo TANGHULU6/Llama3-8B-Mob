@@ -8,12 +8,12 @@ from unsloth.chat_templates import get_chat_template
 import torch
 
 # 假设 `model` 和 `tokenizer` 已经初始化
-max_seq_length = 30000  # Choose any! We auto support RoPE Scaling internally!
+max_seq_length = 50000  # Choose any! We auto support RoPE Scaling internally!
 dtype = None  # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 for Ampere+
 load_in_4bit = True  # Use 4bit quantization to reduce memory usage. Can be False.
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "lora_model_cityC_short", # YOUR MODEL YOU USED FOR TRAINING
+    model_name = "lora_model_cityA_maxseq_50000_0-2000*5", # YOUR MODEL YOU USED FOR TRAINING
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -144,6 +144,6 @@ avg_geobleu = sum(geobleu_scores) / len(geobleu_scores)
 avg_dtw = sum(dtw_scores) / len(dtw_scores)
 print(f"avg {len(dtw_scores)} dtw: {avg_dtw}; avg {len(geobleu_scores)} geobleu: {avg_geobleu}.")
 print(set(failed))
-# 保存为 JSON 文件
-with open(f'generated_{city[:-5]}_range({l_idx}, {r_idx}).json', 'w', encoding='utf-8') as f:
-    json.dump(results, f, ensure_ascii=False, indent=4)
+# # 保存为 JSON 文件
+# with open(f'generated_{city[:-5]}_range({l_idx}, {r_idx}).json', 'w', encoding='utf-8') as f:
+#     json.dump(results, f, ensure_ascii=False, indent=4)
