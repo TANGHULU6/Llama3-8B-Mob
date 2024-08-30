@@ -54,7 +54,7 @@ fourbit_models = [
 ] # More models at https://huggingface.co/unsloth
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "lora_model_cityC", # Choose ANY! eg teknium/OpenHermes-2.5-Mistral-7B
+    model_name = "unsloth/llama-3-8b-Instruct-bnb-4bit", # Choose ANY! eg teknium/OpenHermes-2.5-Mistral-7B
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -65,17 +65,18 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 
 model = FastLanguageModel.get_peft_model(
     model,
-    r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
+    r = 128, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
     target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
                       "gate_proj", "up_proj", "down_proj",
-                      "lm_head", "embed_tokens",],
-    lora_alpha = 16,
+                    #   "embed_tokens", 
+                      "lm_head",], # Add for continual pretraining
+    lora_alpha = 32,
     lora_dropout = 0, # Supports any, but = 0 is optimized
     bias = "none",    # Supports any, but = "none" is optimized
     # [NEW] "unsloth" uses 30% less VRAM, fits 2x larger batch sizes!
     use_gradient_checkpointing = "unsloth", # True or "unsloth" for very long context
     random_state = 3407,
-    use_rslora = False,  # We support rank stabilized LoRA
+    use_rslora = True,   # We support rank stabilized LoRA
     loftq_config = None, # And LoftQ
 )
 
@@ -121,6 +122,11 @@ def formatting_prompts_func(examples):
             raise e
     return {"text": texts}
 
+def filter_conversations(example):
+    convos = example["conversations"]
+    total_length = sum(len(msg["content"]) for msg in convos)
+    return total_length <= max_seq_length
+
 # Initialize the tokenizer with the correct chat template
 tokenizer = get_chat_template(
     tokenizer,
@@ -129,10 +135,11 @@ tokenizer = get_chat_template(
 )
 
 # Load and format the custom dataset
-train_dataset = load_custom_dataset("datasetC_train_0-13599.json")
+train_dataset = load_custom_dataset("datasetB_train_0-17599.json")
 # train_dataset = train_dataset.select(range(0, 2000))
+train_dataset = train_dataset.filter(filter_conversations)
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
-test_dataset = load_custom_dataset("datasetC_eval_13600-16999.json")
+test_dataset = load_custom_dataset("datasetB_eval_17600-21999.json")
 test_dataset = test_dataset.select(range(0, 100))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
 # dataset = load_custom_dataset("dataset10000.json")
@@ -190,8 +197,9 @@ Now let's use Huggingface TRL's `SFTTrainer`! More docs here: [TRL SFT docs](htt
 from trl import SFTTrainer
 from transformers import TrainingArguments
 from unsloth import is_bfloat16_supported
+from unsloth import UnslothTrainer, UnslothTrainingArguments
 
-trainer = SFTTrainer(
+trainer = UnslothTrainer(
     model = model,
     tokenizer = tokenizer,
     train_dataset = train_dataset,
@@ -199,7 +207,7 @@ trainer = SFTTrainer(
     max_seq_length = max_seq_length,
     dataset_num_proc = 8,
     packing = False, # Can make training 5x faster for short sequences.
-    args = TrainingArguments(
+    args = UnslothTrainingArguments(
         per_device_train_batch_size = 1,
         gradient_accumulation_steps = 4,
         warmup_steps = 5,
@@ -291,7 +299,7 @@ To save the final model as LoRA adapters, either use Huggingface's `push_to_hub`
 **[NOTE]** This ONLY saves the LoRA adapters, and not the full model. To save to 16bit or GGUF, scroll down!
 """
 
-model.save_pretrained("lora_model_cityC_plus") # Local saving
+model.save_pretrained("lora_model_cityB_plus") # Local saving
 # model.push_to_hub("your_name/lora_model", token = "...") # Online saving
 
 """Now if you want to load the LoRA adapters we just saved for inference, set `False` to `True`:"""
