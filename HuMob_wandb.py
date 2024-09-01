@@ -3,7 +3,7 @@ from unsloth import FastLanguageModel
 import torch
 
 import os
-os.environ["WANDB_PROJECT"] = "HuMob2024cityC"
+os.environ["WANDB_PROJECT"] = "HuMob2024cityB"
 os.environ["WANDB_LOG_MODEL"] = "checkpoint"
 
 
@@ -99,10 +99,10 @@ tokenizer = get_chat_template(
 )
 
 # Load and format the custom dataset
-train_dataset = load_custom_dataset("datasetC_train_0-13599.json")
+train_dataset = load_custom_dataset("datasetB_train_0-17599.json")
 # train_dataset = train_dataset.select(range(5000, 6000))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
-val_dataset = load_custom_dataset("datasetC_eval_13600-16999.json")
+val_dataset = load_custom_dataset("datasetB_eval_17600-21999.json")
 val_dataset = val_dataset.select(range(100))
 val_dataset = val_dataset.map(formatting_prompts_func, batched=True)
 
@@ -117,7 +117,6 @@ from unsloth import is_bfloat16_supported
 
 early_stopping_callback = EarlyStoppingCallback(
     early_stopping_patience=3,
-    # early_stopping_threshold=0.01
 )
 
 trainer = SFTTrainer(
@@ -145,11 +144,12 @@ trainer = SFTTrainer(
         report_to = "wandb",
         logging_steps = 1, # Change if needed
         save_steps = 100, # Change if needed
-        run_name = "C_eval", # (Optional)
+        run_name = "B_eval_loss", # (Optional)
         eval_strategy="steps",
-        eval_steps=5,
+        eval_steps=100,
         per_device_eval_batch_size=1,
         load_best_model_at_end=True,
+        greater_is_better=False,
     ),
     callbacks=[early_stopping_callback],
 )

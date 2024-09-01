@@ -1,0 +1,271 @@
+2024-09-02 03:43:15,047 INFO    StreamThr :930534 [internal.py:wandb_internal():85] W&B internal server running at pid: 930534, started at: 2024-09-02 03:43:15.045909
+2024-09-02 03:43:15,049 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status
+2024-09-02 03:43:15,054 INFO    WriterThread:930534 [datastore.py:open_for_write():87] open: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/run-2u7yoc5s.wandb
+2024-09-02 03:43:15,055 DEBUG   SenderThread:930534 [sender.py:send():391] send: header
+2024-09-02 03:43:15,056 DEBUG   SenderThread:930534 [sender.py:send():391] send: run
+2024-09-02 03:43:15,532 INFO    SenderThread:930534 [dir_watcher.py:__init__():211] watching files in: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files
+2024-09-02 03:43:15,532 INFO    SenderThread:930534 [sender.py:_start_run_threads():1200] run started: 2u7yoc5s with start time 1725216195.044379
+2024-09-02 03:43:15,544 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: run_start
+2024-09-02 03:43:15,558 DEBUG   HandlerThread:930534 [system_info.py:__init__():26] System info init
+2024-09-02 03:43:15,558 DEBUG   HandlerThread:930534 [system_info.py:__init__():41] System info init done
+2024-09-02 03:43:15,558 INFO    HandlerThread:930534 [system_monitor.py:start():194] Starting system monitor
+2024-09-02 03:43:15,559 INFO    SystemMonitor:930534 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-09-02 03:43:15,559 INFO    HandlerThread:930534 [system_monitor.py:probe():214] Collecting system info
+2024-09-02 03:43:15,560 INFO    SystemMonitor:930534 [interfaces.py:start():188] Started cpu monitoring
+2024-09-02 03:43:15,561 INFO    SystemMonitor:930534 [interfaces.py:start():188] Started disk monitoring
+2024-09-02 03:43:15,562 INFO    SystemMonitor:930534 [interfaces.py:start():188] Started gpu monitoring
+2024-09-02 03:43:15,563 INFO    SystemMonitor:930534 [interfaces.py:start():188] Started memory monitoring
+2024-09-02 03:43:15,565 INFO    SystemMonitor:930534 [interfaces.py:start():188] Started network monitoring
+2024-09-02 03:43:15,621 DEBUG   HandlerThread:930534 [system_info.py:probe():152] Probing system
+2024-09-02 03:43:15,623 DEBUG   HandlerThread:930534 [system_info.py:_probe_git():137] Probing git
+2024-09-02 03:43:15,631 DEBUG   HandlerThread:930534 [system_info.py:_probe_git():145] Probing git done
+2024-09-02 03:43:15,631 DEBUG   HandlerThread:930534 [system_info.py:probe():200] Probing system done
+2024-09-02 03:43:15,631 DEBUG   HandlerThread:930534 [system_monitor.py:probe():223] {'os': 'Linux-5.15.0-100-generic-x86_64-with-glibc2.31', 'python': '3.10.14', 'heartbeatAt': '2024-09-01T18:43:15.621716', 'startedAt': '2024-09-01T18:43:15.035859', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/geo_llm/llama3-finetune/HuMob_wandb_continue.py', 'codePathLocal': 'HuMob_wandb_continue.py', 'codePath': 'HuMob_wandb_continue.py', 'git': {'remote': 'git@github.com:TANGHULU6/llama-finetune.git', 'commit': '2fd30674efd8f42c12a2b90e061950b2be391006'}, 'email': '12110502@mail.sustech.edu.cn', 'root': '/home/geo_llm/llama3-finetune', 'host': 'dl-rooster', 'username': 'geo_llm', 'executable': '/home/geo_llm/anaconda3/envs/unsloth_env/bin/python', 'cpu_count': 24, 'cpu_count_logical': 48, 'cpu_freq': {'current': 942.0057083333332, 'min': 800.0, 'max': 3300.0}, 'cpu_freq_per_core': [{'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 3300.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 2930.445, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 900.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 806.644, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 1000.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 1000.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 3000.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 900.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}], 'disk': {'/': {'total': 1832.2072448730469, 'used': 1169.2758026123047}}, 'gpu': 'NVIDIA RTX A6000', 'gpu_count': 4, 'gpu_devices': [{'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}], 'memory': {'total': 314.2499084472656}}
+2024-09-02 03:43:15,631 INFO    HandlerThread:930534 [system_monitor.py:probe():224] Finished collecting system info
+2024-09-02 03:43:15,631 INFO    HandlerThread:930534 [system_monitor.py:probe():227] Publishing system info
+2024-09-02 03:43:15,631 DEBUG   HandlerThread:930534 [system_info.py:_save_conda():209] Saving list of conda packages installed into the current environment
+2024-09-02 03:43:16,536 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_created():271] file/dir created: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/conda-environment.yaml
+2024-09-02 03:43:18,954 DEBUG   HandlerThread:930534 [system_info.py:_save_conda():224] Saving conda packages done
+2024-09-02 03:43:18,956 INFO    HandlerThread:930534 [system_monitor.py:probe():229] Finished publishing system info
+2024-09-02 03:43:18,960 DEBUG   SenderThread:930534 [sender.py:send():391] send: files
+2024-09-02 03:43:18,961 INFO    SenderThread:930534 [sender.py:_save_file():1466] saving file wandb-metadata.json with policy now
+2024-09-02 03:43:19,055 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: python_packages
+2024-09-02 03:43:19,056 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:43:19,057 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: python_packages
+2024-09-02 03:43:19,057 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:43:19,061 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:43:19,325 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: log_artifact
+2024-09-02 03:43:19,355 DEBUG   SenderThread:930534 [sender.py:send():391] send: telemetry
+2024-09-02 03:43:19,356 DEBUG   SenderThread:930534 [sender.py:send():391] send: config
+2024-09-02 03:43:19,357 DEBUG   SenderThread:930534 [sender.py:send():391] send: telemetry
+2024-09-02 03:43:19,357 DEBUG   SenderThread:930534 [sender.py:send():391] send: metric
+2024-09-02 03:43:19,357 DEBUG   SenderThread:930534 [sender.py:send():391] send: telemetry
+2024-09-02 03:43:19,358 DEBUG   SenderThread:930534 [sender.py:send():391] send: metric
+2024-09-02 03:43:19,358 WARNING SenderThread:930534 [sender.py:send_metric():1417] Seen metric with glob (shouldn't happen)
+2024-09-02 03:43:19,358 DEBUG   SenderThread:930534 [sender.py:send():391] send: telemetry
+2024-09-02 03:43:19,358 DEBUG   SenderThread:930534 [sender.py:send():391] send: telemetry
+2024-09-02 03:43:19,358 DEBUG   SenderThread:930534 [sender.py:send():391] send: config
+2024-09-02 03:43:19,358 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: log_artifact
+2024-09-02 03:43:19,534 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/conda-environment.yaml
+2024-09-02 03:43:19,535 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_created():271] file/dir created: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/wandb-metadata.json
+2024-09-02 03:43:19,535 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_created():271] file/dir created: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/requirements.txt
+2024-09-02 03:43:20,033 INFO    wandb-upload_0:930534 [upload_job.py:push():130] Uploaded file /tmp/tmpulip03_zwandb/vknw3stp-wandb-metadata.json
+2024-09-02 03:43:21,478 INFO    wandb-upload_0:930534 [upload_job.py:push():88] Uploaded file /tmp/tmp1v5c4z1d/model_architecture.txt
+2024-09-02 03:43:22,289 INFO    SenderThread:930534 [sender.py:send_request_log_artifact():1537] logged artifact model-B_eval_loss - {'id': 'QXJ0aWZhY3Q6MTE3NTU3MjEwOQ==', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjQxOTI2OTIwMg==', 'latestArtifact': None}}
+2024-09-02 03:43:22,289 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:43:22,535 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_created():271] file/dir created: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/output.log
+2024-09-02 03:43:24,536 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/output.log
+2024-09-02 03:43:28,059 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:43:29,059 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:43:33,060 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:43:34,057 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:43:34,057 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:43:38,307 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:43:38,345 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: partial_history
+2024-09-02 03:43:38,350 DEBUG   SenderThread:930534 [sender.py:send():391] send: metric
+2024-09-02 03:43:38,351 DEBUG   SenderThread:930534 [sender.py:send():391] send: metric
+2024-09-02 03:43:38,351 DEBUG   SenderThread:930534 [sender.py:send():391] send: metric
+2024-09-02 03:43:38,351 DEBUG   SenderThread:930534 [sender.py:send():391] send: metric
+2024-09-02 03:43:38,351 DEBUG   SenderThread:930534 [sender.py:send():391] send: history
+2024-09-02 03:43:38,352 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: summary_record
+2024-09-02 03:43:38,354 INFO    SenderThread:930534 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-09-02 03:43:38,543 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_created():271] file/dir created: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/wandb-summary.json
+2024-09-02 03:43:39,058 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:43:40,544 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/output.log
+2024-09-02 03:43:44,058 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:43:49,057 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:43:49,058 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:43:49,099 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:43:49,308 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:43:50,579 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/config.yaml
+2024-09-02 03:43:55,059 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:43:59,059 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:44:00,061 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:44:04,057 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:44:04,058 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:44:05,331 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:44:09,060 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:44:11,061 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:44:15,565 DEBUG   SystemMonitor:930534 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-09-02 03:44:15,570 DEBUG   SenderThread:930534 [sender.py:send():391] send: stats
+2024-09-02 03:44:16,572 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:44:19,058 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:44:19,059 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:44:19,099 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:44:19,627 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: partial_history
+2024-09-02 03:44:19,631 DEBUG   SenderThread:930534 [sender.py:send():391] send: history
+2024-09-02 03:44:19,632 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: summary_record
+2024-09-02 03:44:19,633 INFO    SenderThread:930534 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-09-02 03:44:20,595 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/wandb-summary.json
+2024-09-02 03:44:20,595 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/output.log
+2024-09-02 03:44:21,635 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:44:27,061 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:44:29,061 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:44:32,061 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:44:34,058 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:44:34,059 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:44:37,845 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:44:39,060 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:44:43,062 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:44:45,573 DEBUG   SenderThread:930534 [sender.py:send():391] send: stats
+2024-09-02 03:44:48,575 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:44:49,058 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:44:49,058 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:44:49,099 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:44:54,062 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:44:56,491 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: partial_history
+2024-09-02 03:44:56,494 DEBUG   SenderThread:930534 [sender.py:send():391] send: history
+2024-09-02 03:44:56,494 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: summary_record
+2024-09-02 03:44:56,497 INFO    SenderThread:930534 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-09-02 03:44:56,611 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/wandb-summary.json
+2024-09-02 03:44:58,612 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/output.log
+2024-09-02 03:44:59,061 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:44:59,062 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:45:04,058 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:45:04,059 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:45:04,242 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:45:09,061 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:45:10,062 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:45:15,576 DEBUG   SenderThread:930534 [sender.py:send():391] send: stats
+2024-09-02 03:45:15,578 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:45:19,059 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:45:19,059 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:45:19,099 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:45:21,302 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:45:27,063 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:45:29,062 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:45:31,371 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: partial_history
+2024-09-02 03:45:31,374 DEBUG   SenderThread:930534 [sender.py:send():391] send: history
+2024-09-02 03:45:31,375 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: summary_record
+2024-09-02 03:45:31,375 INFO    SenderThread:930534 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-09-02 03:45:31,627 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/wandb-summary.json
+2024-09-02 03:45:32,377 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:45:32,628 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/output.log
+2024-09-02 03:45:34,058 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:45:34,059 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:45:38,300 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:45:39,062 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:45:44,064 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:45:45,579 DEBUG   SenderThread:930534 [sender.py:send():391] send: stats
+2024-09-02 03:45:49,059 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:45:49,060 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:45:49,103 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:45:49,327 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:45:55,066 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:45:59,062 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:46:01,065 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:46:04,059 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:46:04,060 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:46:06,332 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:46:09,062 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:46:12,065 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:46:14,775 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: partial_history
+2024-09-02 03:46:14,778 DEBUG   SenderThread:930534 [sender.py:send():391] send: history
+2024-09-02 03:46:14,779 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: summary_record
+2024-09-02 03:46:14,782 INFO    SenderThread:930534 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-09-02 03:46:15,583 DEBUG   SenderThread:930534 [sender.py:send():391] send: stats
+2024-09-02 03:46:15,648 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/wandb-summary.json
+2024-09-02 03:46:16,648 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/output.log
+2024-09-02 03:46:17,585 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:46:19,059 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:46:19,060 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:46:19,063 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:46:23,265 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:46:29,063 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:46:29,065 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:46:34,059 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:46:34,060 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:46:34,304 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:46:39,063 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:46:40,066 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:46:45,067 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:46:45,586 DEBUG   SenderThread:930534 [sender.py:send():391] send: stats
+2024-09-02 03:46:47,383 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: partial_history
+2024-09-02 03:46:47,386 DEBUG   SenderThread:930534 [sender.py:send():391] send: history
+2024-09-02 03:46:47,386 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: summary_record
+2024-09-02 03:46:47,387 INFO    SenderThread:930534 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-09-02 03:46:47,663 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/wandb-summary.json
+2024-09-02 03:46:48,663 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/output.log
+2024-09-02 03:46:49,059 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:46:49,060 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:46:49,064 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:46:50,243 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:46:56,067 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:46:59,064 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:47:02,067 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:47:04,059 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:47:04,060 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:47:07,330 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:47:09,064 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:47:13,068 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:47:15,589 DEBUG   SenderThread:930534 [sender.py:send():391] send: stats
+2024-09-02 03:47:18,591 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:47:19,060 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:47:19,061 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:47:19,103 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:47:23,623 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: partial_history
+2024-09-02 03:47:23,626 DEBUG   SenderThread:930534 [sender.py:send():391] send: history
+2024-09-02 03:47:23,628 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: summary_record
+2024-09-02 03:47:23,628 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:47:23,630 INFO    SenderThread:930534 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-09-02 03:47:23,680 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/wandb-summary.json
+2024-09-02 03:47:24,680 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/output.log
+2024-09-02 03:47:29,064 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:47:29,068 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:47:34,060 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:47:34,061 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:47:34,958 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:47:39,064 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:47:40,068 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:47:45,069 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:47:45,592 DEBUG   SenderThread:930534 [sender.py:send():391] send: stats
+2024-09-02 03:47:49,061 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:47:49,061 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:47:49,103 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:47:50,296 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:47:56,069 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:47:59,064 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:48:02,069 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:48:04,060 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:48:04,061 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:48:05,517 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: partial_history
+2024-09-02 03:48:05,521 DEBUG   SenderThread:930534 [sender.py:send():391] send: history
+2024-09-02 03:48:05,521 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: summary_record
+2024-09-02 03:48:05,523 INFO    SenderThread:930534 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-09-02 03:48:05,699 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/wandb-summary.json
+2024-09-02 03:48:06,700 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/output.log
+2024-09-02 03:48:07,524 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:48:09,065 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:48:13,069 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:48:15,596 DEBUG   SenderThread:930534 [sender.py:send():391] send: stats
+2024-09-02 03:48:18,598 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:48:19,060 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:48:19,061 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:48:19,103 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:48:24,070 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:48:29,065 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:48:30,070 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:48:31,955 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: partial_history
+2024-09-02 03:48:31,957 DEBUG   SenderThread:930534 [sender.py:send():391] send: history
+2024-09-02 03:48:31,959 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: summary_record
+2024-09-02 03:48:31,959 INFO    SenderThread:930534 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-09-02 03:48:32,711 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/wandb-summary.json
+2024-09-02 03:48:33,711 INFO    Thread-12 :930534 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240902_034315-2u7yoc5s/files/output.log
+2024-09-02 03:48:34,060 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:48:34,061 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:48:35,261 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:48:39,065 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:48:41,070 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:48:45,598 DEBUG   SenderThread:930534 [sender.py:send():391] send: stats
+2024-09-02 03:48:46,600 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:48:49,061 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:48:49,061 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:48:49,103 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:48:52,331 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:48:58,071 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:48:59,066 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:49:04,062 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-02 03:49:04,063 DEBUG   SenderThread:930534 [sender.py:send_request():418] send_request: stop_status
+2024-09-02 03:49:04,303 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
+2024-09-02 03:49:09,066 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-02 03:49:10,071 DEBUG   HandlerThread:930534 [handler.py:handle_request():158] handle_request: status_report
