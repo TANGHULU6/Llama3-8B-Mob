@@ -1,0 +1,47 @@
+
+
+  0%|▎                                                                                | 1/250 [00:51<3:32:27, 51.20s/it]
+
+  1%|▋                                                                                | 2/250 [01:46<3:40:56, 53.45s/it]
+
+  1%|▉                                                                                | 3/250 [02:37<3:36:24, 52.57s/it]
+
+  2%|█▎                                                                               | 4/250 [03:14<3:10:41, 46.51s/it]
+
+  2%|█▌                                                                               | 5/250 [03:56<3:02:58, 44.81s/it]
+  2%|█▌                                                                               | 5/250 [03:56<3:02:58, 44.81s/it]Traceback (most recent call last):
+  File "/home/geo_llm/llama3-finetune/HuMob_wandb.py", line 163, in <module>
+    trainer_stats = trainer.train()
+  File "<string>", line 126, in train
+  File "<string>", line 435, in _fast_inner_training_loop
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/transformers/trainer.py", line 2793, in _maybe_log_save_evaluate
+    metrics = self._evaluate(trial, ignore_keys_for_eval)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/transformers/trainer.py", line 2750, in _evaluate
+    metrics = self.evaluate(ignore_keys=ignore_keys_for_eval)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/transformers/trainer.py", line 3641, in evaluate
+    output = eval_loop(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/transformers/trainer.py", line 3826, in evaluation_loop
+    losses, logits, labels = self.prediction_step(model, inputs, prediction_loss_only, ignore_keys=ignore_keys)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/transformers/trainer.py", line 4040, in prediction_step
+    loss, outputs = self.compute_loss(model, inputs, return_outputs=True)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/transformers/trainer.py", line 3338, in compute_loss
+    outputs = model(**inputs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/accelerate/utils/operations.py", line 786, in convert_to_fp32
+    return recursively_apply(_convert_to_fp32, tensor, test_type=_is_fp16_bf16_tensor)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/accelerate/utils/operations.py", line 118, in recursively_apply
+    {
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/accelerate/utils/operations.py", line 119, in <dictcomp>
+    k: recursively_apply(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/accelerate/utils/operations.py", line 126, in recursively_apply
+    return func(data, *args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/accelerate/utils/operations.py", line 778, in _convert_to_fp32
+    return tensor.float()
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 44.54 GiB. GPU

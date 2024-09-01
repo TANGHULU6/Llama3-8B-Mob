@@ -3,7 +3,7 @@ from unsloth import FastLanguageModel
 import torch
 
 import os
-os.environ["WANDB_PROJECT"] = "HuMob2024cityA"
+os.environ["WANDB_PROJECT"] = "HuMob2024cityC"
 os.environ["WANDB_LOG_MODEL"] = "checkpoint"
 
 
@@ -99,9 +99,12 @@ tokenizer = get_chat_template(
 )
 
 # Load and format the custom dataset
-train_dataset = load_custom_dataset("datasetA.json")
-train_dataset = train_dataset.select(range(0, 1000))
+train_dataset = load_custom_dataset("datasetC_train_0-13599.json")
+# train_dataset = train_dataset.select(range(5000, 6000))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
+val_dataset = load_custom_dataset("datasetC_eval_13600-16999.json")
+val_dataset = val_dataset.select(range(100))
+val_dataset = val_dataset.map(formatting_prompts_func, batched=True)
 
 """<a name="Train"></a>
 ### Train the model
@@ -109,13 +112,19 @@ Now let's use Huggingface TRL's `SFTTrainer`! More docs here: [TRL SFT docs](htt
 """
 
 from trl import SFTTrainer
-from transformers import TrainingArguments
+from transformers import TrainingArguments, EarlyStoppingCallback
 from unsloth import is_bfloat16_supported
+
+early_stopping_callback = EarlyStoppingCallback(
+    early_stopping_patience=3,
+    # early_stopping_threshold=0.01
+)
 
 trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
     train_dataset = train_dataset,
+    eval_dataset=val_dataset,
     dataset_text_field = "text",
     max_seq_length = max_seq_length,
     dataset_num_proc = 8,
@@ -124,7 +133,7 @@ trainer = SFTTrainer(
         per_device_train_batch_size = 1,
         gradient_accumulation_steps = 4,
         warmup_steps = 5,
-        num_train_epochs = 5,
+        num_train_epochs = 1,
         learning_rate = 2e-4,
         fp16 = not is_bfloat16_supported(),
         bf16 = is_bfloat16_supported(),
@@ -136,8 +145,13 @@ trainer = SFTTrainer(
         report_to = "wandb",
         logging_steps = 1, # Change if needed
         save_steps = 100, # Change if needed
-        run_name = "First", # (Optional)
+        run_name = "C_eval", # (Optional)
+        eval_strategy="steps",
+        eval_steps=5,
+        per_device_eval_batch_size=1,
+        load_best_model_at_end=True,
     ),
+    callbacks=[early_stopping_callback],
 )
 
 #@title Show current memory stats
@@ -150,20 +164,7 @@ print(f"{start_gpu_memory} GB of memory reserved.")
 trainer_stats = trainer.train()
 # import wandb
 # run = wandb.init()
-# artifact = run.use_artifact('tanghulu/HuMob2024cityA/model-First:v0', type='model')
+# artifact = run.use_artifact('tanghulu/HuMob2024cityC/model-First:v35', type='model')
 # artifact_dir = artifact.download()
+# model.save_pretrained(artifact_dir)
 # trainer.train(resume_from_checkpoint=artifact_dir)
-
-#@title Show final memory and time stats
-used_memory = round(torch.cuda.max_memory_reserved() / 1024 / 1024 / 1024, 3)
-used_memory_for_lora = round(used_memory - start_gpu_memory, 3)
-used_percentage = round(used_memory         /max_memory*100, 3)
-lora_percentage = round(used_memory_for_lora/max_memory*100, 3)
-print(f"{trainer_stats.metrics['train_runtime']} seconds used for training.")
-print(f"{round(trainer_stats.metrics['train_runtime']/60, 2)} minutes used for training.")
-print(f"Peak reserved memory = {used_memory} GB.")
-print(f"Peak reserved memory for training = {used_memory_for_lora} GB.")
-print(f"Peak reserved memory % of max memory = {used_percentage} %.")
-print(f"Peak reserved memory for training % of max memory = {lora_percentage} %.")
-
-model.save_pretrained("lora_model")

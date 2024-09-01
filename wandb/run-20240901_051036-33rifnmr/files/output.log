@@ -1,0 +1,13 @@
+[34m[1mwandb[39m[22m: Downloading large artifact model-First:v10, 249.60MB. 11 files...
+[34m[1mwandb[39m[22m:   11 of 11 files downloaded.
+Done. 0:0:0.7
+==((====))==  Unsloth - 2x faster free finetuning | Num GPUs = 1
+   \\   /|    Num examples = 1,000 | Num Epochs = 1
+O^O/ \_/ \    Batch size per device = 1 | Gradient Accumulation steps = 4
+\        /    Total batch size = 4 | Total steps = 250
+ "-____-"     Number of trainable parameters = 41,943,040
+Warning: The following arguments do not match the ones in the `trainer_state.json` within the checkpoint directory:
+	eval_steps: 50 (from args) != 500 (from trainer_state.json)
+  0%|                                                                                           | 0/250 [00:00<?, ?it/s]
+
+  0%|                                                                                           | 0/250 [00:01<?, ?it/s]
