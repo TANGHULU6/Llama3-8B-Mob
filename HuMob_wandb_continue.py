@@ -120,7 +120,7 @@ early_stopping_callback = EarlyStoppingCallback(
     early_stopping_patience=3,
 )
 
-run_name = "PretrainedA1w+D*3"
+run_name = "PretrainedA1w-DDD"
 trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
