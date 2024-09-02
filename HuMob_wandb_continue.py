@@ -1,7 +1,7 @@
 from geobleu.Report import report_geobleu_dtw_gpt
 from unsloth import FastLanguageModel
 import torch
-
+import wandb
 import os
 os.environ["WANDB_PROJECT"] = "HuMob2024cityA"
 os.environ["WANDB_LOG_MODEL"] = "checkpoint"
@@ -162,7 +162,6 @@ print(f"GPU = {gpu_stats.name}. Max memory = {max_memory} GB.")
 print(f"{start_gpu_memory} GB of memory reserved.")
 
 trainer_stats = trainer.train()
-# import wandb
 # run = wandb.init()
 # artifact = run.use_artifact('tanghulu/HuMob2024cityC/model-First:v35', type='model')
 # artifact_dir = artifact.download()
