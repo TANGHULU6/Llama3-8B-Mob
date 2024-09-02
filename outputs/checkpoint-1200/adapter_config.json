@@ -20,11 +20,11 @@
   "rank_pattern": {},
   "revision": "unsloth",
   "target_modules": [
-    "q_proj",
+    "v_proj",
     "gate_proj",
     "down_proj",
-    "v_proj",
     "o_proj",
+    "q_proj",
     "k_proj",
     "up_proj"
   ],
