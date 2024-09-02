@@ -5,6 +5,7 @@ import wandb
 import os
 os.environ["WANDB_PROJECT"] = "HuMob2024cityA"
 os.environ["WANDB_LOG_MODEL"] = "checkpoint"
+os.environ["WANDB_MODE"] = "offline"
 
 
 max_seq_length = 50000 # Choose any! We auto support RoPE Scaling internally!
@@ -25,7 +26,7 @@ fourbit_models = [
 ] # More models at https://huggingface.co/unsloth
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "artifacts/model-First:v14", # Choose ANY! eg teknium/OpenHermes-2.5-Mistral-7B
+    model_name = "model_First_v14-A", # Choose ANY! eg teknium/OpenHermes-2.5-Mistral-7B
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -99,10 +100,10 @@ tokenizer = get_chat_template(
 )
 
 # Load and format the custom dataset
-train_dataset = load_custom_dataset("datasetB_train_0-17599.json")
+train_dataset = load_custom_dataset("datasetD_train_0-2399.json")
 # train_dataset = train_dataset.select(range(5000, 6000))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
-val_dataset = load_custom_dataset("datasetB_eval_17600-21999.json")
+val_dataset = load_custom_dataset("datasetD_eval_2400-2999.json")
 val_dataset = val_dataset.select(range(100))
 val_dataset = val_dataset.map(formatting_prompts_func, batched=True)
 
@@ -119,6 +120,7 @@ early_stopping_callback = EarlyStoppingCallback(
     early_stopping_patience=3,
 )
 
+run_name = "PretrainedA1w+D*3"
 trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
@@ -132,7 +134,7 @@ trainer = SFTTrainer(
         per_device_train_batch_size = 1,
         gradient_accumulation_steps = 4,
         warmup_steps = 5,
-        num_train_epochs = 1,
+        num_train_epochs = 3,
         learning_rate = 2e-4,
         fp16 = not is_bfloat16_supported(),
         bf16 = is_bfloat16_supported(),
@@ -144,7 +146,7 @@ trainer = SFTTrainer(
         report_to = "wandb",
         logging_steps = 1, # Change if needed
         save_steps = 100, # Change if needed
-        run_name = "B_eval_loss", # (Optional)
+        run_name = run_name, # (Optional)
         eval_strategy="steps",
         eval_steps=100,
         per_device_eval_batch_size=1,
@@ -162,8 +164,4 @@ print(f"GPU = {gpu_stats.name}. Max memory = {max_memory} GB.")
 print(f"{start_gpu_memory} GB of memory reserved.")
 
 trainer_stats = trainer.train()
-# run = wandb.init()
-# artifact = run.use_artifact('tanghulu/HuMob2024cityC/model-First:v35', type='model')
-# artifact_dir = artifact.download()
-# model.save_pretrained(artifact_dir)
-# trainer.train(resume_from_checkpoint=artifact_dir)
+model.save_pretrained(run_name)

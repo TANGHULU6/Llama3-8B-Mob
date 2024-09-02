@@ -5,6 +5,7 @@ import wandb
 import os
 os.environ["WANDB_PROJECT"] = "HuMob2024cityD"
 os.environ["WANDB_LOG_MODEL"] = "checkpoint"
+# os.environ["WANDB_MODE"] = "offline"
 
 
 max_seq_length = 50000 # Choose any! We auto support RoPE Scaling internally!
