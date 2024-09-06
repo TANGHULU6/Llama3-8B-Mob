@@ -1,0 +1,7 @@
+[34m[1mwandb[39m[22m: Downloading large artifact model-C_eval_loss:epoch_1.0, 250.02MB. 11 files...
+[34m[1mwandb[39m[22m:   11 of 11 files downloaded.
+Done. 0:0:0.7
+Traceback (most recent call last):
+  File "/home/geo_llm/llama3-finetune/HuMob_wandb_final.py", line 10, in <module>
+    trainer.args.num_train_epochs = 3
+NameError: name 'trainer' is not defined

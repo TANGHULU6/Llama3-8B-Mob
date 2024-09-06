@@ -3,7 +3,7 @@ from unsloth import FastLanguageModel
 import torch
 import wandb
 import os
-os.environ["WANDB_PROJECT"] = "HuMob2024cityD"
+os.environ["WANDB_PROJECT"] = "HuMob2024cityA"
 os.environ["WANDB_LOG_MODEL"] = "checkpoint"
 # os.environ["WANDB_MODE"] = "offline"
 
@@ -100,10 +100,10 @@ tokenizer = get_chat_template(
 )
 
 # Load and format the custom dataset
-train_dataset = load_custom_dataset("datasetD_train_0-2399.json")
-# train_dataset = train_dataset.select(range(5000, 6000))
+train_dataset = load_custom_dataset("datasetA.json")
+train_dataset = train_dataset.select(range(25000, 26000))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
-val_dataset = load_custom_dataset("datasetD_eval_2400-2999.json")
+val_dataset = load_custom_dataset("datasetA.json")
 val_dataset = val_dataset.select(range(100))
 val_dataset = val_dataset.map(formatting_prompts_func, batched=True)
 
@@ -124,7 +124,7 @@ trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
     train_dataset = train_dataset,
-    eval_dataset=val_dataset,
+    eval_dataset= val_dataset,
     dataset_text_field = "text",
     max_seq_length = max_seq_length,
     dataset_num_proc = 8,
@@ -133,19 +133,19 @@ trainer = SFTTrainer(
         per_device_train_batch_size = 1,
         gradient_accumulation_steps = 4,
         warmup_steps = 5,
-        num_train_epochs = 3,
-        learning_rate = 2e-4,
+        num_train_epochs = 8,
+        learning_rate = 5e-5,
         fp16 = not is_bfloat16_supported(),
         bf16 = is_bfloat16_supported(),
         optim = "adamw_8bit",
         weight_decay = 0.01,
-        lr_scheduler_type = "linear",
+        lr_scheduler_type = "cosine_with_restarts",
         seed = 3407,
         output_dir = "outputs",
         report_to = "wandb",
         logging_steps = 1, # Change if needed
         save_steps = 100, # Change if needed
-        run_name = "B_eval_loss", # (Optional)
+        run_name = "A_eval", # (Optional)
         eval_strategy="steps",
         eval_steps=100,
         per_device_eval_batch_size=1,
@@ -162,9 +162,8 @@ max_memory = round(gpu_stats.total_memory / 1024 / 1024 / 1024, 3)
 print(f"GPU = {gpu_stats.name}. Max memory = {max_memory} GB.")
 print(f"{start_gpu_memory} GB of memory reserved.")
 
-trainer_stats = trainer.train()
-# run = wandb.init()
-# artifact = run.use_artifact('tanghulu/HuMob2024cityC/model-First:v35', type='model')
-# artifact_dir = artifact.download()
-# model.save_pretrained(artifact_dir)
-# trainer.train(resume_from_checkpoint=artifact_dir)
+# trainer_stats = trainer.train()
+run = wandb.init(name="A_eval_1")
+artifact = run.use_artifact('tanghulu/HuMob2024cityA/model-First:epoch_5.0', type='model')
+artifact_dir = artifact.download()
+trainer.train(resume_from_checkpoint=artifact_dir)
