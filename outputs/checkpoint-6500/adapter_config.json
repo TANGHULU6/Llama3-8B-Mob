@@ -20,12 +20,12 @@
   "rank_pattern": {},
   "revision": "unsloth",
   "target_modules": [
-    "v_proj",
-    "q_proj",
-    "o_proj",
     "gate_proj",
+    "o_proj",
     "k_proj",
     "up_proj",
+    "q_proj",
+    "v_proj",
     "down_proj"
   ],
   "task_type": "CAUSAL_LM",
