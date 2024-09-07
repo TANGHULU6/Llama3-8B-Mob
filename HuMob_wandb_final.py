@@ -3,7 +3,7 @@ from unsloth import FastLanguageModel
 import torch
 import wandb
 import os
-os.environ["WANDB_PROJECT"] = "HuMob2024cityC"
+os.environ["WANDB_PROJECT"] = "HuMob2024cityB"
 os.environ["WANDB_LOG_MODEL"] = "checkpoint"
 # os.environ["WANDB_MODE"] = "offline"
 
@@ -100,10 +100,10 @@ tokenizer = get_chat_template(
 )
 
 # Load and format the custom dataset
-train_dataset = load_custom_dataset("datasetC_train_0-13599.json")
+train_dataset = load_custom_dataset("datasetB_train_0-17599.json")
 # train_dataset = train_dataset.select(range(5000, 6000))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
-val_dataset = load_custom_dataset("datasetC_eval_13600-16999.json")
+val_dataset = load_custom_dataset("datasetB_eval_17600-21999.json")
 val_dataset = val_dataset.select(range(100))
 val_dataset = val_dataset.map(formatting_prompts_func, batched=True)
 
@@ -145,7 +145,7 @@ trainer = SFTTrainer(
         report_to = "wandb",
         logging_steps = 1, # Change if needed
         save_steps = 100, # Change if needed
-        run_name = "0907", # (Optional)
+        run_name = "0908", # (Optional)
         eval_strategy="steps",
         eval_steps=100,
         per_device_eval_batch_size=1,
@@ -163,7 +163,7 @@ print(f"GPU = {gpu_stats.name}. Max memory = {max_memory} GB.")
 print(f"{start_gpu_memory} GB of memory reserved.")
 
 # trainer_stats = trainer.train()
-run = wandb.init(name="C_explore")
-artifact = run.use_artifact('tanghulu/HuMob2024cityC/model-worthy-frog-8:epoch_3.0', type='model')
+run = wandb.init(name="B_explore")
+artifact = run.use_artifact('tanghulu/HuMob2024cityB/model-misunderstood-snowball-4:epoch_3.0', type='model')
 artifact_dir = artifact.download()
 trainer.train(resume_from_checkpoint=artifact_dir)
