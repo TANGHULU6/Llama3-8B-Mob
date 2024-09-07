@@ -101,7 +101,7 @@ tokenizer = get_chat_template(
 
 # Load and format the custom dataset
 train_dataset = load_custom_dataset("datasetA.json")
-train_dataset = train_dataset.select(range(55000, 66000))
+train_dataset = train_dataset.select(range(85000, 96000))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
 val_dataset = load_custom_dataset("datasetA.json")
 val_dataset = val_dataset.select(range(100))
@@ -133,7 +133,7 @@ trainer = SFTTrainer(
         per_device_train_batch_size = 1,
         gradient_accumulation_steps = 4,
         warmup_steps = 5,
-        num_train_epochs = 9,
+        num_train_epochs = 3,
         learning_rate = 2e-3,
         fp16 = not is_bfloat16_supported(),
         bf16 = is_bfloat16_supported(),
@@ -152,7 +152,7 @@ trainer = SFTTrainer(
         load_best_model_at_end=True,
         greater_is_better=False,
     ),
-    callbacks=[early_stopping_callback],
+    # callbacks=[early_stopping_callback],
 )
 
 #@title Show current memory stats
@@ -163,7 +163,7 @@ print(f"GPU = {gpu_stats.name}. Max memory = {max_memory} GB.")
 print(f"{start_gpu_memory} GB of memory reserved.")
 
 # trainer_stats = trainer.train()
-run = wandb.init(name="A_eval_55000-66000")
-artifact = run.use_artifact('tanghulu/HuMob2024cityA/model-A_eval:epoch_8.0', type='model')
+run = wandb.init(name="A_eval_85000-96000")
+artifact = run.use_artifact('tanghulu/HuMob2024cityA/model-A_eval_55000-66000:checkpoint_global_step_3500', type='model')
 artifact_dir = artifact.download()
 trainer.train(resume_from_checkpoint=artifact_dir)
