@@ -1,0 +1,14 @@
+[34m[1mwandb[39m[22m: Downloading large artifact model-A_eval_85000-96000:epoch_3.0, 251.91MB. 11 files...
+[34m[1mwandb[39m[22m:   11 of 11 files downloaded.
+Done. 0:0:0.5
+==((====))==  Unsloth - 2x faster free finetuning | Num GPUs = 1
+   \\   /|    Num examples = 2,000 | Num Epochs = 6
+O^O/ \_/ \    Batch size per device = 1 | Gradient Accumulation steps = 4
+\        /    Total batch size = 4 | Total steps = 3,000
+ "-____-"     Number of trainable parameters = 41,943,040
+Warning: The following arguments do not match the ones in the `trainer_state.json` within the checkpoint directory:
+	eval_steps: 100 (from args) != 500 (from trainer_state.json)
+[34m[1mwandb[39m[22m: [33mWARNING[39m The `run_name` is currently set to the same value as `TrainingArguments.output_dir`. If this was not intended, please specify a different run name by setting the `TrainingArguments.run_name` parameter.
+{'train_runtime': 0.3472, 'train_samples_per_second': 34561.39, 'train_steps_per_second': 8640.347, 'train_loss': 0.0, 'epoch': 3.0}
+
+  0%|                                                                                          | 0/3000 [00:01<?, ?it/s]
