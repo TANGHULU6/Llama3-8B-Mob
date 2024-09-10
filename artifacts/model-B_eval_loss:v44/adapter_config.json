@@ -22,10 +22,10 @@
   "target_modules": [
     "v_proj",
     "down_proj",
-    "q_proj",
-    "gate_proj",
-    "o_proj",
     "k_proj",
+    "o_proj",
+    "gate_proj",
+    "q_proj",
     "up_proj"
   ],
   "task_type": "CAUSAL_LM",
