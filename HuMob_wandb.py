@@ -26,7 +26,7 @@ fourbit_models = [
 ] # More models at https://huggingface.co/unsloth
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "artifacts/model-A_eval_85000-96000:v48", # Choose ANY! eg teknium/OpenHermes-2.5-Mistral-7B
+    model_name = "unsloth/llama-3-8b-Instruct-bnb-4bit", # Choose ANY! eg teknium/OpenHermes-2.5-Mistral-7B
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -100,12 +100,12 @@ tokenizer = get_chat_template(
 )
 
 # Load and format the custom dataset
-train_dataset = load_custom_dataset("datasetC_train_0-13599.json")
+train_dataset = load_custom_dataset("datasetB_train_0-17599.json")
 train_dataset = train_dataset.shuffle(seed=42)
-train_dataset = train_dataset.select(range(2000))
+train_dataset = train_dataset.select(range(2000, 6000))
 # train_dataset = train_dataset.select(range(85000, 96000))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
-val_dataset = load_custom_dataset("datasetC_eval_13600-16999.json")
+val_dataset = load_custom_dataset("datasetB_eval_17600-21999.json")
 val_dataset = val_dataset.select(range(100))
 val_dataset = val_dataset.map(formatting_prompts_func, batched=True)
 
@@ -135,7 +135,7 @@ trainer = SFTTrainer(
         per_device_train_batch_size = 1,
         gradient_accumulation_steps = 4,
         warmup_steps = 5,
-        num_train_epochs = 3,
+        num_train_epochs = 4,
         learning_rate = 2e-3,
         fp16 = not is_bfloat16_supported(),
         bf16 = is_bfloat16_supported(),
@@ -147,7 +147,7 @@ trainer = SFTTrainer(
         report_to = "wandb",
         logging_steps = 1, # Change if needed
         save_steps = 100, # Change if needed
-        run_name = "C_eval_finetune", # (Optional)
+        run_name = "B_eval_finetune", # (Optional)
         eval_strategy="steps",
         eval_steps=100,
         per_device_eval_batch_size=1,
@@ -164,8 +164,8 @@ max_memory = round(gpu_stats.total_memory / 1024 / 1024 / 1024, 3)
 print(f"GPU = {gpu_stats.name}. Max memory = {max_memory} GB.")
 print(f"{start_gpu_memory} GB of memory reserved.")
 
-trainer_stats = trainer.train()
-# run = wandb.init(name="B_finetune")
-# artifact = run.use_artifact('tanghulu/HuMob2024cityA/model-A_eval_85000-96000:epoch_3.0', type='model')
-# artifact_dir = artifact.download()
-# trainer.train(resume_from_checkpoint=artifact_dir)
+# trainer_stats = trainer.train()
+run = wandb.init(name="B_finetune_2")
+artifact = run.use_artifact('tanghulu/HuMob2024cityA/model-B_eval_finetune:epoch_3.0', type='model')
+artifact_dir = artifact.download()
+trainer.train(resume_from_checkpoint=artifact_dir)
