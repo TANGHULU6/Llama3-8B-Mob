@@ -63,6 +63,22 @@ _wandb:
       5: 1
       6:
       - 1
+    - 1: eval/loss
+      5: 1
+      6:
+      - 1
+    - 1: eval/runtime
+      5: 1
+      6:
+      - 1
+    - 1: eval/samples_per_second
+      5: 1
+      6:
+      - 1
+    - 1: eval/steps_per_second
+      5: 1
+      6:
+      - 1
 peft_config:
   desc: null
   value:
