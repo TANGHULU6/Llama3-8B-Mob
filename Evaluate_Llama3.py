@@ -67,9 +67,9 @@ def formatting_prompts_func(examples):
     return {"text": texts}
 
 l_idx, r_idx = 0, 100
-city = "datasetD_eval_2400-2999.json"
+# city = "datasetD_eval_2400-2999.json"
 # city = "datasetB_eval_17600-21999.json"
-# city = "datasetC_eval_13600-16999.json"
+city = "datasetC_eval_13600-16999.json"
 test_dataset = load_custom_dataset(city)
 test_dataset = test_dataset.select(range(l_idx, r_idx))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)

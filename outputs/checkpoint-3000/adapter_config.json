@@ -20,13 +20,13 @@
   "rank_pattern": {},
   "revision": "unsloth",
   "target_modules": [
-    "k_proj",
-    "gate_proj",
-    "q_proj",
-    "down_proj",
-    "up_proj",
     "o_proj",
-    "v_proj"
+    "v_proj",
+    "k_proj",
+    "down_proj",
+    "q_proj",
+    "up_proj",
+    "gate_proj"
   ],
   "task_type": "CAUSAL_LM",
   "use_dora": false,
