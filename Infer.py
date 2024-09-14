@@ -14,7 +14,7 @@ import wandb  # Import wandb
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 
 # Initialize wandb
-wandb.init(project='Inference', name='run_1')  # Set your project and run names, mode='offline'
+wandb.init(project='Inference')  # Set your project and run names, mode='offline'
 
 # Initialize model and tokenizer
 max_seq_length = 50000  # Choose any! We auto support RoPE Scaling internally!
@@ -129,26 +129,24 @@ def run_inference(l_idx, r_idx, city):
 
                 logging.info(f"Input sequence length: {inputs.size()}")
 
-                # outputs = model.generate(input_ids=inputs, max_new_tokens=16400, use_cache=True)
-                # generated_text = tokenizer.batch_decode(outputs)
-                generated_text = reference_responses
+                outputs = model.generate(input_ids=inputs, max_new_tokens=16400, use_cache=True)
+                generated_text = tokenizer.batch_decode(outputs)
                 logging.debug(f"Generated text: {generated_text}")
                 
                 assistant_json_str = None  # Initialize assistant_json_str for logging
 
                 for generated, reference in zip(generated_text, reference_responses):
-                    # split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
-                    # clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # Remove ending symbols
+                    split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
+                    clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # Remove ending symbols
 
-                    # assistant_json = json.loads(clean_text)
-                    # assistant_json_str = json.dumps(assistant_json)  # Convert to string for logging
-                    assistant_json = json.loads(reference.strip()[7:-3])
+                    assistant_json = json.loads(clean_text)
+                    assistant_json_str = json.dumps(assistant_json)  # Convert to string for logging
                     logging.debug(f"Assistant JSON: {assistant_json}")
                     reference_json = json.loads(reference.strip()[7:-3])
 
                     for record in reference_json['prediction']:
                         d, t, x, y = record  # Unpack the list
-                        results.append([user_id, d, t, x - 900, y - 900])
+                        results.append([user_id, d, t, x, y])
 
                 end_time = time.time()
                 elapsed_time = end_time - start_time
