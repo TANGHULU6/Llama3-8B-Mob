@@ -121,26 +121,34 @@ def run_inference(l_idx, r_idx, city):
                     add_generation_prompt=True,  # Must add for generation
                     return_tensors="pt",
                 ).to("cuda")
+                reference_responses = [
+                    message["content"]
+                    for message in conversation["conversations"]
+                    if message["role"] == 'assistant'
+                ]
 
                 logging.info(f"Input sequence length: {inputs.size()}")
 
-                outputs = model.generate(input_ids=inputs, max_new_tokens=16400, use_cache=True)
-                generated_text = tokenizer.batch_decode(outputs)
+                # outputs = model.generate(input_ids=inputs, max_new_tokens=16400, use_cache=True)
+                # generated_text = tokenizer.batch_decode(outputs)
+                generated_text = reference_responses
                 logging.debug(f"Generated text: {generated_text}")
                 
                 assistant_json_str = None  # Initialize assistant_json_str for logging
 
-                for generated in generated_text:
-                    split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
-                    clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # Remove ending symbols
+                for generated, reference in zip(generated_text, reference_responses):
+                    # split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
+                    # clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # Remove ending symbols
 
-                    assistant_json = json.loads(clean_text)
-                    assistant_json_str = json.dumps(assistant_json)  # Convert to string for logging
+                    # assistant_json = json.loads(clean_text)
+                    # assistant_json_str = json.dumps(assistant_json)  # Convert to string for logging
+                    assistant_json = json.loads(reference.strip()[7:-3])
                     logging.debug(f"Assistant JSON: {assistant_json}")
+                    reference_json = json.loads(reference.strip()[7:-3])
 
-                    for record in assistant_json['prediction']:
+                    for record in reference_json['prediction']:
                         d, t, x, y = record  # Unpack the list
-                        results.append([user_id, d, t, x, y])
+                        results.append([user_id, d, t, x - 900, y - 900])
 
                 end_time = time.time()
                 elapsed_time = end_time - start_time
