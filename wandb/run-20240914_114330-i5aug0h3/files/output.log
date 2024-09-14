@@ -1,0 +1,25 @@
+
+2024-09-14 11:43:34,800 INFO Initializing model and tokenizer...
+==((====))==  Unsloth: Fast Llama patching release 2024.7
+   \\   /|    GPU: NVIDIA RTX A6000. Max memory: 47.536 GB. Platform = Linux.
+O^O/ \_/ \    Pytorch: 2.3.0+cu121. CUDA = 8.6. CUDA Toolkit = 12.1.
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.26.post1. FA2 = False]
+ "-____-"     Free Apache license: http://github.com/unslothai/unsloth
+Unsloth: unsloth/llama-3-8b-Instruct-bnb-4bit can only handle sequence lengths of at most 8192.
+But with kaiokendev's RoPE scaling of 6.104, it can be magically be extended to 50000!
+Unsloth 2024.7 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
+2024-09-14 11:43:43,989 INFO Model and tokenizer initialized successfully.
+2024-09-14 11:43:43,989 INFO Starting inference from index 22 to 23 on dataset datasetC_eval_13600-16999.json
+2024-09-14 11:43:43,989 INFO Loading dataset from datasetC_eval_13600-16999.json...
+2024-09-14 11:43:44,787 INFO Dataset loaded with 3400 conversations.
+2024-09-14 11:43:44,789 INFO Loaded dataset datasetC_eval_13600-16999.json with 3400 conversations
+2024-09-14 11:43:44,791 INFO Selected subset of dataset from index 22 to 24
+Map: 100%|█████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00, 80.13 examples/s]
+2024-09-14 11:43:44,933 INFO Applied formatting prompts function to dataset
+2024-09-14 11:43:44,934 INFO Total conversations to process: 2
+Traceback (most recent call last):
+  File "/home/geo_llm/llama3-finetune/Infer.py", line 199, in <module>
+    run_inference(l_idx, r_idx, city)
+  File "/home/geo_llm/llama3-finetune/Infer.py", line 105, in run_inference
+    user_id = conversation["uid"]
+KeyError: 'uid'

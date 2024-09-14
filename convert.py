@@ -21,6 +21,7 @@ def convert_to_dialog_format(input_file, output_file):
         input_str = item["input_str"]
         test_o = item["test_o"]
         
+        uid = list(test_o['uid'].values())[0]
         # 移除 uid 列
         df = pd.DataFrame(test_o).drop(columns=['uid'], errors='ignore')
         
@@ -36,7 +37,8 @@ def convert_to_dialog_format(input_file, output_file):
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": f"Here is the data I wish you to predict:\n{input_str}"},
                 {"role": "assistant", "content": f"```json\n{json.dumps(assistant_content, ensure_ascii=False, indent=4)}\n```"}
-            ]
+            ],
+            "uid": uid,
         }
         dialogs.append(dialog)
 
@@ -46,4 +48,4 @@ def convert_to_dialog_format(input_file, output_file):
     print(f"对话格式数据已保存到 {output_file}")
 
 if __name__ == "__main__":
-    convert_to_dialog_format("dataA.json", "datasetA.json")
+    convert_to_dialog_format("dataD_test_3000-5999.json", "datasetD_test_3000-5999.json")
