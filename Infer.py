@@ -14,7 +14,7 @@ import wandb  # Import wandb
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 
 # Initialize wandb
-wandb.init(project='Inference', name='run_1')  # Set your project and run names mode='offline'
+wandb.init(project='Inference', name='run_1')  # Set your project and run names, mode='offline'
 
 # Initialize model and tokenizer
 max_seq_length = 50000  # Choose any! We auto support RoPE Scaling internally!
@@ -81,7 +81,7 @@ def formatting_prompts_func(examples):
             raise e
     return {"text": texts}
 
-def run_inference(l_idx, r_idx, city, device):
+def run_inference(l_idx, r_idx, city):
     logging.info(f"Starting inference from index {l_idx} to {r_idx - 1} on dataset {city}")
     # Load the dataset
     test_dataset = load_custom_dataset(city)
@@ -120,8 +120,8 @@ def run_inference(l_idx, r_idx, city, device):
                     tokenize=True,
                     add_generation_prompt=True,  # Must add for generation
                     return_tensors="pt",
-                ).to(device)
-                model.to(device)
+                ).to("cuda")
+
                 logging.info(f"Input sequence length: {inputs.size()}")
 
                 outputs = model.generate(input_ids=inputs, max_new_tokens=16400, use_cache=True)

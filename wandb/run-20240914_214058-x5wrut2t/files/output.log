@@ -19,3 +19,38 @@ Map: 100%|███████████████████████�
 2024-09-14 21:41:12,281 INFO Total conversations to process: 4
 2024-09-14 21:41:12,281 INFO Processing conversation 0/3
 2024-09-14 21:41:12,308 INFO Input sequence length: torch.Size([1, 7805])
+Detected 1 GPU(s).
+Traceback (most recent call last):
+  File "/home/geo_llm/llama3-finetune/main.py", line 56, in <module>
+    main()
+  File "/home/geo_llm/llama3-finetune/main.py", line 49, in main
+    run_inference(task["l_idx"], task["r_idx"], task["city"], task["device"])
+  File "/home/geo_llm/llama3-finetune/Infer.py", line 127, in run_inference
+    outputs = model.generate(input_ids=inputs, max_new_tokens=16400, use_cache=True)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/unsloth/models/llama.py", line 1052, in _fast_generate
+    output = generate(*args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/peft/peft_model.py", line 1491, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/transformers/generation/utils.py", line 1914, in generate
+    result = self._sample(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/transformers/generation/utils.py", line 2651, in _sample
+    outputs = self(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/accelerate/hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/unsloth/models/llama.py", line 840, in _CausalLM_fast_forward
+    outputs = fast_forward_inference(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/unsloth/models/llama.py", line 794, in LlamaModel_fast_forward_inference
+    hidden_states, present_key_value = LlamaAttention_fast_forward_inference(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/unsloth/models/llama.py", line 173, in LlamaAttention_fast_forward_inference
+    Vn = fast_linear_forward(self.v_proj, Xn, out = self.temp_KV[1])
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/unsloth/kernels/utils.py", line 235, in fast_linear_forward
+    out = out.view(bsz, 1, out_dim)
+KeyboardInterrupt
