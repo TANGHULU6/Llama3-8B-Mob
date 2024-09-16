@@ -8,10 +8,10 @@
 #SBATCH --gres=gpu:2
 
 source activate unsloth_env
-CUDA_VISIBLE_DEVICES=0 python main.py --l_idx 600 --r_idx 900 --city c &
+CUDA_VISIBLE_DEVICES=0 python main.py --l_idx 800 --r_idx 1000 --city d &
 sleep 60 
-CUDA_VISIBLE_DEVICES=1 python main.py --l_idx 900 --r_idx 1200 --city c &
-# sleep 60 
-# CUDA_VISIBLE_DEVICES=0 python main.py --l_idx 1200 --r_idx 1500 --city c &
-# sleep 60 
-# CUDA_VISIBLE_DEVICES=1 python main.py --l_idx 1500 --r_idx 1800 --city c &
+CUDA_VISIBLE_DEVICES=1 python main.py --l_idx 1000 --r_idx 1200 --city d &
+sleep 60 
+CUDA_VISIBLE_DEVICES=2 python main.py --l_idx 1200 --r_idx 1400 --city d &
+sleep 60 
+CUDA_VISIBLE_DEVICES=3 python main.py --l_idx 1400 --r_idx 1600 --city d &

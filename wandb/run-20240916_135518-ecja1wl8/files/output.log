@@ -1,0 +1,34 @@
+
+2024-09-16 13:55:22,757 INFO Initializing model and tokenizer...
+==((====))==  Unsloth: Fast Llama patching release 2024.7
+   \\   /|    GPU: NVIDIA RTX A6000. Max memory: 47.536 GB. Platform = Linux.
+O^O/ \_/ \    Pytorch: 2.3.0+cu121. CUDA = 8.6. CUDA Toolkit = 12.1.
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.26.post1. FA2 = False]
+ "-____-"     Free Apache license: http://github.com/unslothai/unsloth
+Unsloth: unsloth/llama-3-8b-Instruct-bnb-4bit can only handle sequence lengths of at most 8192.
+But with kaiokendev's RoPE scaling of 6.104, it can be magically be extended to 50000!
+Unsloth 2024.7 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
+2024-09-16 13:55:31,078 INFO Model and tokenizer initialized successfully.
+2024-09-16 13:55:31,079 INFO Starting inference from index 900 to 1199 on dataset datasetD_test_3000-5999.json
+2024-09-16 13:55:31,080 INFO Loading dataset from datasetD_test_3000-5999.json...
+2024-09-16 13:55:32,159 INFO Dataset loaded with 3000 conversations.
+2024-09-16 13:55:32,162 INFO Loaded dataset datasetD_test_3000-5999.json with 3000 conversations
+2024-09-16 13:55:32,163 INFO Selected subset of dataset from index 900 to 1200
+Map: 100%|███████████████████████████████████████████████████████████████████| 300/300 [00:00<00:00, 3014.98 examples/s]
+2024-09-16 13:55:32,268 INFO Applied formatting prompts function to dataset
+2024-09-16 13:55:32,268 INFO Total conversations to process: 300
+2024-09-16 13:55:32,269 INFO Processing conversation 900/1199
+2024-09-16 13:55:32,298 INFO Input sequence length: torch.Size([1, 17109])
+2024-09-16 14:05:46,053 ERROR Exception in conversation user 3900: 'tuple' object has no attribute 'split'
+2024-09-16 14:05:46,054 ERROR Attempt 1/3 failed
+2024-09-16 14:05:47,090 INFO Input sequence length: torch.Size([1, 17109])
+2024-09-16 14:15:59,760 ERROR Exception in conversation user 3900: 'tuple' object has no attribute 'split'
+2024-09-16 14:15:59,760 ERROR Attempt 2/3 failed
+2024-09-16 14:16:00,794 INFO Input sequence length: torch.Size([1, 17109])
+2024-09-16 14:26:13,349 ERROR Exception in conversation user 3900: 'tuple' object has no attribute 'split'
+2024-09-16 14:26:13,350 ERROR Attempt 3/3 failed
+2024-09-16 14:26:13,350 ERROR Failed to process conversation user 3900 after 3 attempts
+2024-09-16 14:26:13,351 INFO Processing conversation 901/1199
+2024-09-16 14:26:13,373 INFO Input sequence length: torch.Size([1, 13805])
+2024-09-16 14:33:34,175 ERROR Exception in conversation user 3901: 'tuple' object has no attribute 'split'
+2024-09-16 14:33:34,175 ERROR Attempt 1/3 failed
