@@ -4,6 +4,8 @@ import logging
 import csv
 import gzip
 
+from geobleu.Report import report_geobleu_dtw_gpt
+
 from unsloth import FastLanguageModel
 from datasets import Dataset
 from unsloth.chat_templates import get_chat_template
@@ -121,8 +123,19 @@ def run_inference(l_idx, r_idx, city):
                     add_generation_prompt=True,  # Must add for generation
                     return_tensors="pt",
                 ).to("cuda")
+                reference_responses = [
+                    message["content"]
+                    for message in conversation["conversations"]
+                    if message["role"] == 'assistant'
+                ]
 
                 logging.info(f"Input sequence length: {inputs.size()}")
+                # if (inputs.size(1) > 20000):
+                #     wandb.log({
+                #             "user_id": user_id,
+                #             "status": "failed"
+                #     })
+                #     continue
 
                 outputs = model.generate(input_ids=inputs, max_new_tokens=16400, use_cache=True)
                 generated_text = tokenizer.batch_decode(outputs)
@@ -130,11 +143,13 @@ def run_inference(l_idx, r_idx, city):
                 
                 assistant_json_str = None  # Initialize assistant_json_str for logging
 
-                for generated in generated_text:
+                for generated, reference in zip(generated_text, reference_responses):
                     split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
                     clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # Remove ending symbols
 
                     assistant_json = json.loads(clean_text)
+                    reference_json = json.loads(reference.strip()[7:-3])
+                    geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json['prediction'], reference_json['prediction'])
                     assistant_json_str = json.dumps(assistant_json)  # Convert to string for logging
                     logging.debug(f"Assistant JSON: {assistant_json}")
 
