@@ -14,7 +14,7 @@ import wandb  # Import wandb
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 
 # Initialize wandb
-wandb.init(project='Inference', name = 'b22514')  # Set your project and run names, mode='offline'
+wandb.init(project='Inference')  # Set your project and run names, mode='offline'
 
 # Initialize model and tokenizer
 max_seq_length = 50000  # Choose any! We auto support RoPE Scaling internally!
@@ -130,7 +130,7 @@ def run_inference(l_idx, r_idx, city):
                 
                 assistant_json_str = None  # Initialize assistant_json_str for logging
 
-                for generated in zip(generated_text):
+                for generated in generated_text:
                     split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
                     clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # Remove ending symbols
 
@@ -145,6 +145,7 @@ def run_inference(l_idx, r_idx, city):
                 end_time = time.time()
                 elapsed_time = end_time - start_time
                 logging.info(f"User {user_id} processed in {elapsed_time:.2f}s")
+                wandb.log({"user_id": user_id, "processing_time": elapsed_time})
                 # Log success to wandb
                 wandb.log({
                     "user_id": user_id,

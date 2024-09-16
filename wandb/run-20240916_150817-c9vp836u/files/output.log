@@ -1,0 +1,41 @@
+
+2024-09-16 15:08:20,877 INFO Initializing model and tokenizer...
+==((====))==  Unsloth: Fast Llama patching release 2024.7
+   \\   /|    GPU: NVIDIA RTX A6000. Max memory: 47.536 GB. Platform = Linux.
+O^O/ \_/ \    Pytorch: 2.3.0+cu121. CUDA = 8.6. CUDA Toolkit = 12.1.
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.26.post1. FA2 = False]
+ "-____-"     Free Apache license: http://github.com/unslothai/unsloth
+Unsloth: unsloth/llama-3-8b-Instruct-bnb-4bit can only handle sequence lengths of at most 8192.
+But with kaiokendev's RoPE scaling of 6.104, it can be magically be extended to 50000!
+Unsloth 2024.7 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
+2024-09-16 15:08:40,396 INFO Model and tokenizer initialized successfully.
+2024-09-16 15:08:40,398 INFO Starting inference from index 1400 to 1599 on dataset datasetD_test_3000-5999.json
+2024-09-16 15:08:40,398 INFO Loading dataset from datasetD_test_3000-5999.json...
+2024-09-16 15:08:41,590 INFO Dataset loaded with 3000 conversations.
+2024-09-16 15:08:41,592 INFO Loaded dataset datasetD_test_3000-5999.json with 3000 conversations
+2024-09-16 15:08:41,594 INFO Selected subset of dataset from index 1400 to 1600
+Map: 100%|███████████████████████████████████████████████████████████████████| 200/200 [00:00<00:00, 2871.60 examples/s]
+2024-09-16 15:08:41,669 INFO Applied formatting prompts function to dataset
+2024-09-16 15:08:41,670 INFO Total conversations to process: 200
+2024-09-16 15:08:41,670 INFO Processing conversation 1400/1599
+2024-09-16 15:08:41,690 INFO Input sequence length: torch.Size([1, 10341])
+2024-09-16 15:22:10,116 INFO User 4400 processed in 808.45s
+2024-09-16 15:22:10,117 INFO Processing conversation 1401/1599
+2024-09-16 15:22:10,131 INFO Input sequence length: torch.Size([1, 6013])
+2024-09-16 15:29:03,920 INFO User 4401 processed in 413.80s
+2024-09-16 15:29:03,922 INFO Processing conversation 1402/1599
+2024-09-16 15:29:03,942 INFO Input sequence length: torch.Size([1, 12261])
+2024-09-16 15:45:35,051 INFO User 4402 processed in 991.13s
+2024-09-16 15:45:35,052 INFO Processing conversation 1403/1599
+2024-09-16 15:45:35,069 INFO Input sequence length: torch.Size([1, 9549])
+2024-09-16 15:54:08,760 INFO User 4404 processed in 513.71s
+2024-09-16 15:54:08,761 INFO Processing conversation 1404/1599
+2024-09-16 15:54:08,772 INFO Input sequence length: torch.Size([1, 4645])
+2024-09-16 15:58:23,516 INFO User 4403 processed in 254.76s
+2024-09-16 15:58:23,518 INFO Processing conversation 1405/1599
+2024-09-16 15:58:23,535 INFO Input sequence length: torch.Size([1, 9821])
+2024-09-16 16:13:18,377 INFO User 4405 processed in 894.86s
+2024-09-16 16:13:18,379 INFO Processing conversation 1406/1599
+2024-09-16 16:13:18,393 INFO Input sequence length: torch.Size([1, 6901])
+2024-09-16 16:22:34,105 INFO User 4406 processed in 555.73s
+2024-09-16 16:22:34,107 INFO Processing conversation 1407/1599
