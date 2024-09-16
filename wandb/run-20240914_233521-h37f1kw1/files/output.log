@@ -21,3 +21,4 @@ Map: 100%|███████████████████████�
 2024-09-14 23:35:35,349 INFO Input sequence length: torch.Size([1, 4517])
 2024-09-14 23:37:03,358 INFO User 22600 processed in 88.02s
 2024-09-14 23:37:03,360 INFO Processing conversation 601/899
+2024-09-14 23:37:03,374 INFO Input sequence length: torch.Size([1, 9045])

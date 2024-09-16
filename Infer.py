@@ -14,7 +14,7 @@ import wandb  # Import wandb
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 
 # Initialize wandb
-wandb.init(project='Inference')  # Set your project and run names, mode='offline'
+wandb.init(project='Inference', name = 'b22514')  # Set your project and run names, mode='offline'
 
 # Initialize model and tokenizer
 max_seq_length = 50000  # Choose any! We auto support RoPE Scaling internally!
@@ -121,11 +121,6 @@ def run_inference(l_idx, r_idx, city):
                     add_generation_prompt=True,  # Must add for generation
                     return_tensors="pt",
                 ).to("cuda")
-                reference_responses = [
-                    message["content"]
-                    for message in conversation["conversations"]
-                    if message["role"] == 'assistant'
-                ]
 
                 logging.info(f"Input sequence length: {inputs.size()}")
 
@@ -135,16 +130,15 @@ def run_inference(l_idx, r_idx, city):
                 
                 assistant_json_str = None  # Initialize assistant_json_str for logging
 
-                for generated, reference in zip(generated_text, reference_responses):
+                for generated in zip(generated_text):
                     split_text = generated.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
                     clean_text = split_text.replace(tokenizer.eos_token, "").strip()[7:-3]  # Remove ending symbols
 
                     assistant_json = json.loads(clean_text)
                     assistant_json_str = json.dumps(assistant_json)  # Convert to string for logging
                     logging.debug(f"Assistant JSON: {assistant_json}")
-                    reference_json = json.loads(reference.strip()[7:-3])
 
-                    for record in reference_json['prediction']:
+                    for record in assistant_json['prediction']:
                         d, t, x, y = record  # Unpack the list
                         results.append([user_id, d, t, x, y])
 

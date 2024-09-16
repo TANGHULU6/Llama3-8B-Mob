@@ -23,3 +23,35 @@ config: {}
 2024-09-14 23:36:25,283 INFO    MainThread:1356520 [wandb_run.py:_redirect():2374] Wrapping output streams.
 2024-09-14 23:36:25,283 INFO    MainThread:1356520 [wandb_run.py:_redirect():2399] Redirects installed.
 2024-09-14 23:36:25,284 INFO    MainThread:1356520 [wandb_init.py:init():894] run started, returning control to user process
+2024-09-16 06:35:13,446 INFO    MainThread:1356520 [wandb_run.py:_finish():2160] finishing run tanghulu/Inference/muf09xtc
+2024-09-16 06:35:13,447 INFO    MainThread:1356520 [wandb_run.py:_atexit_cleanup():2424] got exitcode: 0
+2024-09-16 06:35:13,447 INFO    MainThread:1356520 [wandb_run.py:_restore():2406] restore
+2024-09-16 06:35:13,447 INFO    MainThread:1356520 [wandb_run.py:_restore():2412] restore done
+2024-09-16 06:35:13,447 INFO    MainThread:1356520 [wandb_run.py:_on_finish():2677] communicating current version
+2024-09-16 06:35:16,216 INFO    MainThread:1356520 [wandb_run.py:_on_finish():2686] got version response upgrade_message: "wandb version 0.18.0 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-09-16 06:35:21,384 INFO    MainThread:1356520 [wandb_run.py:_restore():2406] restore
+2024-09-16 06:35:21,384 INFO    MainThread:1356520 [wandb_run.py:_restore():2412] restore done
+2024-09-16 06:35:21,384 ERROR   MainThread:1356520 [wandb_run.py:_atexit_cleanup():2445] Problem finishing run
+Traceback (most recent call last):
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2436, in _atexit_cleanup
+    self._on_finish()
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2699, in _on_finish
+    _ = exit_handle.wait(timeout=-1, on_progress=self._on_progress_exit)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/sdk/lib/mailbox.py", line 303, in wait
+    on_progress(progress_handle)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2662, in _on_progress_exit
+    self._footer_file_pusher_status_info(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 3892, in _footer_file_pusher_status_info
+    Run._footer_single_run_file_pusher_status_info(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 3939, in _footer_single_run_file_pusher_status_info
+    printer.progress_update(line, stats.uploaded_bytes / stats.total_bytes)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/sdk/lib/printer.py", line 172, in progress_update
+    wandb.termlog(f"{next(self._progress)} {text}", newline=False)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/errors/term.py", line 42, in termlog
+    _log(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/errors/term.py", line 103, in _log
+    click.echo(line, file=sys.stderr, nl=newline)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/click/utils.py", line 318, in echo
+    file.write(out)  # type: ignore
+OSError: [Errno 5] Input/output error

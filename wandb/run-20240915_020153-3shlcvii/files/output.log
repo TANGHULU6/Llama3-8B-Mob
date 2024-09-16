@@ -1,0 +1,21 @@
+
+2024-09-15 02:01:57,372 INFO Initializing model and tokenizer...
+==((====))==  Unsloth: Fast Llama patching release 2024.7
+   \\   /|    GPU: NVIDIA RTX A6000. Max memory: 47.536 GB. Platform = Linux.
+O^O/ \_/ \    Pytorch: 2.3.0+cu121. CUDA = 8.6. CUDA Toolkit = 12.1.
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.26.post1. FA2 = False]
+ "-____-"     Free Apache license: http://github.com/unslothai/unsloth
+Unsloth: unsloth/llama-3-8b-Instruct-bnb-4bit can only handle sequence lengths of at most 8192.
+But with kaiokendev's RoPE scaling of 6.104, it can be magically be extended to 50000!
+Unsloth 2024.7 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
+2024-09-15 02:02:10,602 INFO Model and tokenizer initialized successfully.
+2024-09-15 02:02:10,603 INFO Starting inference from index 1500 to 1799 on dataset datasetB_test_22000-24999.json
+2024-09-15 02:02:10,603 INFO Loading dataset from datasetB_test_22000-24999.json...
+2024-09-15 02:02:11,268 INFO Dataset loaded with 3000 conversations.
+2024-09-15 02:02:11,271 INFO Loaded dataset datasetB_test_22000-24999.json with 3000 conversations
+2024-09-15 02:02:11,272 INFO Selected subset of dataset from index 1500 to 1800
+Map: 100%|███████████████████████████████████████████████████████████████████| 300/300 [00:00<00:00, 4802.07 examples/s]
+2024-09-15 02:02:11,340 INFO Applied formatting prompts function to dataset
+2024-09-15 02:02:11,340 INFO Total conversations to process: 300
+2024-09-15 02:02:11,340 INFO Processing conversation 1500/1799
+2024-09-15 02:02:11,360 INFO Input sequence length: torch.Size([1, 8341])
