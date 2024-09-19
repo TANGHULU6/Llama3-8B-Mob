@@ -1,0 +1,40 @@
+
+2024-09-20 02:50:06,425 INFO Initializing model and tokenizer...
+==((====))==  Unsloth: Fast Llama patching release 2024.7
+   \\   /|    GPU: NVIDIA RTX A6000. Max memory: 47.536 GB. Platform = Linux.
+O^O/ \_/ \    Pytorch: 2.3.0+cu121. CUDA = 8.6. CUDA Toolkit = 12.1.
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.26.post1. FA2 = False]
+ "-____-"     Free Apache license: http://github.com/unslothai/unsloth
+Unsloth: unsloth/llama-3-8b-Instruct-bnb-4bit can only handle sequence lengths of at most 8192.
+But with kaiokendev's RoPE scaling of 6.104, it can be magically be extended to 50000!
+Unsloth 2024.7 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
+2024-09-20 02:50:18,541 INFO Model and tokenizer initialized successfully.
+2024-09-20 02:50:18,541 INFO Starting inference from index 797 to 798 on dataset datasetD_test_3000-5999.json
+2024-09-20 02:50:18,542 INFO Loading dataset from datasetD_test_3000-5999.json...
+2024-09-20 02:50:19,689 INFO Dataset loaded with 3000 conversations.
+2024-09-20 02:50:19,691 INFO Loaded dataset datasetD_test_3000-5999.json with 3000 conversations
+2024-09-20 02:50:19,693 INFO Selected subset of dataset from index 797 to 799
+Map: 100%|█████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00, 67.67 examples/s]
+2024-09-20 02:50:19,731 INFO Applied formatting prompts function to dataset
+2024-09-20 02:50:19,732 INFO Total conversations to process: 2
+2024-09-20 02:50:19,732 INFO Processing conversation 797/798
+2024-09-20 02:50:19,748 INFO Input sequence length: torch.Size([1, 2141])
+**************************************************Result Report**************************************************
+2024-09-20 02:51:42,031 ERROR Exception in conversation user 3797: The length doesn't match between the generated and reference trajectories.
+2024-09-20 02:51:42,031 ERROR Attempt 1/3 failed
+2024-09-20 02:51:43,044 INFO Input sequence length: torch.Size([1, 2141])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 4477.6433833608735
+*****************************************************************************************************************
+2024-09-20 02:52:33,601 INFO User 3797 processed in 133.87s
+2024-09-20 02:52:33,606 INFO Processing conversation 798/798
+2024-09-20 02:52:33,629 INFO Input sequence length: torch.Size([1, 13053])
+2024-09-20 03:00:05,920 INFO User 3798 processed in 452.31s
+2024-09-20 03:00:05,924 INFO Failed conversations: []
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 11700.385797269404
+*****************************************************************************************************************
+2024-09-20 03:00:06,539 INFO Saving results to generated_datasetD_test_3000-5999_range(797, 799).csv.gz
+2024-09-20 03:00:06,540 INFO Results saved to generated_datasetD_test_3000-5999_range(797, 799).csv.gz

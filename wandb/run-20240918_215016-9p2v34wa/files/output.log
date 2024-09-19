@@ -1,0 +1,55 @@
+
+2024-09-18 21:50:20,219 INFO Initializing model and tokenizer...
+==((====))==  Unsloth: Fast Llama patching release 2024.7
+   \\   /|    GPU: NVIDIA RTX A6000. Max memory: 47.536 GB. Platform = Linux.
+O^O/ \_/ \    Pytorch: 2.3.0+cu121. CUDA = 8.6. CUDA Toolkit = 12.1.
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.26.post1. FA2 = False]
+ "-____-"     Free Apache license: http://github.com/unslothai/unsloth
+Unsloth: unsloth/llama-3-8b-Instruct-bnb-4bit can only handle sequence lengths of at most 8192.
+But with kaiokendev's RoPE scaling of 6.104, it can be magically be extended to 50000!
+Unsloth 2024.7 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
+2024-09-18 21:50:38,878 INFO Model and tokenizer initialized successfully.
+2024-09-18 21:50:38,879 INFO Starting inference from index 2475 to 2484 on dataset datasetC_test_17000-19999.json
+2024-09-18 21:50:38,879 INFO Loading dataset from datasetC_test_17000-19999.json...
+2024-09-18 21:50:39,553 INFO Dataset loaded with 3000 conversations.
+2024-09-18 21:50:39,555 INFO Loaded dataset datasetC_test_17000-19999.json with 3000 conversations
+2024-09-18 21:50:39,557 INFO Selected subset of dataset from index 2475 to 2485
+Map: 100%|██████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 392.38 examples/s]
+2024-09-18 21:50:39,587 INFO Applied formatting prompts function to dataset
+2024-09-18 21:50:39,587 INFO Total conversations to process: 10
+2024-09-18 21:50:39,588 INFO Processing conversation 2475/2484
+2024-09-18 21:50:39,607 INFO Input sequence length: torch.Size([1, 9973])
+2024-09-18 21:58:19,482 INFO User 19471 processed in 459.89s
+2024-09-18 21:58:19,487 INFO Processing conversation 2476/2484
+2024-09-18 21:58:19,501 INFO Input sequence length: torch.Size([1, 3669])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 6624.020988172762
+*****************************************************************************************************************
+**************************************************Result Report**************************************************
+2024-09-18 22:03:09,481 INFO User 19476 processed in 289.99s
+2024-09-18 22:03:09,486 INFO Processing conversation 2477/2484
+2024-09-18 22:03:09,503 INFO Input sequence length: torch.Size([1, 5933])
+geobleu: 0.0
+dtw: 6914.794249591578
+*****************************************************************************************************************
+2024-09-18 22:07:51,439 INFO User 19477 processed in 281.95s
+2024-09-18 22:07:51,444 INFO Processing conversation 2478/2484
+2024-09-18 22:07:51,468 INFO Input sequence length: torch.Size([1, 7781])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 11077.437538393657
+*****************************************************************************************************************
+2024-09-18 22:13:58,485 INFO User 19478 processed in 367.04s
+2024-09-18 22:13:58,491 INFO Processing conversation 2479/2484
+2024-09-18 22:13:58,501 INFO Input sequence length: torch.Size([1, 3773])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 8211.688296255983
+*****************************************************************************************************************
+2024-09-18 22:18:10,108 INFO User 19483 processed in 251.62s
+2024-09-18 22:18:10,113 INFO Processing conversation 2480/2484
+2024-09-18 22:18:10,131 INFO Input sequence length: torch.Size([1, 8941])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 7418.064840878048

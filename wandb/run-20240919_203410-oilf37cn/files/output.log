@@ -1,0 +1,57 @@
+
+2024-09-19 20:34:13,823 INFO Initializing model and tokenizer...
+==((====))==  Unsloth: Fast Llama patching release 2024.7
+   \\   /|    GPU: NVIDIA RTX A6000. Max memory: 47.536 GB. Platform = Linux.
+O^O/ \_/ \    Pytorch: 2.3.0+cu121. CUDA = 8.6. CUDA Toolkit = 12.1.
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.26.post1. FA2 = False]
+ "-____-"     Free Apache license: http://github.com/unslothai/unsloth
+Unsloth: unsloth/llama-3-8b-Instruct-bnb-4bit can only handle sequence lengths of at most 8192.
+But with kaiokendev's RoPE scaling of 6.104, it can be magically be extended to 50000!
+Unsloth 2024.7 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
+2024-09-19 20:34:28,299 INFO Model and tokenizer initialized successfully.
+2024-09-19 20:34:28,300 INFO Starting inference from index 2219 to 2223 on dataset datasetD_test_3000-5999.json
+2024-09-19 20:34:28,300 INFO Loading dataset from datasetD_test_3000-5999.json...
+2024-09-19 20:34:29,405 INFO Dataset loaded with 3000 conversations.
+2024-09-19 20:34:29,408 INFO Loaded dataset datasetD_test_3000-5999.json with 3000 conversations
+2024-09-19 20:34:29,409 INFO Selected subset of dataset from index 2219 to 2224
+Map: 100%|████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 214.68 examples/s]
+2024-09-19 20:34:29,439 INFO Applied formatting prompts function to dataset
+2024-09-19 20:34:29,439 INFO Total conversations to process: 5
+2024-09-19 20:34:29,440 INFO Processing conversation 2219/2223
+2024-09-19 20:34:29,471 INFO Input sequence length: torch.Size([1, 19453])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 20126.749411052228
+*****************************************************************************************************************
+2024-09-19 21:16:07,810 INFO User 5219 processed in 2498.37s
+2024-09-19 21:16:07,815 INFO Processing conversation 2220/2223
+2024-09-19 21:16:07,844 INFO Input sequence length: torch.Size([1, 11221])
+2024-09-19 21:28:32,539 INFO User 5220 processed in 744.72s
+2024-09-19 21:28:32,542 INFO Processing conversation 2221/2223
+2024-09-19 21:28:32,580 INFO Input sequence length: torch.Size([1, 15149])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 11177.910271921295
+*****************************************************************************************************************
+**************************************************Result Report**************************************************
+2024-09-19 21:52:41,779 INFO User 5221 processed in 1449.24s
+2024-09-19 21:52:41,784 INFO Processing conversation 2222/2223
+2024-09-19 21:52:41,813 INFO Input sequence length: torch.Size([1, 14253])
+geobleu: 4.569231478558502e-275
+dtw: 14122.767766722061
+*****************************************************************************************************************
+2024-09-19 22:12:19,829 INFO User 5222 processed in 1178.05s
+2024-09-19 22:12:19,832 INFO Processing conversation 2223/2223
+2024-09-19 22:12:19,877 INFO Input sequence length: torch.Size([1, 18765])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 13256.642657897328
+*****************************************************************************************************************
+2024-09-19 22:32:49,746 INFO User 5223 processed in 1229.91s
+2024-09-19 22:32:49,750 INFO Failed conversations: []
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 17200.77961101702
+*****************************************************************************************************************
+2024-09-19 22:32:50,361 INFO Saving results to generated_datasetD_test_3000-5999_range(2219, 2224).csv.gz
+2024-09-19 22:32:50,369 INFO Results saved to generated_datasetD_test_3000-5999_range(2219, 2224).csv.gz

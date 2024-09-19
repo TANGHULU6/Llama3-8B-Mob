@@ -1,0 +1,35 @@
+2024-09-18 12:33:04,297 INFO    MainThread:1652679 [wandb_setup.py:_flush():77] Current SDK version is 0.17.8
+2024-09-18 12:33:04,297 INFO    MainThread:1652679 [wandb_setup.py:_flush():77] Configure stats pid to 1652679
+2024-09-18 12:33:04,297 INFO    MainThread:1652679 [wandb_setup.py:_flush():77] Loading settings from /home/geo_llm/.config/wandb/settings
+2024-09-18 12:33:04,297 INFO    MainThread:1652679 [wandb_setup.py:_flush():77] Loading settings from /home/geo_llm/llama3-finetune/wandb/settings
+2024-09-18 12:33:04,297 INFO    MainThread:1652679 [wandb_setup.py:_flush():77] Loading settings from environment variables: {}
+2024-09-18 12:33:04,297 INFO    MainThread:1652679 [wandb_setup.py:_flush():77] Applying setup settings: {'_disable_service': False}
+2024-09-18 12:33:04,297 INFO    MainThread:1652679 [wandb_setup.py:_flush():77] Inferring run settings from compute environment: {'program_relpath': 'main.py', 'program_abspath': '/home/geo_llm/llama3-finetune/main.py', 'program': '/home/geo_llm/llama3-finetune/main.py'}
+2024-09-18 12:33:04,298 INFO    MainThread:1652679 [wandb_setup.py:_flush():77] Applying login settings: {}
+2024-09-18 12:33:04,298 INFO    MainThread:1652679 [wandb_init.py:_log_setup():524] Logging user logs to /home/geo_llm/llama3-finetune/wandb/run-20240918_123304-1v7194jp/logs/debug.log
+2024-09-18 12:33:04,298 INFO    MainThread:1652679 [wandb_init.py:_log_setup():525] Logging internal logs to /home/geo_llm/llama3-finetune/wandb/run-20240918_123304-1v7194jp/logs/debug-internal.log
+2024-09-18 12:33:04,298 INFO    MainThread:1652679 [wandb_init.py:init():607] calling init triggers
+2024-09-18 12:33:04,298 INFO    MainThread:1652679 [wandb_init.py:init():614] wandb.init called with sweep_config: {}
+config: {}
+2024-09-18 12:33:04,298 INFO    MainThread:1652679 [wandb_init.py:init():657] starting backend
+2024-09-18 12:33:04,298 INFO    MainThread:1652679 [wandb_init.py:init():661] setting up manager
+2024-09-18 12:33:04,300 INFO    MainThread:1652679 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-09-18 12:33:04,301 INFO    MainThread:1652679 [wandb_init.py:init():669] backend started and connected
+2024-09-18 12:33:04,303 INFO    MainThread:1652679 [wandb_init.py:init():767] updated telemetry
+2024-09-18 12:33:04,309 INFO    MainThread:1652679 [wandb_init.py:init():800] communicating run to backend with 90.0 second timeout
+2024-09-18 12:33:04,699 INFO    MainThread:1652679 [wandb_init.py:init():851] starting run threads in backend
+2024-09-18 12:33:08,458 INFO    MainThread:1652679 [wandb_run.py:_console_start():2463] atexit reg
+2024-09-18 12:33:08,458 INFO    MainThread:1652679 [wandb_run.py:_redirect():2309] redirect: wrap_raw
+2024-09-18 12:33:08,459 INFO    MainThread:1652679 [wandb_run.py:_redirect():2374] Wrapping output streams.
+2024-09-18 12:33:08,460 INFO    MainThread:1652679 [wandb_run.py:_redirect():2399] Redirects installed.
+2024-09-18 12:33:08,464 INFO    MainThread:1652679 [wandb_init.py:init():894] run started, returning control to user process
+2024-09-18 14:45:39,271 INFO    MainThread:1652679 [wandb_run.py:_finish():2160] finishing run tanghulu/Inference/1v7194jp
+2024-09-18 14:45:39,271 INFO    MainThread:1652679 [wandb_run.py:_atexit_cleanup():2424] got exitcode: 0
+2024-09-18 14:45:39,271 INFO    MainThread:1652679 [wandb_run.py:_restore():2406] restore
+2024-09-18 14:45:39,271 INFO    MainThread:1652679 [wandb_run.py:_restore():2412] restore done
+2024-09-18 14:45:39,271 INFO    MainThread:1652679 [wandb_run.py:_on_finish():2677] communicating current version
+2024-09-18 14:45:41,083 INFO    MainThread:1652679 [wandb_run.py:_on_finish():2686] got version response upgrade_message: "wandb version 0.18.1 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-09-18 14:45:49,577 INFO    MainThread:1652679 [wandb_run.py:_footer_history_summary_info():4078] rendering history
+2024-09-18 14:45:49,578 INFO    MainThread:1652679 [wandb_run.py:_footer_history_summary_info():4110] rendering summary
+2024-09-18 14:45:49,589 INFO    MainThread:1652679 [wandb_run.py:_footer_sync_info():4037] logging synced files

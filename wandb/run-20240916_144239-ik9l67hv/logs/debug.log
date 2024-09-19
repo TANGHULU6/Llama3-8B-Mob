@@ -23,3 +23,13 @@ config: {}
 2024-09-16 14:42:43,105 INFO    MainThread:1545802 [wandb_run.py:_redirect():2374] Wrapping output streams.
 2024-09-16 14:42:43,105 INFO    MainThread:1545802 [wandb_run.py:_redirect():2399] Redirects installed.
 2024-09-16 14:42:43,107 INFO    MainThread:1545802 [wandb_init.py:init():894] run started, returning control to user process
+2024-09-18 04:58:25,812 INFO    MainThread:1545802 [wandb_run.py:_finish():2160] finishing run tanghulu/Inference/ik9l67hv
+2024-09-18 04:58:25,814 INFO    MainThread:1545802 [wandb_run.py:_atexit_cleanup():2424] got exitcode: 0
+2024-09-18 04:58:25,814 INFO    MainThread:1545802 [wandb_run.py:_restore():2406] restore
+2024-09-18 04:58:25,814 INFO    MainThread:1545802 [wandb_run.py:_restore():2412] restore done
+2024-09-18 04:58:25,814 INFO    MainThread:1545802 [wandb_run.py:_on_finish():2677] communicating current version
+2024-09-18 04:58:28,348 INFO    MainThread:1545802 [wandb_run.py:_on_finish():2686] got version response upgrade_message: "wandb version 0.18.1 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-09-18 04:58:33,990 INFO    MainThread:1545802 [wandb_run.py:_footer_history_summary_info():4078] rendering history
+2024-09-18 04:58:33,992 INFO    MainThread:1545802 [wandb_run.py:_footer_history_summary_info():4110] rendering summary
+2024-09-18 04:58:34,005 INFO    MainThread:1545802 [wandb_run.py:_footer_sync_info():4037] logging synced files
