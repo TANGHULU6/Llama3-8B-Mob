@@ -1,0 +1,57 @@
+
+2024-09-18 22:47:24,746 INFO Initializing model and tokenizer...
+==((====))==  Unsloth: Fast Llama patching release 2024.7
+   \\   /|    GPU: NVIDIA RTX A6000. Max memory: 47.536 GB. Platform = Linux.
+O^O/ \_/ \    Pytorch: 2.3.0+cu121. CUDA = 8.6. CUDA Toolkit = 12.1.
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.26.post1. FA2 = False]
+ "-____-"     Free Apache license: http://github.com/unslothai/unsloth
+Unsloth: unsloth/llama-3-8b-Instruct-bnb-4bit can only handle sequence lengths of at most 8192.
+But with kaiokendev's RoPE scaling of 6.104, it can be magically be extended to 50000!
+Unsloth 2024.7 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
+2024-09-18 22:47:43,726 INFO Model and tokenizer initialized successfully.
+2024-09-18 22:47:43,727 INFO Starting inference from index 2485 to 2489 on dataset datasetC_test_17000-19999.json
+2024-09-18 22:47:43,727 INFO Loading dataset from datasetC_test_17000-19999.json...
+2024-09-18 22:47:44,689 INFO Dataset loaded with 3000 conversations.
+2024-09-18 22:47:44,692 INFO Loaded dataset datasetC_test_17000-19999.json with 3000 conversations
+2024-09-18 22:47:44,694 INFO Selected subset of dataset from index 2485 to 2490
+Map: 100%|████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 122.01 examples/s]
+2024-09-18 22:47:44,741 INFO Applied formatting prompts function to dataset
+2024-09-18 22:47:44,741 INFO Total conversations to process: 5
+2024-09-18 22:47:44,741 INFO Processing conversation 2485/2489
+2024-09-18 22:47:44,759 INFO Input sequence length: torch.Size([1, 5621])
+2024-09-18 22:50:28,883 INFO User 19485 processed in 164.14s
+2024-09-18 22:50:28,888 INFO Processing conversation 2486/2489
+2024-09-18 22:50:28,907 INFO Input sequence length: torch.Size([1, 8245])
+**************************************************Result Report**************************************************
+geobleu: 1.2588174186615721e-278
+dtw: 3557.3554312580077
+*****************************************************************************************************************
+2024-09-18 23:03:09,759 INFO User 19491 processed in 760.87s
+2024-09-18 23:03:09,762 INFO Processing conversation 2487/2489
+2024-09-18 23:03:09,784 INFO Input sequence length: torch.Size([1, 6013])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 9530.274629572801
+*****************************************************************************************************************
+2024-09-18 23:06:48,625 INFO User 19489 processed in 218.86s
+2024-09-18 23:06:48,630 INFO Processing conversation 2488/2489
+2024-09-18 23:06:48,648 INFO Input sequence length: torch.Size([1, 8237])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 6422.764751454423
+*****************************************************************************************************************
+2024-09-18 23:19:46,755 INFO User 19486 processed in 778.13s
+2024-09-18 23:19:46,759 INFO Processing conversation 2489/2489
+2024-09-18 23:19:46,794 INFO Input sequence length: torch.Size([1, 7597])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 11341.849692187969
+*****************************************************************************************************************
+2024-09-18 23:32:08,884 INFO User 19492 processed in 742.12s
+2024-09-18 23:32:08,885 INFO Failed conversations: []
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 14604.605105240022
+*****************************************************************************************************************
+2024-09-18 23:32:09,436 INFO Saving results to generated_datasetC_test_17000-19999_range(2485, 2490).csv.gz
+2024-09-18 23:32:09,439 INFO Results saved to generated_datasetC_test_17000-19999_range(2485, 2490).csv.gz

@@ -1,0 +1,95 @@
+2024-09-19 02:51:34,938 INFO    StreamThr :1802071 [internal.py:wandb_internal():85] W&B internal server running at pid: 1802071, started at: 2024-09-19 02:51:34.937216
+2024-09-19 02:51:34,940 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status
+2024-09-19 02:51:34,944 INFO    WriterThread:1802071 [datastore.py:open_for_write():87] open: /home/geo_llm/llama3-finetune/wandb/run-20240919_025134-pdi15wbx/run-pdi15wbx.wandb
+2024-09-19 02:51:34,946 DEBUG   SenderThread:1802071 [sender.py:send():391] send: header
+2024-09-19 02:51:34,946 DEBUG   SenderThread:1802071 [sender.py:send():391] send: run
+2024-09-19 02:51:35,406 INFO    SenderThread:1802071 [dir_watcher.py:__init__():211] watching files in: /home/geo_llm/llama3-finetune/wandb/run-20240919_025134-pdi15wbx/files
+2024-09-19 02:51:35,407 INFO    SenderThread:1802071 [sender.py:_start_run_threads():1200] run started: pdi15wbx with start time 1726681894.936246
+2024-09-19 02:51:35,421 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: run_start
+2024-09-19 02:51:35,436 DEBUG   HandlerThread:1802071 [system_info.py:__init__():26] System info init
+2024-09-19 02:51:35,436 DEBUG   HandlerThread:1802071 [system_info.py:__init__():41] System info init done
+2024-09-19 02:51:35,436 INFO    HandlerThread:1802071 [system_monitor.py:start():194] Starting system monitor
+2024-09-19 02:51:35,437 INFO    SystemMonitor:1802071 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-09-19 02:51:35,437 INFO    HandlerThread:1802071 [system_monitor.py:probe():214] Collecting system info
+2024-09-19 02:51:35,438 INFO    SystemMonitor:1802071 [interfaces.py:start():188] Started cpu monitoring
+2024-09-19 02:51:35,439 INFO    SystemMonitor:1802071 [interfaces.py:start():188] Started disk monitoring
+2024-09-19 02:51:35,441 INFO    SystemMonitor:1802071 [interfaces.py:start():188] Started gpu monitoring
+2024-09-19 02:51:35,442 INFO    SystemMonitor:1802071 [interfaces.py:start():188] Started memory monitoring
+2024-09-19 02:51:35,442 INFO    SystemMonitor:1802071 [interfaces.py:start():188] Started network monitoring
+2024-09-19 02:51:35,488 DEBUG   HandlerThread:1802071 [system_info.py:probe():152] Probing system
+2024-09-19 02:51:35,491 DEBUG   HandlerThread:1802071 [system_info.py:_probe_git():137] Probing git
+2024-09-19 02:51:35,500 DEBUG   HandlerThread:1802071 [system_info.py:_probe_git():145] Probing git done
+2024-09-19 02:51:35,500 DEBUG   HandlerThread:1802071 [system_info.py:probe():200] Probing system done
+2024-09-19 02:51:35,500 DEBUG   HandlerThread:1802071 [system_monitor.py:probe():223] {'os': 'Linux-5.15.0-100-generic-x86_64-with-glibc2.31', 'python': '3.10.14', 'heartbeatAt': '2024-09-18T17:51:35.488741', 'startedAt': '2024-09-18T17:51:34.929341', 'docker': None, 'cuda': None, 'args': ('--l_idx', '1600', '--r_idx', '1650', '--city', 'd'), 'state': 'running', 'program': '/home/geo_llm/llama3-finetune/main.py', 'codePathLocal': 'main.py', 'codePath': 'main.py', 'git': {'remote': 'git@github.com:TANGHULU6/llama-finetune.git', 'commit': '2ede3c7976c1afd48f951902d8046a1ac885b40b'}, 'email': '12110502@mail.sustech.edu.cn', 'root': '/home/geo_llm/llama3-finetune', 'host': 'dl-rooster', 'username': 'geo_llm', 'executable': '/home/geo_llm/anaconda3/envs/unsloth_env/bin/python', 'cpu_count': 24, 'cpu_count_logical': 48, 'cpu_freq': {'current': 990.3378541666667, 'min': 800.0, 'max': 3300.0}, 'cpu_freq_per_core': [{'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 1100.0, 'min': 800.0, 'max': 3300.0}, {'current': 900.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 1719.152, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 1200.0, 'min': 800.0, 'max': 3300.0}, {'current': 1000.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 1000.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 3300.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 3300.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 2026.723, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}], 'disk': {'/': {'total': 1832.2072448730469, 'used': 1431.3720893859863}}, 'gpu': 'NVIDIA RTX A6000', 'gpu_count': 4, 'gpu_devices': [{'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}], 'memory': {'total': 314.2499084472656}}
+2024-09-19 02:51:35,500 INFO    HandlerThread:1802071 [system_monitor.py:probe():224] Finished collecting system info
+2024-09-19 02:51:35,500 INFO    HandlerThread:1802071 [system_monitor.py:probe():227] Publishing system info
+2024-09-19 02:51:35,500 DEBUG   HandlerThread:1802071 [system_info.py:_save_conda():209] Saving list of conda packages installed into the current environment
+2024-09-19 02:51:36,411 INFO    Thread-12 :1802071 [dir_watcher.py:_on_file_created():271] file/dir created: /home/geo_llm/llama3-finetune/wandb/run-20240919_025134-pdi15wbx/files/conda-environment.yaml
+2024-09-19 02:51:38,624 DEBUG   HandlerThread:1802071 [system_info.py:_save_conda():224] Saving conda packages done
+2024-09-19 02:51:38,626 INFO    HandlerThread:1802071 [system_monitor.py:probe():229] Finished publishing system info
+2024-09-19 02:51:38,630 DEBUG   SenderThread:1802071 [sender.py:send():391] send: files
+2024-09-19 02:51:38,630 INFO    SenderThread:1802071 [sender.py:_save_file():1466] saving file wandb-metadata.json with policy now
+2024-09-19 02:51:38,695 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: python_packages
+2024-09-19 02:51:38,695 DEBUG   SenderThread:1802071 [sender.py:send_request():418] send_request: python_packages
+2024-09-19 02:51:38,696 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-19 02:51:38,697 DEBUG   SenderThread:1802071 [sender.py:send_request():418] send_request: stop_status
+2024-09-19 02:51:38,701 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:51:38,991 DEBUG   SenderThread:1802071 [sender.py:send():391] send: telemetry
+2024-09-19 02:51:39,315 INFO    wandb-upload_0:1802071 [upload_job.py:push():130] Uploaded file /tmp/tmpwf_ivdruwandb/4okox4rv-wandb-metadata.json
+2024-09-19 02:51:39,408 INFO    Thread-12 :1802071 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240919_025134-pdi15wbx/files/conda-environment.yaml
+2024-09-19 02:51:39,409 INFO    Thread-12 :1802071 [dir_watcher.py:_on_file_created():271] file/dir created: /home/geo_llm/llama3-finetune/wandb/run-20240919_025134-pdi15wbx/files/wandb-metadata.json
+2024-09-19 02:51:39,409 INFO    Thread-12 :1802071 [dir_watcher.py:_on_file_created():271] file/dir created: /home/geo_llm/llama3-finetune/wandb/run-20240919_025134-pdi15wbx/files/requirements.txt
+2024-09-19 02:51:39,410 INFO    Thread-12 :1802071 [dir_watcher.py:_on_file_created():271] file/dir created: /home/geo_llm/llama3-finetune/wandb/run-20240919_025134-pdi15wbx/files/output.log
+2024-09-19 02:51:39,995 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:51:41,409 INFO    Thread-12 :1802071 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240919_025134-pdi15wbx/files/output.log
+2024-09-19 02:51:45,413 INFO    Thread-12 :1802071 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240919_025134-pdi15wbx/files/output.log
+2024-09-19 02:51:45,698 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:51:49,325 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:51:49,414 INFO    Thread-12 :1802071 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240919_025134-pdi15wbx/files/output.log
+2024-09-19 02:51:51,415 INFO    Thread-12 :1802071 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240919_025134-pdi15wbx/files/output.log
+2024-09-19 02:51:51,440 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:51:53,696 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-19 02:51:53,697 DEBUG   SenderThread:1802071 [sender.py:send_request():418] send_request: stop_status
+2024-09-19 02:51:56,932 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:51:58,783 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:52:02,785 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:52:08,696 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-19 02:52:08,697 DEBUG   SenderThread:1802071 [sender.py:send_request():418] send_request: stop_status
+2024-09-19 02:52:08,783 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:52:08,918 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:52:09,423 INFO    Thread-12 :1802071 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240919_025134-pdi15wbx/files/config.yaml
+2024-09-19 02:52:14,785 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:52:18,784 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:52:19,786 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:52:23,696 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-19 02:52:23,697 DEBUG   SenderThread:1802071 [sender.py:send_request():418] send_request: stop_status
+2024-09-19 02:52:24,926 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:52:28,784 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:52:30,786 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:52:35,443 DEBUG   SystemMonitor:1802071 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-09-19 02:52:35,447 DEBUG   SenderThread:1802071 [sender.py:send():391] send: stats
+2024-09-19 02:52:36,449 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:52:38,697 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-19 02:52:38,698 DEBUG   SenderThread:1802071 [sender.py:send_request():418] send_request: stop_status
+2024-09-19 02:52:38,785 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:52:41,887 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:52:47,786 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:52:48,786 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:52:52,787 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:52:53,696 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-19 02:52:53,697 DEBUG   SenderThread:1802071 [sender.py:send_request():418] send_request: stop_status
+2024-09-19 02:52:57,963 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:52:58,785 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:53:03,786 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:53:05,449 DEBUG   SenderThread:1802071 [sender.py:send():391] send: stats
+2024-09-19 02:53:08,697 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-19 02:53:08,698 DEBUG   SenderThread:1802071 [sender.py:send_request():418] send_request: stop_status
+2024-09-19 02:53:08,785 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:53:08,916 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:53:14,786 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:53:18,787 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:53:19,787 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:53:23,697 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-19 02:53:23,698 DEBUG   SenderThread:1802071 [sender.py:send_request():418] send_request: stop_status
+2024-09-19 02:53:24,979 DEBUG   HandlerThread:1802071 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:53:27,449 INFO    MainThread:1802071 [internal.py:handle_exit():75] Internal process exited

@@ -1,0 +1,107 @@
+2024-09-19 02:53:39,043 INFO    StreamThr :1802813 [internal.py:wandb_internal():85] W&B internal server running at pid: 1802813, started at: 2024-09-19 02:53:39.042598
+2024-09-19 02:53:39,046 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: status
+2024-09-19 02:53:39,051 INFO    WriterThread:1802813 [datastore.py:open_for_write():87] open: /home/geo_llm/llama3-finetune/wandb/run-20240919_025339-1mps5g9o/run-1mps5g9o.wandb
+2024-09-19 02:53:39,052 DEBUG   SenderThread:1802813 [sender.py:send():391] send: header
+2024-09-19 02:53:39,052 DEBUG   SenderThread:1802813 [sender.py:send():391] send: run
+2024-09-19 02:53:39,539 INFO    SenderThread:1802813 [dir_watcher.py:__init__():211] watching files in: /home/geo_llm/llama3-finetune/wandb/run-20240919_025339-1mps5g9o/files
+2024-09-19 02:53:39,539 INFO    SenderThread:1802813 [sender.py:_start_run_threads():1200] run started: 1mps5g9o with start time 1726682019.04066
+2024-09-19 02:53:39,553 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: run_start
+2024-09-19 02:53:39,568 DEBUG   HandlerThread:1802813 [system_info.py:__init__():26] System info init
+2024-09-19 02:53:39,568 DEBUG   HandlerThread:1802813 [system_info.py:__init__():41] System info init done
+2024-09-19 02:53:39,568 INFO    HandlerThread:1802813 [system_monitor.py:start():194] Starting system monitor
+2024-09-19 02:53:39,569 INFO    SystemMonitor:1802813 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-09-19 02:53:39,570 INFO    HandlerThread:1802813 [system_monitor.py:probe():214] Collecting system info
+2024-09-19 02:53:39,570 INFO    SystemMonitor:1802813 [interfaces.py:start():188] Started cpu monitoring
+2024-09-19 02:53:39,572 INFO    SystemMonitor:1802813 [interfaces.py:start():188] Started disk monitoring
+2024-09-19 02:53:39,574 INFO    SystemMonitor:1802813 [interfaces.py:start():188] Started gpu monitoring
+2024-09-19 02:53:39,577 INFO    SystemMonitor:1802813 [interfaces.py:start():188] Started memory monitoring
+2024-09-19 02:53:39,578 INFO    SystemMonitor:1802813 [interfaces.py:start():188] Started network monitoring
+2024-09-19 02:53:39,625 DEBUG   HandlerThread:1802813 [system_info.py:probe():152] Probing system
+2024-09-19 02:53:39,628 DEBUG   HandlerThread:1802813 [system_info.py:_probe_git():137] Probing git
+2024-09-19 02:53:39,638 DEBUG   HandlerThread:1802813 [system_info.py:_probe_git():145] Probing git done
+2024-09-19 02:53:39,638 DEBUG   HandlerThread:1802813 [system_info.py:probe():200] Probing system done
+2024-09-19 02:53:39,638 DEBUG   HandlerThread:1802813 [system_monitor.py:probe():223] {'os': 'Linux-5.15.0-100-generic-x86_64-with-glibc2.31', 'python': '3.10.14', 'heartbeatAt': '2024-09-18T17:53:39.625425', 'startedAt': '2024-09-18T17:53:39.032820', 'docker': None, 'cuda': None, 'args': ('--l_idx', '1750', '--r_idx', '1800', '--city', 'd'), 'state': 'running', 'program': '/home/geo_llm/llama3-finetune/main.py', 'codePathLocal': 'main.py', 'codePath': 'main.py', 'git': {'remote': 'git@github.com:TANGHULU6/llama-finetune.git', 'commit': '2ede3c7976c1afd48f951902d8046a1ac885b40b'}, 'email': '12110502@mail.sustech.edu.cn', 'root': '/home/geo_llm/llama3-finetune', 'host': 'dl-rooster', 'username': 'geo_llm', 'executable': '/home/geo_llm/anaconda3/envs/unsloth_env/bin/python', 'cpu_count': 24, 'cpu_count_logical': 48, 'cpu_freq': {'current': 876.9495416666665, 'min': 800.0, 'max': 3300.0}, 'cpu_freq_per_core': [{'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 1100.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 900.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 1200.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 2000.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 966.571, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 900.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}, {'current': 2000.0, 'min': 800.0, 'max': 3300.0}, {'current': 800.0, 'min': 800.0, 'max': 3300.0}], 'disk': {'/': {'total': 1832.2072448730469, 'used': 1431.3726615905762}}, 'gpu': 'NVIDIA RTX A6000', 'gpu_count': 4, 'gpu_devices': [{'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}], 'memory': {'total': 314.2499084472656}}
+2024-09-19 02:53:39,639 INFO    HandlerThread:1802813 [system_monitor.py:probe():224] Finished collecting system info
+2024-09-19 02:53:39,639 INFO    HandlerThread:1802813 [system_monitor.py:probe():227] Publishing system info
+2024-09-19 02:53:39,639 DEBUG   HandlerThread:1802813 [system_info.py:_save_conda():209] Saving list of conda packages installed into the current environment
+2024-09-19 02:53:40,543 INFO    Thread-12 :1802813 [dir_watcher.py:_on_file_created():271] file/dir created: /home/geo_llm/llama3-finetune/wandb/run-20240919_025339-1mps5g9o/files/conda-environment.yaml
+2024-09-19 02:53:42,862 DEBUG   HandlerThread:1802813 [system_info.py:_save_conda():224] Saving conda packages done
+2024-09-19 02:53:42,864 INFO    HandlerThread:1802813 [system_monitor.py:probe():229] Finished publishing system info
+2024-09-19 02:53:42,869 DEBUG   SenderThread:1802813 [sender.py:send():391] send: files
+2024-09-19 02:53:42,869 INFO    SenderThread:1802813 [sender.py:_save_file():1466] saving file wandb-metadata.json with policy now
+2024-09-19 02:53:42,963 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: python_packages
+2024-09-19 02:53:42,964 DEBUG   SenderThread:1802813 [sender.py:send_request():418] send_request: python_packages
+2024-09-19 02:53:42,967 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-19 02:53:42,968 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:53:42,969 DEBUG   SenderThread:1802813 [sender.py:send_request():418] send_request: stop_status
+2024-09-19 02:53:43,216 DEBUG   SenderThread:1802813 [sender.py:send():391] send: telemetry
+2024-09-19 02:53:43,530 INFO    wandb-upload_0:1802813 [upload_job.py:push():130] Uploaded file /tmp/tmpj31mnbmswandb/r91rl6df-wandb-metadata.json
+2024-09-19 02:53:43,541 INFO    Thread-12 :1802813 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240919_025339-1mps5g9o/files/conda-environment.yaml
+2024-09-19 02:53:43,542 INFO    Thread-12 :1802813 [dir_watcher.py:_on_file_created():271] file/dir created: /home/geo_llm/llama3-finetune/wandb/run-20240919_025339-1mps5g9o/files/wandb-metadata.json
+2024-09-19 02:53:43,542 INFO    Thread-12 :1802813 [dir_watcher.py:_on_file_created():271] file/dir created: /home/geo_llm/llama3-finetune/wandb/run-20240919_025339-1mps5g9o/files/requirements.txt
+2024-09-19 02:53:43,542 INFO    Thread-12 :1802813 [dir_watcher.py:_on_file_created():271] file/dir created: /home/geo_llm/llama3-finetune/wandb/run-20240919_025339-1mps5g9o/files/output.log
+2024-09-19 02:53:44,276 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:53:45,542 INFO    Thread-12 :1802813 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240919_025339-1mps5g9o/files/output.log
+2024-09-19 02:53:49,544 INFO    Thread-12 :1802813 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240919_025339-1mps5g9o/files/output.log
+2024-09-19 02:53:49,966 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:53:52,980 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:53:53,546 INFO    Thread-12 :1802813 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240919_025339-1mps5g9o/files/output.log
+2024-09-19 02:53:55,167 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:53:55,547 INFO    Thread-12 :1802813 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/geo_llm/llama3-finetune/wandb/run-20240919_025339-1mps5g9o/files/output.log
+2024-09-19 02:53:57,965 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-19 02:53:57,966 DEBUG   SenderThread:1802813 [sender.py:send_request():418] send_request: stop_status
+2024-09-19 02:54:00,200 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:54:02,977 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:54:05,980 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:54:10,989 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: status_report
+2024-09-19 02:54:11,160 ERROR   SenderThread:1802813 [internal_api.py:execute():349] 409 response executing GraphQL.
+2024-09-19 02:54:11,160 ERROR   SenderThread:1802813 [internal_api.py:execute():350] {"errors":[{"message":"run 1mps5g9o was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2024-09-19 02:54:12,475 ERROR   SenderThread:1802813 [internal_api.py:execute():349] 409 response executing GraphQL.
+2024-09-19 02:54:12,475 ERROR   SenderThread:1802813 [internal_api.py:execute():350] {"errors":[{"message":"run 1mps5g9o was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2024-09-19 02:54:12,966 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: stop_status
+2024-09-19 02:54:13,007 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:54:14,667 ERROR   SenderThread:1802813 [internal_api.py:execute():349] 409 response executing GraphQL.
+2024-09-19 02:54:14,667 ERROR   SenderThread:1802813 [internal_api.py:execute():350] {"errors":[{"message":"run 1mps5g9o was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2024-09-19 02:54:14,667 INFO    SenderThread:1802813 [retry.py:__call__():172] Retry attempt failed:
+Traceback (most recent call last):
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/sdk/lib/retry.py", line 131, in __call__
+    result = self._call_fn(*args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 345, in execute
+    return self.client.execute(*args, **kwargs)  # type: ignore
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/wandb/sdk/lib/gql_request.py", line 59, in execute
+    request.raise_for_status()
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 409 Client Error: Conflict for url: https://api.wandb.ai/graphql
+2024-09-19 02:54:17,980 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: keepalive
+2024-09-19 02:54:19,300 ERROR   SenderThread:1802813 [internal_api.py:execute():349] 409 response executing GraphQL.
+2024-09-19 02:54:19,301 ERROR   SenderThread:1802813 [internal_api.py:execute():350] {"errors":[{"message":"run 1mps5g9o was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2024-09-19 02:54:22,978 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:54:27,561 ERROR   SenderThread:1802813 [internal_api.py:execute():349] 409 response executing GraphQL.
+2024-09-19 02:54:27,562 ERROR   SenderThread:1802813 [internal_api.py:execute():350] {"errors":[{"message":"run 1mps5g9o was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2024-09-19 02:54:27,982 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: keepalive
+2024-09-19 02:54:32,978 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:54:37,984 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: keepalive
+2024-09-19 02:54:39,579 DEBUG   SystemMonitor:1802813 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-09-19 02:54:42,979 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: internal_messages
+2024-09-19 02:54:46,232 ERROR   SenderThread:1802813 [internal_api.py:execute():349] 409 response executing GraphQL.
+2024-09-19 02:54:46,233 ERROR   SenderThread:1802813 [internal_api.py:execute():350] {"errors":[{"message":"run 1mps5g9o was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2024-09-19 02:54:47,986 DEBUG   HandlerThread:1802813 [handler.py:handle_request():158] handle_request: keepalive
+2024-09-19 02:54:51,629 INFO    memory    :1802813 [interfaces.py:monitor():138] Process proc.memory.rssMB has exited.
+2024-09-19 02:54:51,629 DEBUG   SystemMonitor:1802813 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-09-19 02:54:51,630 DEBUG   SystemMonitor:1802813 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-09-19 02:54:52,126 WARNING StreamThr :1802813 [internal.py:is_dead():413] Internal process exiting, parent pid 1802777 disappeared
+2024-09-19 02:54:52,126 ERROR   StreamThr :1802813 [internal.py:wandb_internal():151] Internal process shutdown.
+2024-09-19 02:54:52,634 INFO    HandlerThread:1802813 [handler.py:finish():884] shutting down handler
+2024-09-19 02:54:52,634 INFO    HandlerThread:1802813 [system_monitor.py:finish():203] Stopping system monitor
+2024-09-19 02:54:52,634 INFO    HandlerThread:1802813 [interfaces.py:finish():200] Joined cpu monitor
+2024-09-19 02:54:52,635 INFO    HandlerThread:1802813 [interfaces.py:finish():200] Joined disk monitor
+2024-09-19 02:54:52,635 INFO    HandlerThread:1802813 [interfaces.py:finish():200] Joined gpu monitor
+2024-09-19 02:54:52,635 INFO    HandlerThread:1802813 [interfaces.py:finish():200] Joined memory monitor
+2024-09-19 02:54:52,636 INFO    HandlerThread:1802813 [interfaces.py:finish():200] Joined network monitor
+2024-09-19 02:54:52,636 INFO    WriterThread:1802813 [datastore.py:close():296] close: /home/geo_llm/llama3-finetune/wandb/run-20240919_025339-1mps5g9o/run-1mps5g9o.wandb
+2024-09-19 02:54:53,572 INFO    MainThread:1802813 [internal.py:handle_exit():75] Internal process exited

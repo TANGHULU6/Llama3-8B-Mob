@@ -1,0 +1,32 @@
+==((====))==  Unsloth: Fast Llama patching release 2024.7
+   \\   /|    GPU: NVIDIA RTX A6000. Max memory: 47.536 GB. Platform = Linux.
+O^O/ \_/ \    Pytorch: 2.3.0+cu121. CUDA = 8.6. CUDA Toolkit = 12.1.
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.26.post1. FA2 = False]
+ "-____-"     Free Apache license: http://github.com/unslothai/unsloth
+2024-09-20 02:56:18,222 INFO Initializing model and tokenizer...
+Unsloth: unsloth/llama-3-8b-Instruct-bnb-4bit can only handle sequence lengths of at most 8192.
+But with kaiokendev's RoPE scaling of 6.104, it can be magically be extended to 50000!
+Unsloth 2024.7 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
+2024-09-20 02:56:31,801 INFO Model and tokenizer initialized successfully.
+2024-09-20 02:56:31,802 INFO Starting inference from index 706 to 706 on dataset datasetD_test_3000-5999.json
+2024-09-20 02:56:31,803 INFO Loading dataset from datasetD_test_3000-5999.json...
+2024-09-20 02:56:32,940 INFO Dataset loaded with 3000 conversations.
+2024-09-20 02:56:32,942 INFO Loaded dataset datasetD_test_3000-5999.json with 3000 conversations
+2024-09-20 02:56:32,944 INFO Selected subset of dataset from index 706 to 707
+Map: 100%|█████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 42.73 examples/s]
+2024-09-20 02:56:32,976 INFO Applied formatting prompts function to dataset
+2024-09-20 02:56:32,976 INFO Total conversations to process: 1
+2024-09-20 02:56:32,976 INFO Processing conversation 706/706
+2024-09-20 02:56:32,995 INFO Input sequence length: torch.Size([1, 5581])
+**************************************************Result Report**************************************************
+2024-09-20 02:59:03,600 ERROR Exception in conversation user 3706: The length doesn't match between the generated and reference trajectories.
+2024-09-20 02:59:03,601 ERROR Attempt 1/3 failed
+2024-09-20 02:59:04,619 INFO Input sequence length: torch.Size([1, 5581])
+2024-09-20 03:01:10,080 INFO User 3706 processed in 277.10s
+2024-09-20 03:01:10,083 INFO Failed conversations: []
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 6500.6949593804675
+*****************************************************************************************************************
+2024-09-20 03:01:10,706 INFO Saving results to generated_datasetD_test_3000-5999_range(706, 707).csv.gz
+2024-09-20 03:01:10,707 INFO Results saved to generated_datasetD_test_3000-5999_range(706, 707).csv.gz

@@ -1,0 +1,25 @@
+
+2024-09-18 13:47:10,139 INFO Initializing model and tokenizer...
+==((====))==  Unsloth: Fast Llama patching release 2024.7
+   \\   /|    GPU: NVIDIA RTX A6000. Max memory: 47.536 GB. Platform = Linux.
+O^O/ \_/ \    Pytorch: 2.3.0+cu121. CUDA = 8.6. CUDA Toolkit = 12.1.
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.26.post1. FA2 = False]
+ "-____-"     Free Apache license: http://github.com/unslothai/unsloth
+Unsloth: unsloth/llama-3-8b-Instruct-bnb-4bit can only handle sequence lengths of at most 8192.
+But with kaiokendev's RoPE scaling of 6.104, it can be magically be extended to 50000!
+Traceback (most recent call last):
+  File "/home/geo_llm/llama3-finetune/main.py", line 2, in <module>
+    from Infer import run_inference
+  File "/home/geo_llm/llama3-finetune/Infer.py", line 27, in <module>
+    model, tokenizer = FastLanguageModel.from_pretrained(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/unsloth/models/loader.py", line 172, in from_pretrained
+    model, tokenizer = dispatch_model.from_pretrained(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/unsloth/models/llama.py", line 1207, in from_pretrained
+    model = AutoModelForCausalLM.from_pretrained(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 564, in from_pretrained
+    return model_class.from_pretrained(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 3787, in from_pretrained
+    hf_quantizer.validate_environment(device_map=device_map)
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/transformers/quantizers/quantizer_bnb_4bit.py", line 86, in validate_environment
+    raise ValueError(
+ValueError: Some modules are dispatched on the CPU or the disk. Make sure you have enough GPU RAM to fit the quantized model. If you want to dispatch the model on the CPU or the disk while keeping these modules in 32-bit, you need to set `load_in_8bit_fp32_cpu_offload=True` and pass a custom `device_map` to `from_pretrained`. Check https://huggingface.co/docs/transformers/main/en/main_classes/quantization#offload-between-cpu-and-gpu for more details.

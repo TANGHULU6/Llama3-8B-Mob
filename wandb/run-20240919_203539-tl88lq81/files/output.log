@@ -1,0 +1,64 @@
+
+2024-09-19 20:35:43,284 INFO Initializing model and tokenizer...
+==((====))==  Unsloth: Fast Llama patching release 2024.7
+   \\   /|    GPU: NVIDIA RTX A6000. Max memory: 47.536 GB. Platform = Linux.
+O^O/ \_/ \    Pytorch: 2.3.0+cu121. CUDA = 8.6. CUDA Toolkit = 12.1.
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.26.post1. FA2 = False]
+ "-____-"     Free Apache license: http://github.com/unslothai/unsloth
+Unsloth: unsloth/llama-3-8b-Instruct-bnb-4bit can only handle sequence lengths of at most 8192.
+But with kaiokendev's RoPE scaling of 6.104, it can be magically be extended to 50000!
+Unsloth 2024.7 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
+2024-09-19 20:35:57,307 INFO Model and tokenizer initialized successfully.
+2024-09-19 20:35:57,308 INFO Starting inference from index 2095 to 2100 on dataset datasetD_test_3000-5999.json
+2024-09-19 20:35:57,308 INFO Loading dataset from datasetD_test_3000-5999.json...
+2024-09-19 20:35:58,398 INFO Dataset loaded with 3000 conversations.
+2024-09-19 20:35:58,400 INFO Loaded dataset datasetD_test_3000-5999.json with 3000 conversations
+2024-09-19 20:35:58,402 INFO Selected subset of dataset from index 2095 to 2101
+Map: 100%|████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 248.43 examples/s]
+2024-09-19 20:35:58,432 INFO Applied formatting prompts function to dataset
+2024-09-19 20:35:58,432 INFO Total conversations to process: 6
+2024-09-19 20:35:58,433 INFO Processing conversation 2095/2100
+2024-09-19 20:35:58,452 INFO Input sequence length: torch.Size([1, 10501])
+2024-09-19 20:46:10,909 INFO User 5095 processed in 612.48s
+2024-09-19 20:46:10,915 INFO Processing conversation 2096/2100
+2024-09-19 20:46:10,935 INFO Input sequence length: torch.Size([1, 9757])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 11131.229981132403
+*****************************************************************************************************************
+2024-09-19 20:54:41,268 INFO User 5096 processed in 510.35s
+2024-09-19 20:54:41,272 INFO Processing conversation 2097/2100
+2024-09-19 20:54:41,293 INFO Input sequence length: torch.Size([1, 9517])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 9842.910648462646
+*****************************************************************************************************************
+2024-09-19 21:02:34,080 INFO User 5097 processed in 472.81s
+2024-09-19 21:02:34,084 INFO Processing conversation 2098/2100
+2024-09-19 21:02:34,110 INFO Input sequence length: torch.Size([1, 10429])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 9223.709793034133
+*****************************************************************************************************************
+2024-09-19 21:11:42,970 INFO User 5098 processed in 548.89s
+2024-09-19 21:11:42,975 INFO Processing conversation 2099/2100
+2024-09-19 21:11:43,015 INFO Input sequence length: torch.Size([1, 16125])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 10069.772060290297
+*****************************************************************************************************************
+2024-09-19 21:31:37,041 INFO User 5099 processed in 1194.07s
+2024-09-19 21:31:37,046 INFO Processing conversation 2100/2100
+2024-09-19 21:31:37,082 INFO Input sequence length: torch.Size([1, 15917])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 17412.636420192648
+*****************************************************************************************************************
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 15968.000360694876
+*****************************************************************************************************************
+2024-09-19 21:50:10,886 INFO User 5100 processed in 1113.84s
+2024-09-19 21:50:10,890 INFO Failed conversations: []
+2024-09-19 21:50:11,512 INFO Saving results to generated_datasetD_test_3000-5999_range(2095, 2101).csv.gz
+2024-09-19 21:50:11,517 INFO Results saved to generated_datasetD_test_3000-5999_range(2095, 2101).csv.gz

@@ -140,3 +140,482 @@ Map: 100%|███████████████████████�
 2024-09-17 02:49:54,672 INFO Input sequence length: torch.Size([1, 9629])
 2024-09-17 02:59:37,483 INFO User 3240 processed in 582.83s
 2024-09-17 02:59:37,485 INFO Processing conversation 241/399
+2024-09-17 02:59:37,520 INFO Input sequence length: torch.Size([1, 22061])
+2024-09-17 03:52:06,033 INFO User 3241 processed in 3148.55s
+2024-09-17 03:52:06,034 INFO Processing conversation 242/399
+2024-09-17 03:52:06,052 INFO Input sequence length: torch.Size([1, 10773])
+2024-09-17 04:08:30,494 INFO User 3242 processed in 984.46s
+2024-09-17 04:08:30,495 INFO Processing conversation 243/399
+2024-09-17 04:08:30,514 INFO Input sequence length: torch.Size([1, 10901])
+2024-09-17 04:22:47,140 INFO User 3243 processed in 856.65s
+2024-09-17 04:22:47,142 INFO Processing conversation 244/399
+2024-09-17 04:22:47,160 INFO Input sequence length: torch.Size([1, 10573])
+2024-09-17 04:35:38,041 INFO User 3244 processed in 770.90s
+2024-09-17 04:35:38,043 INFO Processing conversation 245/399
+2024-09-17 04:35:38,073 INFO Input sequence length: torch.Size([1, 18229])
+2024-09-17 05:18:17,930 INFO User 3245 processed in 2559.89s
+2024-09-17 05:18:17,932 INFO Processing conversation 246/399
+2024-09-17 05:18:17,946 INFO Input sequence length: torch.Size([1, 7581])
+2024-09-17 05:25:42,539 INFO User 3246 processed in 444.61s
+2024-09-17 05:25:42,541 INFO Processing conversation 247/399
+2024-09-17 05:25:42,557 INFO Input sequence length: torch.Size([1, 6269])
+2024-09-17 05:31:19,766 INFO User 3247 processed in 337.22s
+2024-09-17 05:31:19,767 INFO Processing conversation 248/399
+2024-09-17 05:31:19,787 INFO Input sequence length: torch.Size([1, 11501])
+2024-09-17 05:46:02,778 INFO User 3248 processed in 883.01s
+2024-09-17 05:46:02,780 INFO Processing conversation 249/399
+2024-09-17 05:46:02,804 INFO Input sequence length: torch.Size([1, 13589])
+2024-09-17 06:09:02,516 INFO User 3249 processed in 1379.74s
+2024-09-17 06:09:02,517 INFO Processing conversation 250/399
+2024-09-17 06:09:02,533 INFO Input sequence length: torch.Size([1, 8957])
+2024-09-17 06:20:21,532 INFO User 3250 processed in 679.01s
+2024-09-17 06:20:21,533 INFO Processing conversation 251/399
+2024-09-17 06:20:21,550 INFO Input sequence length: torch.Size([1, 9253])
+2024-09-17 06:30:28,902 INFO User 3251 processed in 607.37s
+2024-09-17 06:30:28,904 INFO Processing conversation 252/399
+2024-09-17 06:30:28,926 INFO Input sequence length: torch.Size([1, 13325])
+2024-09-17 06:59:59,996 INFO User 3252 processed in 1771.09s
+2024-09-17 06:59:59,998 INFO Processing conversation 253/399
+2024-09-17 07:00:00,017 INFO Input sequence length: torch.Size([1, 10701])
+2024-09-17 07:15:37,037 INFO User 3253 processed in 937.04s
+2024-09-17 07:15:37,039 INFO Processing conversation 254/399
+2024-09-17 07:15:37,058 INFO Input sequence length: torch.Size([1, 10877])
+2024-09-17 07:32:59,751 INFO User 3254 processed in 1042.71s
+2024-09-17 07:32:59,753 INFO Processing conversation 255/399
+2024-09-17 07:32:59,773 INFO Input sequence length: torch.Size([1, 11461])
+2024-09-17 07:50:17,182 INFO User 3255 processed in 1037.43s
+2024-09-17 07:50:17,184 INFO Processing conversation 256/399
+2024-09-17 07:50:17,202 INFO Input sequence length: torch.Size([1, 10005])
+2024-09-17 08:05:23,335 INFO User 3256 processed in 906.15s
+2024-09-17 08:05:23,336 INFO Processing conversation 257/399
+2024-09-17 08:05:23,361 INFO Input sequence length: torch.Size([1, 15357])
+2024-09-17 08:26:45,258 INFO User 3257 processed in 1281.92s
+2024-09-17 08:26:45,260 INFO Processing conversation 258/399
+2024-09-17 08:26:45,298 INFO Input sequence length: torch.Size([1, 23525])
+2024-09-17 09:25:08,698 INFO User 3258 processed in 3503.44s
+2024-09-17 09:25:08,700 INFO Processing conversation 259/399
+2024-09-17 09:25:08,721 INFO Input sequence length: torch.Size([1, 12173])
+2024-09-17 09:43:10,487 INFO User 3259 processed in 1081.79s
+2024-09-17 09:43:10,489 INFO Processing conversation 260/399
+2024-09-17 09:43:10,502 INFO Input sequence length: torch.Size([1, 6733])
+2024-09-17 09:50:07,777 INFO User 3260 processed in 417.29s
+2024-09-17 09:50:07,778 INFO Processing conversation 261/399
+2024-09-17 09:50:07,794 INFO Input sequence length: torch.Size([1, 6557])
+2024-09-17 09:55:39,523 INFO User 3261 processed in 331.74s
+2024-09-17 09:55:39,525 INFO Processing conversation 262/399
+2024-09-17 09:55:39,561 INFO Input sequence length: torch.Size([1, 21573])
+2024-09-17 10:50:51,210 INFO User 3262 processed in 3311.69s
+2024-09-17 10:50:51,212 INFO Processing conversation 263/399
+2024-09-17 10:50:51,234 INFO Input sequence length: torch.Size([1, 13245])
+2024-09-17 11:26:53,383 INFO User 3263 processed in 2162.17s
+2024-09-17 11:26:53,384 INFO Processing conversation 264/399
+2024-09-17 11:26:53,414 INFO Input sequence length: torch.Size([1, 13789])
+2024-09-17 11:50:12,340 INFO User 3264 processed in 1398.96s
+2024-09-17 11:50:12,342 INFO Processing conversation 265/399
+2024-09-17 11:50:12,354 INFO Input sequence length: torch.Size([1, 6733])
+2024-09-17 11:53:22,943 INFO User 3265 processed in 190.60s
+2024-09-17 11:53:22,945 INFO Processing conversation 266/399
+2024-09-17 11:53:22,964 INFO Input sequence length: torch.Size([1, 11365])
+2024-09-17 12:10:20,107 INFO User 3267 processed in 1017.16s
+2024-09-17 12:10:20,109 INFO Processing conversation 267/399
+2024-09-17 12:10:20,130 INFO Input sequence length: torch.Size([1, 13005])
+2024-09-17 12:32:14,480 INFO User 3266 processed in 1314.37s
+2024-09-17 12:32:14,482 INFO Processing conversation 268/399
+2024-09-17 12:32:14,520 INFO Input sequence length: torch.Size([1, 23629])
+2024-09-17 13:31:16,224 INFO User 3268 processed in 3541.74s
+2024-09-17 13:31:16,226 INFO Processing conversation 269/399
+2024-09-17 13:31:16,242 INFO Input sequence length: torch.Size([1, 8717])
+2024-09-17 13:42:21,152 INFO User 3269 processed in 664.93s
+2024-09-17 13:42:21,154 INFO Processing conversation 270/399
+2024-09-17 13:42:21,178 INFO Input sequence length: torch.Size([1, 14317])
+2024-09-17 14:06:29,976 INFO User 3270 processed in 1448.82s
+2024-09-17 14:06:29,977 INFO Processing conversation 271/399
+2024-09-17 14:06:29,999 INFO Input sequence length: torch.Size([1, 12613])
+2024-09-17 14:25:13,296 INFO User 3271 processed in 1123.32s
+2024-09-17 14:25:13,298 INFO Processing conversation 272/399
+2024-09-17 14:25:13,310 INFO Input sequence length: torch.Size([1, 5133])
+2024-09-17 14:30:53,981 INFO User 3272 processed in 340.68s
+2024-09-17 14:30:53,982 INFO Processing conversation 273/399
+2024-09-17 14:30:54,001 INFO Input sequence length: torch.Size([1, 10965])
+2024-09-17 14:48:00,061 INFO User 3273 processed in 1026.08s
+2024-09-17 14:48:00,063 INFO Processing conversation 274/399
+2024-09-17 14:48:00,085 INFO Input sequence length: torch.Size([1, 12629])
+2024-09-17 15:04:19,970 INFO User 3274 processed in 979.91s
+2024-09-17 15:04:19,971 INFO Processing conversation 275/399
+2024-09-17 15:04:19,986 INFO Input sequence length: torch.Size([1, 7997])
+2024-09-17 15:13:54,157 INFO User 3275 processed in 574.19s
+2024-09-17 15:13:54,159 INFO Processing conversation 276/399
+2024-09-17 15:13:54,176 INFO Input sequence length: torch.Size([1, 10677])
+2024-09-17 15:31:22,035 INFO User 3276 processed in 1047.88s
+2024-09-17 15:31:22,037 INFO Processing conversation 277/399
+2024-09-17 15:31:22,070 INFO Input sequence length: torch.Size([1, 19765])
+2024-09-17 16:10:33,668 INFO User 3277 processed in 2351.63s
+2024-09-17 16:10:33,670 INFO Processing conversation 278/399
+2024-09-17 16:10:33,685 INFO Input sequence length: torch.Size([1, 6981])
+2024-09-17 16:20:59,534 INFO User 3278 processed in 625.86s
+2024-09-17 16:20:59,536 INFO Processing conversation 279/399
+2024-09-17 16:20:59,565 INFO Input sequence length: torch.Size([1, 17309])
+2024-09-17 16:51:57,304 INFO User 3279 processed in 1857.77s
+2024-09-17 16:51:57,306 INFO Processing conversation 280/399
+2024-09-17 16:51:57,323 INFO Input sequence length: torch.Size([1, 9885])
+2024-09-17 17:03:46,498 INFO User 3280 processed in 709.19s
+2024-09-17 17:03:46,499 INFO Processing conversation 281/399
+2024-09-17 17:03:46,521 INFO Input sequence length: torch.Size([1, 12533])
+2024-09-17 17:21:59,858 INFO User 3281 processed in 1093.36s
+2024-09-17 17:21:59,860 INFO Processing conversation 282/399
+2024-09-17 17:21:59,879 INFO Input sequence length: torch.Size([1, 11117])
+2024-09-17 17:34:58,250 INFO User 3283 processed in 778.39s
+2024-09-17 17:34:58,252 INFO Processing conversation 283/399
+2024-09-17 17:34:58,275 INFO Input sequence length: torch.Size([1, 13405])
+2024-09-17 17:54:09,377 INFO User 3282 processed in 1151.13s
+2024-09-17 17:54:09,379 INFO Processing conversation 284/399
+2024-09-17 17:54:09,396 INFO Input sequence length: torch.Size([1, 9869])
+2024-09-17 18:07:19,643 INFO User 3284 processed in 790.26s
+2024-09-17 18:07:19,645 INFO Processing conversation 285/399
+2024-09-17 18:07:19,653 INFO Input sequence length: torch.Size([1, 2533])
+2024-09-17 18:09:58,782 INFO User 3285 processed in 159.14s
+2024-09-17 18:09:58,783 INFO Processing conversation 286/399
+2024-09-17 18:09:58,802 INFO Input sequence length: torch.Size([1, 10741])
+2024-09-17 18:24:25,470 INFO User 3286 processed in 866.69s
+2024-09-17 18:24:25,472 INFO Processing conversation 287/399
+2024-09-17 18:24:25,487 INFO Input sequence length: torch.Size([1, 8669])
+2024-09-17 18:42:34,109 INFO User 3287 processed in 1088.64s
+2024-09-17 18:42:34,111 INFO Processing conversation 288/399
+2024-09-17 18:42:34,127 INFO Input sequence length: torch.Size([1, 6901])
+2024-09-17 18:48:41,466 INFO User 3288 processed in 367.35s
+2024-09-17 18:48:41,467 INFO Processing conversation 289/399
+2024-09-17 18:48:41,496 INFO Input sequence length: torch.Size([1, 18261])
+2024-09-17 19:23:06,763 INFO User 3289 processed in 2065.30s
+2024-09-17 19:23:06,765 INFO Processing conversation 290/399
+2024-09-17 19:23:06,781 INFO Input sequence length: torch.Size([1, 9477])
+2024-09-17 19:35:14,795 INFO User 3290 processed in 728.03s
+2024-09-17 19:35:14,797 INFO Processing conversation 291/399
+2024-09-17 19:35:14,821 INFO Input sequence length: torch.Size([1, 14005])
+2024-09-17 19:58:19,856 INFO User 3291 processed in 1385.06s
+2024-09-17 19:58:19,858 INFO Processing conversation 292/399
+2024-09-17 19:58:19,882 INFO Input sequence length: torch.Size([1, 13933])
+2024-09-17 20:16:01,818 INFO User 3292 processed in 1061.96s
+2024-09-17 20:16:01,820 INFO Processing conversation 293/399
+2024-09-17 20:16:01,840 INFO Input sequence length: torch.Size([1, 11965])
+2024-09-17 20:33:33,699 INFO User 3293 processed in 1051.88s
+2024-09-17 20:33:33,701 INFO Processing conversation 294/399
+2024-09-17 20:33:33,717 INFO Input sequence length: torch.Size([1, 9221])
+2024-09-17 20:43:44,042 INFO User 3294 processed in 610.34s
+2024-09-17 20:43:44,043 INFO Processing conversation 295/399
+2024-09-17 20:43:44,063 INFO Input sequence length: torch.Size([1, 11669])
+2024-09-17 20:57:49,328 INFO User 3295 processed in 845.28s
+2024-09-17 20:57:49,329 INFO Processing conversation 296/399
+2024-09-17 20:57:49,352 INFO Input sequence length: torch.Size([1, 13405])
+2024-09-17 21:22:58,999 INFO User 3296 processed in 1509.67s
+2024-09-17 21:22:59,002 INFO Processing conversation 297/399
+2024-09-17 21:22:59,017 INFO Input sequence length: torch.Size([1, 5309])
+2024-09-17 21:28:39,995 INFO User 3297 processed in 340.99s
+2024-09-17 21:28:39,998 INFO Processing conversation 298/399
+2024-09-17 21:28:40,015 INFO Input sequence length: torch.Size([1, 9181])
+2024-09-17 21:39:26,858 INFO User 3298 processed in 646.86s
+2024-09-17 21:39:26,860 INFO Processing conversation 299/399
+2024-09-17 21:39:26,889 INFO Input sequence length: torch.Size([1, 17157])
+2024-09-17 22:08:53,927 INFO User 3299 processed in 1767.07s
+2024-09-17 22:08:53,929 INFO Processing conversation 300/399
+2024-09-17 22:08:53,940 INFO Input sequence length: torch.Size([1, 5397])
+2024-09-17 22:12:16,369 INFO User 3300 processed in 202.44s
+2024-09-17 22:12:16,370 INFO Processing conversation 301/399
+2024-09-17 22:12:16,390 INFO Input sequence length: torch.Size([1, 12357])
+2024-09-17 22:21:04,173 INFO User 3301 processed in 527.80s
+2024-09-17 22:21:04,175 INFO Processing conversation 302/399
+2024-09-17 22:21:04,206 INFO Input sequence length: torch.Size([1, 20429])
+2024-09-17 22:48:10,903 INFO User 3302 processed in 1626.73s
+2024-09-17 22:48:10,905 INFO Processing conversation 303/399
+2024-09-17 22:48:10,924 INFO Input sequence length: torch.Size([1, 10885])
+2024-09-17 22:57:31,188 INFO User 3304 processed in 560.28s
+2024-09-17 22:57:31,190 INFO Processing conversation 304/399
+2024-09-17 22:57:31,216 INFO Input sequence length: torch.Size([1, 15693])
+2024-09-17 23:13:38,019 INFO User 3303 processed in 966.83s
+2024-09-17 23:13:38,021 INFO Processing conversation 305/399
+2024-09-17 23:13:38,067 INFO Input sequence length: torch.Size([1, 20189])
+2024-09-17 23:39:59,292 INFO User 3305 processed in 1581.27s
+2024-09-17 23:39:59,293 INFO Processing conversation 306/399
+2024-09-17 23:39:59,312 INFO Input sequence length: torch.Size([1, 11757])
+2024-09-17 23:48:47,552 INFO User 3306 processed in 528.26s
+2024-09-17 23:48:47,553 INFO Processing conversation 307/399
+2024-09-17 23:48:47,574 INFO Input sequence length: torch.Size([1, 13253])
+2024-09-18 00:03:04,502 INFO User 3307 processed in 856.95s
+2024-09-18 00:03:04,503 INFO Processing conversation 308/399
+2024-09-18 00:03:04,523 INFO Input sequence length: torch.Size([1, 12381])
+2024-09-18 00:16:25,390 INFO User 3309 processed in 800.89s
+2024-09-18 00:16:25,392 INFO Processing conversation 309/399
+2024-09-18 00:16:25,410 INFO Input sequence length: torch.Size([1, 11517])
+2024-09-18 00:27:39,597 INFO User 3308 processed in 674.21s
+2024-09-18 00:27:39,599 INFO Processing conversation 310/399
+2024-09-18 00:27:39,615 INFO Input sequence length: torch.Size([1, 8973])
+2024-09-18 00:37:06,122 INFO User 3310 processed in 566.52s
+2024-09-18 00:37:06,124 INFO Processing conversation 311/399
+2024-09-18 00:37:06,154 INFO Input sequence length: torch.Size([1, 18493])
+2024-09-18 00:58:12,585 INFO User 3311 processed in 1266.46s
+2024-09-18 00:58:12,587 INFO Processing conversation 312/399
+2024-09-18 00:58:12,609 INFO Input sequence length: torch.Size([1, 13533])
+2024-09-18 01:12:46,128 INFO User 3312 processed in 873.54s
+2024-09-18 01:12:46,129 INFO Processing conversation 313/399
+2024-09-18 01:12:46,146 INFO Input sequence length: torch.Size([1, 10325])
+2024-09-18 01:21:00,096 INFO User 3314 processed in 493.97s
+2024-09-18 01:21:00,098 INFO Processing conversation 314/399
+2024-09-18 01:21:00,116 INFO Input sequence length: torch.Size([1, 10629])
+2024-09-18 01:33:30,816 INFO User 3313 processed in 750.72s
+2024-09-18 01:33:30,817 INFO Processing conversation 315/399
+2024-09-18 01:33:30,849 INFO Input sequence length: torch.Size([1, 20317])
+2024-09-18 01:52:49,129 INFO User 3315 processed in 1158.31s
+2024-09-18 01:52:49,131 INFO Processing conversation 316/399
+2024-09-18 01:52:49,146 INFO Input sequence length: torch.Size([1, 8245])
+2024-09-18 02:00:42,911 INFO User 3317 processed in 473.78s
+2024-09-18 02:00:42,913 INFO Processing conversation 317/399
+2024-09-18 02:00:42,930 INFO Input sequence length: torch.Size([1, 10565])
+2024-09-18 02:11:42,898 INFO User 3316 processed in 659.99s
+2024-09-18 02:11:42,899 INFO Processing conversation 318/399
+2024-09-18 02:11:42,915 INFO Input sequence length: torch.Size([1, 7973])
+2024-09-18 02:17:05,087 INFO User 3318 processed in 322.19s
+2024-09-18 02:17:05,088 INFO Processing conversation 319/399
+2024-09-18 02:17:05,116 INFO Input sequence length: torch.Size([1, 17357])
+2024-09-18 02:37:16,745 INFO User 3319 processed in 1211.66s
+2024-09-18 02:37:16,747 INFO Processing conversation 320/399
+2024-09-18 02:37:16,760 INFO Input sequence length: torch.Size([1, 6613])
+2024-09-18 02:41:35,948 INFO User 3320 processed in 259.20s
+2024-09-18 02:41:35,950 INFO Processing conversation 321/399
+2024-09-18 02:41:35,978 INFO Input sequence length: torch.Size([1, 18717])
+2024-09-18 03:07:16,781 INFO User 3321 processed in 1540.83s
+2024-09-18 03:07:16,783 INFO Processing conversation 322/399
+2024-09-18 03:07:16,800 INFO Input sequence length: torch.Size([1, 10133])
+2024-09-18 03:17:24,609 INFO User 3322 processed in 607.83s
+2024-09-18 03:17:24,611 INFO Processing conversation 323/399
+2024-09-18 03:17:24,633 INFO Input sequence length: torch.Size([1, 13661])
+2024-09-18 03:27:09,678 INFO User 3323 processed in 585.07s
+2024-09-18 03:27:09,679 INFO Processing conversation 324/399
+2024-09-18 03:27:09,704 INFO Input sequence length: torch.Size([1, 15677])
+2024-09-18 03:49:27,231 INFO User 3324 processed in 1337.55s
+2024-09-18 03:49:27,233 INFO Processing conversation 325/399
+2024-09-18 03:49:27,252 INFO Input sequence length: torch.Size([1, 11821])
+2024-09-18 03:58:45,942 INFO User 3325 processed in 558.71s
+2024-09-18 03:58:45,943 INFO Processing conversation 326/399
+2024-09-18 03:58:45,958 INFO Input sequence length: torch.Size([1, 8565])
+2024-09-18 04:06:32,947 INFO User 3326 processed in 467.00s
+2024-09-18 04:06:32,949 INFO Processing conversation 327/399
+2024-09-18 04:06:32,974 INFO Input sequence length: torch.Size([1, 17797])
+2024-09-18 04:30:14,571 INFO User 3328 processed in 1421.62s
+2024-09-18 04:30:14,572 INFO Processing conversation 328/399
+2024-09-18 04:30:14,591 INFO Input sequence length: torch.Size([1, 11541])
+2024-09-18 04:37:48,337 INFO User 3327 processed in 453.76s
+2024-09-18 04:37:48,339 INFO Processing conversation 329/399
+2024-09-18 04:37:48,357 INFO Input sequence length: torch.Size([1, 12077])
+2024-09-18 04:50:24,733 INFO User 3329 processed in 756.39s
+2024-09-18 04:50:24,735 INFO Processing conversation 330/399
+2024-09-18 04:50:24,755 INFO Input sequence length: torch.Size([1, 11549])
+2024-09-18 05:02:28,551 INFO User 3330 processed in 723.82s
+2024-09-18 05:02:28,553 INFO Processing conversation 331/399
+2024-09-18 05:02:28,568 INFO Input sequence length: torch.Size([1, 9461])
+2024-09-18 05:12:06,351 INFO User 3331 processed in 577.80s
+2024-09-18 05:12:06,353 INFO Processing conversation 332/399
+2024-09-18 05:12:06,360 INFO Input sequence length: torch.Size([1, 3053])
+2024-09-18 05:13:45,652 INFO User 3333 processed in 99.30s
+2024-09-18 05:13:45,654 INFO Processing conversation 333/399
+2024-09-18 05:13:45,668 INFO Input sequence length: torch.Size([1, 7573])
+2024-09-18 05:19:27,533 INFO User 3332 processed in 341.88s
+2024-09-18 05:19:27,534 INFO Processing conversation 334/399
+2024-09-18 05:19:27,551 INFO Input sequence length: torch.Size([1, 10285])
+2024-09-18 05:24:46,277 INFO User 3334 processed in 318.74s
+2024-09-18 05:24:46,279 INFO Processing conversation 335/399
+2024-09-18 05:24:46,288 INFO Input sequence length: torch.Size([1, 4925])
+2024-09-18 05:27:57,924 INFO User 3335 processed in 191.64s
+2024-09-18 05:27:57,925 INFO Processing conversation 336/399
+2024-09-18 05:27:57,940 INFO Input sequence length: torch.Size([1, 8149])
+2024-09-18 05:32:33,316 INFO User 3336 processed in 275.39s
+2024-09-18 05:32:33,318 INFO Processing conversation 337/399
+2024-09-18 05:32:33,330 INFO Input sequence length: torch.Size([1, 6189])
+2024-09-18 05:35:56,300 INFO User 3337 processed in 202.98s
+2024-09-18 05:35:56,302 INFO Processing conversation 338/399
+2024-09-18 05:35:56,330 INFO Input sequence length: torch.Size([1, 19781])
+2024-09-18 06:07:05,569 INFO User 3338 processed in 1869.27s
+2024-09-18 06:07:05,571 INFO Processing conversation 339/399
+2024-09-18 06:07:05,598 INFO Input sequence length: torch.Size([1, 15597])
+2024-09-18 06:29:02,920 INFO User 3339 processed in 1317.35s
+2024-09-18 06:29:02,921 INFO Processing conversation 340/399
+2024-09-18 06:29:02,935 INFO Input sequence length: torch.Size([1, 8477])
+2024-09-18 06:35:50,609 INFO User 3340 processed in 407.69s
+2024-09-18 06:35:50,611 INFO Processing conversation 341/399
+2024-09-18 06:35:50,627 INFO Input sequence length: torch.Size([1, 10645])
+2024-09-18 06:46:00,761 INFO User 3341 processed in 610.15s
+2024-09-18 06:46:00,763 INFO Processing conversation 342/399
+2024-09-18 06:46:00,782 INFO Input sequence length: torch.Size([1, 11805])
+2024-09-18 06:55:36,666 INFO User 3343 processed in 575.90s
+2024-09-18 06:55:36,667 INFO Processing conversation 343/399
+2024-09-18 06:55:36,681 INFO Input sequence length: torch.Size([1, 6749])
+2024-09-18 07:00:47,331 INFO User 3342 processed in 310.66s
+2024-09-18 07:00:47,332 INFO Processing conversation 344/399
+2024-09-18 07:00:47,351 INFO Input sequence length: torch.Size([1, 12165])
+2024-09-18 07:13:27,533 INFO User 3344 processed in 760.20s
+2024-09-18 07:13:27,535 INFO Processing conversation 345/399
+2024-09-18 07:13:27,566 INFO Input sequence length: torch.Size([1, 19781])
+2024-09-18 07:41:08,369 INFO User 3345 processed in 1660.83s
+2024-09-18 07:41:08,371 INFO Processing conversation 346/399
+2024-09-18 07:41:08,385 INFO Input sequence length: torch.Size([1, 7725])
+2024-09-18 07:45:59,098 INFO User 3347 processed in 290.73s
+2024-09-18 07:45:59,100 INFO Processing conversation 347/399
+2024-09-18 07:45:59,117 INFO Input sequence length: torch.Size([1, 10621])
+2024-09-18 07:54:01,633 INFO User 3346 processed in 482.53s
+2024-09-18 07:54:01,634 INFO Processing conversation 348/399
+2024-09-18 07:54:01,651 INFO Input sequence length: torch.Size([1, 9261])
+2024-09-18 07:57:59,962 INFO User 3348 processed in 238.33s
+2024-09-18 07:57:59,964 INFO Processing conversation 349/399
+2024-09-18 07:57:59,979 INFO Input sequence length: torch.Size([1, 8677])
+2024-09-18 08:05:23,890 INFO User 3349 processed in 443.93s
+2024-09-18 08:05:23,891 INFO Processing conversation 350/399
+2024-09-18 08:05:23,899 INFO Input sequence length: torch.Size([1, 3293])
+2024-09-18 08:06:50,653 INFO User 3350 processed in 86.76s
+2024-09-18 08:06:50,654 INFO Processing conversation 351/399
+2024-09-18 08:06:50,670 INFO Input sequence length: torch.Size([1, 8245])
+2024-09-18 08:13:01,045 INFO User 3351 processed in 370.39s
+2024-09-18 08:13:01,047 INFO Processing conversation 352/399
+2024-09-18 08:13:01,066 INFO Input sequence length: torch.Size([1, 11773])
+2024-09-18 08:25:16,092 INFO User 3352 processed in 735.04s
+2024-09-18 08:25:16,093 INFO Processing conversation 353/399
+2024-09-18 08:25:16,105 INFO Input sequence length: torch.Size([1, 5557])
+2024-09-18 08:29:40,592 INFO User 3353 processed in 264.50s
+2024-09-18 08:29:40,594 INFO Processing conversation 354/399
+2024-09-18 08:29:40,615 INFO Input sequence length: torch.Size([1, 13677])
+2024-09-18 08:41:57,154 INFO User 3354 processed in 736.56s
+2024-09-18 08:41:57,156 INFO Processing conversation 355/399
+2024-09-18 08:41:57,176 INFO Input sequence length: torch.Size([1, 12885])
+2024-09-18 08:49:32,714 INFO User 3355 processed in 455.56s
+2024-09-18 08:49:32,716 INFO Processing conversation 356/399
+2024-09-18 08:49:32,737 INFO Input sequence length: torch.Size([1, 13517])
+2024-09-18 09:03:16,918 INFO User 3356 processed in 824.20s
+2024-09-18 09:03:16,920 INFO Processing conversation 357/399
+2024-09-18 09:03:16,938 INFO Input sequence length: torch.Size([1, 10653])
+2024-09-18 09:14:22,649 INFO User 3358 processed in 665.73s
+2024-09-18 09:14:22,651 INFO Processing conversation 358/399
+2024-09-18 09:14:22,673 INFO Input sequence length: torch.Size([1, 15437])
+2024-09-18 09:32:44,473 INFO User 3357 processed in 1101.82s
+2024-09-18 09:32:44,475 INFO Processing conversation 359/399
+2024-09-18 09:32:44,492 INFO Input sequence length: torch.Size([1, 9957])
+2024-09-18 09:39:35,355 INFO User 3359 processed in 410.88s
+2024-09-18 09:39:35,357 INFO Processing conversation 360/399
+2024-09-18 09:39:35,369 INFO Input sequence length: torch.Size([1, 5325])
+2024-09-18 09:41:51,891 INFO User 3360 processed in 136.53s
+2024-09-18 09:41:51,892 INFO Processing conversation 361/399
+2024-09-18 09:41:51,910 INFO Input sequence length: torch.Size([1, 11653])
+2024-09-18 09:53:57,432 INFO User 3363 processed in 725.54s
+2024-09-18 09:53:57,434 INFO Processing conversation 362/399
+2024-09-18 09:53:57,456 INFO Input sequence length: torch.Size([1, 13933])
+2024-09-18 10:09:43,707 INFO User 3361 processed in 946.27s
+2024-09-18 10:09:43,709 INFO Processing conversation 363/399
+2024-09-18 10:09:43,726 INFO Input sequence length: torch.Size([1, 10845])
+2024-09-18 10:19:06,749 INFO User 3362 processed in 563.04s
+2024-09-18 10:19:06,750 INFO Processing conversation 364/399
+2024-09-18 10:19:06,768 INFO Input sequence length: torch.Size([1, 10045])
+2024-09-18 10:30:02,153 INFO User 3364 processed in 655.40s
+2024-09-18 10:30:02,155 INFO Processing conversation 365/399
+2024-09-18 10:30:02,184 INFO Input sequence length: torch.Size([1, 19293])
+2024-09-18 10:57:36,725 INFO User 3365 processed in 1654.57s
+2024-09-18 10:57:36,727 INFO Processing conversation 366/399
+2024-09-18 10:57:36,747 INFO Input sequence length: torch.Size([1, 13117])
+2024-09-18 11:11:48,011 INFO User 3367 processed in 851.28s
+2024-09-18 11:11:48,012 INFO Processing conversation 367/399
+2024-09-18 11:11:48,030 INFO Input sequence length: torch.Size([1, 11653])
+2024-09-18 11:22:29,143 INFO User 3366 processed in 641.13s
+2024-09-18 11:22:29,144 INFO Processing conversation 368/399
+2024-09-18 11:22:29,167 INFO Input sequence length: torch.Size([1, 13565])
+2024-09-18 11:34:18,259 INFO User 3368 processed in 709.11s
+2024-09-18 11:34:18,261 INFO Processing conversation 369/399
+2024-09-18 11:34:18,273 INFO Input sequence length: torch.Size([1, 6277])
+2024-09-18 11:39:00,865 INFO User 3369 processed in 282.60s
+2024-09-18 11:39:00,867 INFO Processing conversation 370/399
+2024-09-18 11:39:00,894 INFO Input sequence length: torch.Size([1, 17645])
+2024-09-18 12:02:51,813 INFO User 3370 processed in 1430.95s
+2024-09-18 12:02:51,815 INFO Processing conversation 371/399
+2024-09-18 12:02:51,841 INFO Input sequence length: torch.Size([1, 17053])
+2024-09-18 12:29:03,688 INFO User 3371 processed in 1571.87s
+2024-09-18 12:29:03,690 INFO Processing conversation 372/399
+2024-09-18 12:29:03,704 INFO Input sequence length: torch.Size([1, 9165])
+2024-09-18 12:41:34,253 INFO User 3372 processed in 750.56s
+2024-09-18 12:41:34,254 INFO Processing conversation 373/399
+2024-09-18 12:41:34,267 INFO Input sequence length: torch.Size([1, 6333])
+2024-09-18 12:50:45,001 INFO User 3373 processed in 550.75s
+2024-09-18 12:50:45,003 INFO Processing conversation 374/399
+2024-09-18 12:50:45,027 INFO Input sequence length: torch.Size([1, 14405])
+2024-09-18 13:17:33,320 INFO User 3374 processed in 1608.32s
+2024-09-18 13:17:33,322 INFO Processing conversation 375/399
+2024-09-18 13:17:33,338 INFO Input sequence length: torch.Size([1, 8605])
+2024-09-18 13:26:39,683 INFO User 3375 processed in 546.36s
+2024-09-18 13:26:39,684 INFO Processing conversation 376/399
+2024-09-18 13:26:39,703 INFO Input sequence length: torch.Size([1, 10605])
+2024-09-18 13:37:08,280 INFO User 3376 processed in 628.60s
+2024-09-18 13:37:08,281 INFO Processing conversation 377/399
+2024-09-18 13:37:08,297 INFO Input sequence length: torch.Size([1, 9045])
+2024-09-18 13:47:58,163 INFO User 3377 processed in 649.88s
+2024-09-18 13:47:58,165 INFO Processing conversation 378/399
+2024-09-18 13:47:58,192 INFO Input sequence length: torch.Size([1, 16301])
+2024-09-18 14:08:08,538 INFO User 3378 processed in 1210.37s
+2024-09-18 14:08:08,540 INFO Processing conversation 379/399
+2024-09-18 14:08:08,569 INFO Input sequence length: torch.Size([1, 19021])
+2024-09-18 14:40:02,901 INFO User 3379 processed in 1914.36s
+2024-09-18 14:40:02,903 INFO Processing conversation 380/399
+2024-09-18 14:40:02,922 INFO Input sequence length: torch.Size([1, 11349])
+2024-09-18 14:54:22,090 INFO User 3380 processed in 859.19s
+2024-09-18 14:54:22,092 INFO Processing conversation 381/399
+2024-09-18 14:54:22,123 INFO Input sequence length: torch.Size([1, 20117])
+2024-09-18 15:26:05,281 INFO User 3381 processed in 1903.19s
+2024-09-18 15:26:05,283 INFO Processing conversation 382/399
+2024-09-18 15:26:05,317 INFO Input sequence length: torch.Size([1, 22277])
+2024-09-18 16:02:37,570 INFO User 3382 processed in 2192.29s
+2024-09-18 16:02:37,572 INFO Processing conversation 383/399
+2024-09-18 16:02:37,590 INFO Input sequence length: torch.Size([1, 10301])
+2024-09-18 16:12:53,083 INFO User 3384 processed in 615.51s
+2024-09-18 16:12:53,085 INFO Processing conversation 384/399
+2024-09-18 16:12:53,099 INFO Input sequence length: torch.Size([1, 8549])
+2024-09-18 16:18:27,177 INFO User 3383 processed in 334.09s
+2024-09-18 16:18:27,179 INFO Processing conversation 385/399
+2024-09-18 16:18:27,213 INFO Input sequence length: torch.Size([1, 20317])
+2024-09-18 16:46:46,805 INFO User 3385 processed in 1699.63s
+2024-09-18 16:46:46,806 INFO Processing conversation 386/399
+2024-09-18 16:46:46,827 INFO Input sequence length: torch.Size([1, 12621])
+2024-09-18 17:01:27,793 INFO User 3386 processed in 880.99s
+2024-09-18 17:01:27,795 INFO Processing conversation 387/399
+2024-09-18 17:01:27,811 INFO Input sequence length: torch.Size([1, 10637])
+2024-09-18 17:10:52,016 INFO User 3387 processed in 564.22s
+2024-09-18 17:10:52,018 INFO Processing conversation 388/399
+2024-09-18 17:10:52,041 INFO Input sequence length: torch.Size([1, 15117])
+2024-09-18 17:22:50,189 INFO User 3388 processed in 718.17s
+2024-09-18 17:22:50,191 INFO Processing conversation 389/399
+2024-09-18 17:22:50,214 INFO Input sequence length: torch.Size([1, 15333])
+2024-09-18 17:42:09,164 INFO User 3389 processed in 1158.97s
+2024-09-18 17:42:09,166 INFO Processing conversation 390/399
+2024-09-18 17:42:09,194 INFO Input sequence length: torch.Size([1, 17213])
+2024-09-18 18:03:03,393 INFO User 3390 processed in 1254.23s
+2024-09-18 18:03:03,394 INFO Processing conversation 391/399
+2024-09-18 18:03:03,405 INFO Input sequence length: torch.Size([1, 4853])
+2024-09-18 18:06:00,499 INFO User 3391 processed in 177.10s
+2024-09-18 18:06:00,501 INFO Processing conversation 392/399
+2024-09-18 18:06:00,517 INFO Input sequence length: torch.Size([1, 9205])
+2024-09-18 18:13:14,842 INFO User 3392 processed in 434.34s
+2024-09-18 18:13:14,844 INFO Processing conversation 393/399
+2024-09-18 18:13:14,871 INFO Input sequence length: torch.Size([1, 17413])
+2024-09-18 18:49:28,927 INFO User 3393 processed in 2174.08s
+2024-09-18 18:49:28,929 INFO Processing conversation 394/399
+2024-09-18 18:49:28,946 INFO Input sequence length: torch.Size([1, 10389])
+2024-09-18 18:56:25,779 INFO User 3395 processed in 416.85s
+2024-09-18 18:56:25,781 INFO Processing conversation 395/399
+2024-09-18 18:56:25,806 INFO Input sequence length: torch.Size([1, 16797])
+2024-09-18 19:18:31,681 INFO User 3394 processed in 1325.90s
+2024-09-18 19:18:31,683 INFO Processing conversation 396/399
+2024-09-18 19:18:31,693 INFO Input sequence length: torch.Size([1, 5645])
+2024-09-18 19:22:52,286 INFO User 3396 processed in 260.60s
+2024-09-18 19:22:52,287 INFO Processing conversation 397/399
+2024-09-18 19:22:52,306 INFO Input sequence length: torch.Size([1, 12501])
+2024-09-18 19:32:48,048 INFO User 3397 processed in 595.76s
+2024-09-18 19:32:48,049 INFO Processing conversation 398/399
+2024-09-18 19:32:48,069 INFO Input sequence length: torch.Size([1, 12797])
+2024-09-18 19:46:06,724 INFO User 3398 processed in 798.67s
+2024-09-18 19:46:06,725 INFO Processing conversation 399/399
+2024-09-18 19:46:06,736 INFO Input sequence length: torch.Size([1, 5485])
+2024-09-18 19:49:46,388 INFO User 3399 processed in 219.66s
+2024-09-18 19:49:46,389 INFO Failed conversations: []
+2024-09-18 19:49:46,943 INFO Saving results to generated_datasetD_test_3000-5999_range(200, 400).csv.gz
+2024-09-18 19:49:47,174 INFO Results saved to generated_datasetD_test_3000-5999_range(200, 400).csv.gz
