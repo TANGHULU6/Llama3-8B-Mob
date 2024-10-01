@@ -1,0 +1,34 @@
+
+2024-09-20 03:41:45,801 INFO Initializing model and tokenizer...
+==((====))==  Unsloth: Fast Llama patching release 2024.7
+   \\   /|    GPU: NVIDIA RTX A6000. Max memory: 47.536 GB. Platform = Linux.
+O^O/ \_/ \    Pytorch: 2.3.0+cu121. CUDA = 8.6. CUDA Toolkit = 12.1.
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.26.post1. FA2 = False]
+ "-____-"     Free Apache license: http://github.com/unslothai/unsloth
+Unsloth: unsloth/llama-3-8b-Instruct-bnb-4bit can only handle sequence lengths of at most 8192.
+But with kaiokendev's RoPE scaling of 6.104, it can be magically be extended to 50000!
+Unsloth 2024.7 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
+2024-09-20 03:41:55,734 INFO Model and tokenizer initialized successfully.
+2024-09-20 03:41:55,735 INFO Starting inference from index 2300 to 2399 on dataset datasetD_test_3000-5999.json
+2024-09-20 03:41:55,735 INFO Loading dataset from datasetD_test_3000-5999.json...
+2024-09-20 03:41:56,890 INFO Dataset loaded with 3000 conversations.
+2024-09-20 03:41:56,893 INFO Loaded dataset datasetD_test_3000-5999.json with 3000 conversations
+2024-09-20 03:41:56,894 INFO Selected subset of dataset from index 2300 to 2400
+Map: 100%|███████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 2408.24 examples/s]
+2024-09-20 03:41:56,944 INFO Applied formatting prompts function to dataset
+2024-09-20 03:41:56,944 INFO Total conversations to process: 100
+2024-09-20 03:41:56,945 INFO Processing conversation 2300/2399
+2024-09-20 03:41:56,960 INFO Input sequence length: torch.Size([1, 7349])
+2024-09-20 03:44:19,199 INFO User 5300 processed in 142.25s
+2024-09-20 03:44:19,204 INFO Processing conversation 2301/2399
+2024-09-20 03:44:19,234 INFO Input sequence length: torch.Size([1, 15917])
+**************************************************Result Report**************************************************
+geobleu: 0.0
+dtw: 7229.185834613599
+*****************************************************************************************************************
+**************************************************Result Report**************************************************
+2024-09-20 03:53:23,460 INFO User 5301 processed in 544.26s
+2024-09-20 03:53:23,464 INFO Processing conversation 2302/2399
+2024-09-20 03:53:23,506 INFO Input sequence length: torch.Size([1, 15885])
+geobleu: 0.0
+dtw: 16043.900778597976
