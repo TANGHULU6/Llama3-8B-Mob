@@ -1,0 +1,300 @@
+{
+    "os": "Linux-5.15.0-122-generic-x86_64-with-glibc2.31",
+    "python": "3.10.14",
+    "heartbeatAt": "2024-10-03T09:29:10.277767",
+    "startedAt": "2024-10-03T09:29:09.558980",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/geo_llm/llama3-finetune/Evaluate_Llama3.py",
+    "codePathLocal": "Evaluate_Llama3.py",
+    "codePath": "Evaluate_Llama3.py",
+    "git": {
+        "remote": "git@github.com:TANGHULU6/llama-finetune.git",
+        "commit": "df8e11a000b4095dceb2b5d54fff431a007a9162"
+    },
+    "email": "12110502@mail.sustech.edu.cn",
+    "root": "/home/geo_llm/llama3-finetune",
+    "host": "dl-rooster",
+    "username": "geo_llm",
+    "executable": "/home/geo_llm/anaconda3/envs/unsloth_env/bin/python",
+    "cpu_count": 24,
+    "cpu_count_logical": 48,
+    "cpu_freq": {
+        "current": 0.8176458333333332,
+        "min": 800.0,
+        "max": 3300.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.9,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1.2,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.936,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 2.1,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 0.8,
+            "min": 800.0,
+            "max": 3300.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 1832.2072448730469,
+            "used": 1432.3693885803223
+        }
+    },
+    "gpu": "NVIDIA RTX A6000",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        },
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        },
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        },
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        }
+    ],
+    "memory": {
+        "total": 314.24968338012695
+    }
+}

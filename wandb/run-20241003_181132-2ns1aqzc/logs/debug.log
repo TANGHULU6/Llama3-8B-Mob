@@ -23,3 +23,13 @@ config: {}
 2024-10-03 18:11:41,481 INFO    MainThread:120618 [wandb_run.py:_redirect():2374] Wrapping output streams.
 2024-10-03 18:11:41,481 INFO    MainThread:120618 [wandb_run.py:_redirect():2399] Redirects installed.
 2024-10-03 18:11:41,483 INFO    MainThread:120618 [wandb_init.py:init():894] run started, returning control to user process
+2024-10-03 18:21:08,601 INFO    MainThread:120618 [wandb_run.py:_finish():2160] finishing run tanghulu/HuMob2024/2ns1aqzc
+2024-10-03 18:21:08,601 INFO    MainThread:120618 [wandb_run.py:_atexit_cleanup():2424] got exitcode: 0
+2024-10-03 18:21:08,601 INFO    MainThread:120618 [wandb_run.py:_restore():2406] restore
+2024-10-03 18:21:08,601 INFO    MainThread:120618 [wandb_run.py:_restore():2412] restore done
+2024-10-03 18:21:08,601 INFO    MainThread:120618 [wandb_run.py:_on_finish():2677] communicating current version
+2024-10-03 18:21:08,663 INFO    MainThread:120618 [wandb_run.py:_on_finish():2686] got version response upgrade_message: "wandb version 0.18.3 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-10-03 18:21:17,568 INFO    MainThread:120618 [wandb_run.py:_footer_history_summary_info():4078] rendering history
+2024-10-03 18:21:17,569 INFO    MainThread:120618 [wandb_run.py:_footer_history_summary_info():4110] rendering summary
+2024-10-03 18:21:17,581 INFO    MainThread:120618 [wandb_run.py:_footer_sync_info():4037] logging synced files
