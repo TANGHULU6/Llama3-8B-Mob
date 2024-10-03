@@ -8,7 +8,7 @@ from unsloth.chat_templates import get_chat_template
 import torch
 import wandb
 
-wandb.init(project="HuMob2024", name="B_finetune_B")
+wandb.init(project="HuMob2024", name="B_finetune_C")
 # 假设 `model` 和 `tokenizer` 已经初始化
 max_seq_length = 50000  # Choose any! We auto support RoPE Scaling internally!
 dtype = (
@@ -71,8 +71,8 @@ def formatting_prompts_func(examples):
 
 l_idx, r_idx = 0, 100
 # city = "datasetD_eval_2400-2999.json"
-city = "datasetB_eval_17600-21999.json"
-# city = "datasetC_eval_13600-16999.json"
+# city = "datasetB_eval_17600-21999.json"
+city = "datasetC_eval_13600-16999.json"
 test_dataset = load_custom_dataset(city)
 test_dataset = test_dataset.select(range(l_idx, r_idx))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)
@@ -86,15 +86,17 @@ geobleu_scores = []
 dtw_scores = []
 failed = []
 times = []
-wandb_table = wandb.Table(columns=[
-    "conversation_id", 
-    "processing_time", 
-    "generated_response", 
-    "reference_response", 
-    "geobleu", 
-    "dtw", 
-    "Input_sequence_length"
-])
+wandb_table = wandb.Table(
+    columns=[
+        "conversation_id",
+        "processing_time",
+        "generated_response",
+        "reference_response",
+        "geobleu",
+        "dtw",
+        "Input_sequence_length",
+    ]
+)
 for i, conversation in enumerate(test_dataset):
     start_time = time.time()
     max_retries = 3
@@ -160,15 +162,15 @@ for i, conversation in enumerate(test_dataset):
             print(f"{i + 1} test conversation: {elapsed_time}s")
             times.append(elapsed_time)
             wandb_table.add_data(
-                    i + 1,  # conversation_id
-                    elapsed_time,  # processing_time
-                    json.dumps(assistant_json),
-                    json.dumps(reference_json),
-                    geobleu_val,  # geobleu score
-                    dtw_val,  # dtw score
-                    inputs.shape[1],  # 输入序列长度
-                )
-            wandb.log({"Table": wandb_table})
+                i + 1,  # conversation_id
+                elapsed_time,  # processing_time
+                json.dumps(assistant_json),
+                json.dumps(reference_json),
+                geobleu_val,  # geobleu score
+                dtw_val,  # dtw score
+                inputs.shape[1],  # 输入序列长度
+            )
+            used_memory = round(torch.cuda.max_memory_reserved() / 1024 / 1024 / 1024, 6)
             wandb.log(
                 {
                     "conversation_id": i + 1,
@@ -176,6 +178,7 @@ for i, conversation in enumerate(test_dataset):
                     "geobleu": geobleu_val,
                     "dtw": dtw_val,
                     "Input_sequence_length": inputs.shape[1],
+                    "Peak reserved memory": used_memory,
                 }
             )
             break
@@ -195,6 +198,7 @@ print(set(failed))
 # # 保存为 JSON 文件
 # with open(f'generated_{city[:-5]}_range({l_idx}, {r_idx}).json', 'w', encoding='utf-8') as f:
 #     json.dump(results, f, ensure_ascii=False, indent=4)
+wandb.log({"Table": wandb_table})
 wandb.summary["failed_conversations_count"] = len(failed)
 wandb.summary["failed_conversations_ids"] = set(failed)
 
