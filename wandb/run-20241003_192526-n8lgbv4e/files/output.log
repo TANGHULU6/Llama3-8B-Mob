@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/geo_llm/llama3-finetune/Evaluate_Llama3.py", line 19, in <module>
+    model, tokenizer = FastLanguageModel.from_pretrained(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/unsloth/models/loader.py", line 117, in from_pretrained
+    raise RuntimeError(
+RuntimeError: Unsloth: `artifacts/model-worthy-frog-8:v68` is not a base model or a PEFT model.
+We could not locate a `config.json` or `adapter_config.json` file.
+Are you certain the model name is correct? Does it actually exist?
+Traceback (most recent call last):
+  File "/home/geo_llm/llama3-finetune/Evaluate_Llama3.py", line 19, in <module>
+    model, tokenizer = FastLanguageModel.from_pretrained(
+  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/unsloth/models/loader.py", line 117, in from_pretrained
+    raise RuntimeError(
+RuntimeError: Unsloth: `artifacts/model-worthy-frog-8:v68` is not a base model or a PEFT model.
+We could not locate a `config.json` or `adapter_config.json` file.
+Are you certain the model name is correct? Does it actually exist?
