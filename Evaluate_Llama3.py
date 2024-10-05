@@ -8,7 +8,9 @@ from unsloth.chat_templates import get_chat_template
 import torch
 import wandb
 
-wandb.init(project="HuMob2024", name="B_finetune_C")
+run = wandb.init(project="HuMob2024", name="D_finetune_C")
+# artifact = run.use_artifact('tanghulu/HuMob2024cityD/model-B_eval_loss:v19', type='model')
+# artifact_dir = artifact.download()
 # 假设 `model` 和 `tokenizer` 已经初始化
 max_seq_length = 50000  # Choose any! We auto support RoPE Scaling internally!
 dtype = (
@@ -17,7 +19,7 @@ dtype = (
 load_in_4bit = True  # Use 4bit quantization to reduce memory usage. Can be False.
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name="artifacts/model-misunderstood-snowball-4:v88",  # YOUR MODEL YOU USED FOR TRAINING
+    model_name="artifacts/model-B_eval_loss:v19",  # YOUR MODEL YOU USED FOR TRAINING
     max_seq_length=max_seq_length,
     dtype=dtype,
     load_in_4bit=load_in_4bit,
