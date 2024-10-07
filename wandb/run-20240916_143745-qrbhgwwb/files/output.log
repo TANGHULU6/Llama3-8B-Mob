@@ -1,8 +1,0 @@
-
-2024-09-16 14:37:49,312 INFO Initializing model and tokenizer...
-==((====))==  Unsloth: Fast Llama patching release 2024.7
-   \\   /|    GPU: NVIDIA RTX A6000. Max memory: 47.536 GB. Platform = Linux.
-O^O/ \_/ \    Pytorch: 2.3.0+cu121. CUDA = 8.6. CUDA Toolkit = 12.1.
-\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.26.post1. FA2 = False]
- "-____-"     Free Apache license: http://github.com/unslothai/unsloth
-Unsloth: unsloth/llama-3-8b-Instruct-bnb-4bit can only handle sequence lengths of at most 8192.

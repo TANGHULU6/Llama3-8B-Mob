@@ -1,8 +1,0 @@
-[34m[1mwandb[39m[22m: Downloading large artifact model-A_eval:epoch_8.0, 250.87MB. 11 files...
-[34m[1mwandb[39m[22m:   11 of 11 files downloaded.
-Done. 0:0:0.4
-Traceback (most recent call last):
-  File "/home/geo_llm/llama3-finetune/HuMob_wandb.py", line 169, in <module>
-    trainer.train(resume_from_checkpoint=artifact_dir)
-  File "<string>", line 40, in train
-RuntimeError: Unsloth currently does not support multi GPU setups - but we are working on it!

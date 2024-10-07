@@ -1,7 +1,0 @@
-[34m[1mwandb[39m[22m: Downloading large artifact model-worthy-frog-8:final_model, 168.79MB. 8 files...
-[34m[1mwandb[39m[22m:   8 of 8 files downloaded.
-Done. 0:0:0.4
-Traceback (most recent call last):
-  File "/home/geo_llm/llama3-finetune/HuMob_wandb_final.py", line 170, in <module>
-    model.save_pretrained("cityC")
-NameError: name 'model' is not defined
