@@ -1,9 +1,0 @@
-
-[34m[1mwandb[39m[22m:   1 of 1 files downloaded.
-Traceback (most recent call last):
-  File "/home/geo_llm/llama3-finetune/HuMob_wandb.py", line 181, in <module>
-    trainer.train(resume_from_checkpoint=artifact_dir)
-  File "<string>", line 98, in train
-  File "/home/geo_llm/anaconda3/envs/unsloth_env/lib/python3.10/site-packages/transformers/trainer.py", line 2513, in _load_from_checkpoint
-    raise ValueError(f"Can't find a valid checkpoint at {resume_from_checkpoint}")
-ValueError: Can't find a valid checkpoint at /home/geo_llm/llama3-finetune/artifacts/model-First:v0
