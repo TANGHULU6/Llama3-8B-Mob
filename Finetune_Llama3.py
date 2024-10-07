@@ -65,18 +65,16 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 
 model = FastLanguageModel.get_peft_model(
     model,
-    r = 128, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
+    r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
     target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
-                      "gate_proj", "up_proj", "down_proj",
-                    #   "embed_tokens", 
-                      "lm_head",], # Add for continual pretraining
-    lora_alpha = 32,
+                      "gate_proj", "up_proj", "down_proj",],
+    lora_alpha = 16,
     lora_dropout = 0, # Supports any, but = 0 is optimized
     bias = "none",    # Supports any, but = "none" is optimized
     # [NEW] "unsloth" uses 30% less VRAM, fits 2x larger batch sizes!
     use_gradient_checkpointing = "unsloth", # True or "unsloth" for very long context
     random_state = 3407,
-    use_rslora = True,   # We support rank stabilized LoRA
+    use_rslora = False,  # We support rank stabilized LoRA
     loftq_config = None, # And LoftQ
 )
 
@@ -122,11 +120,6 @@ def formatting_prompts_func(examples):
             raise e
     return {"text": texts}
 
-def filter_conversations(example):
-    convos = example["conversations"]
-    total_length = sum(len(msg["content"]) for msg in convos)
-    return total_length <= max_seq_length
-
 # Initialize the tokenizer with the correct chat template
 tokenizer = get_chat_template(
     tokenizer,
@@ -135,9 +128,8 @@ tokenizer = get_chat_template(
 )
 
 # Load and format the custom dataset
-train_dataset = load_custom_dataset("datasetB_train_0-17599.json")
-# train_dataset = train_dataset.select(range(0, 2000))
-train_dataset = train_dataset.filter(filter_conversations)
+train_dataset = load_custom_dataset("datasetA.json")
+train_dataset = train_dataset.select(range(0, 2000))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
 test_dataset = load_custom_dataset("datasetB_eval_17600-21999.json")
 test_dataset = test_dataset.select(range(0, 100))
@@ -197,9 +189,8 @@ Now let's use Huggingface TRL's `SFTTrainer`! More docs here: [TRL SFT docs](htt
 from trl import SFTTrainer
 from transformers import TrainingArguments
 from unsloth import is_bfloat16_supported
-from unsloth import UnslothTrainer, UnslothTrainingArguments
 
-trainer = UnslothTrainer(
+trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
     train_dataset = train_dataset,
@@ -207,13 +198,12 @@ trainer = UnslothTrainer(
     max_seq_length = max_seq_length,
     dataset_num_proc = 8,
     packing = False, # Can make training 5x faster for short sequences.
-    args = UnslothTrainingArguments(
+    args = TrainingArguments(
         per_device_train_batch_size = 1,
         gradient_accumulation_steps = 4,
         warmup_steps = 5,
-        num_train_epochs = 1,
-        learning_rate = 5e-5,
-        embedding_learning_rate = 5e-6, # 2-10x smaller than learning_rate
+        num_train_epochs = 5,
+        learning_rate = 2e-4,
         fp16 = not is_bfloat16_supported(),
         bf16 = is_bfloat16_supported(),
         logging_steps = 1,
@@ -299,7 +289,7 @@ To save the final model as LoRA adapters, either use Huggingface's `push_to_hub`
 **[NOTE]** This ONLY saves the LoRA adapters, and not the full model. To save to 16bit or GGUF, scroll down!
 """
 
-model.save_pretrained("lora_model_cityB_plus") # Local saving
+model.save_pretrained("lora_model_cityA_maxseq_50000_0-2000*5") # Local saving
 # model.push_to_hub("your_name/lora_model", token = "...") # Online saving
 
 """Now if you want to load the LoRA adapters we just saved for inference, set `False` to `True`:"""
@@ -382,9 +372,9 @@ for i, conversation in enumerate(test_dataset):
 avg_geobleu = sum(geobleu_scores) / len(geobleu_scores)
 avg_dtw = sum(dtw_scores) / len(dtw_scores)
 print(f"avg {len(dtw_scores)} dtw: {avg_dtw}; avg {len(geobleu_scores)} geobleu: {avg_geobleu}.")
-# # 保存为 JSON 文件
-# with open('generated_text.json', 'w', encoding='utf-8') as f:
-#     json.dump(results, f, ensure_ascii=False, indent=4)
+# 保存为 JSON 文件
+with open('generated_text.json', 'w', encoding='utf-8') as f:
+    json.dump(results, f, ensure_ascii=False, indent=4)
     
 
 """You can also use Hugging Face's `AutoModelForPeftCausalLM`. Only use this if you do not have `unsloth` installed. It can be hopelessly slow, since `4bit` model downloading is not supported, and Unsloth's **inference is 2x faster**."""
