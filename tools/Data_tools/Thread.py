@@ -1,15 +1,60 @@
 import json
-import time
-from datasets.humanMobility.LoadData import load_data_for_gpt_prediction, get_datasets_for_gpt
-from datasets.humanMobility.SaveData import fix_llama_output, save_gpt_init, save_gpt_predictions
-
-from model.Evaluation.Llama import chat
-from utils.geobleu.Report import report_geobleu_dtw_gpt, save_geobleu_dtw
-from utils.pytorchtools import run_torchrun
-from utils.update_input import organise_input
-import time
-import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
+import pandas as pd
+
+def load_data_for_gpt_prediction(filepath, uid):
+    # 加载数据
+    df = pd.read_csv(filepath)
+
+    # 筛选特定 uid 的数据
+    df = df[df['uid'] == uid]
+
+    df = df.astype(int)
+
+    return df
+
+def get_datasets_for_gpt(df, train_days, test_days, predict_steps=15):
+    train_df = df[df['d'].isin(range(train_days[0], train_days[1] + 1))]
+    test_df = df[df['d'].isin(range(test_days[0], test_days[1] + 1))]
+
+    train_df = train_df.sort_values(by=['d', 't']).reset_index(drop=True)
+    test_df = test_df.sort_values(by=['d', 't']).reset_index(drop=True)
+
+    # Split into train and test
+    train = train_df
+    # test_o = test_df.iloc[:predict_steps, :]
+    test_o = test_df
+    test = test_o.copy()
+    test.loc[:, ['x', 'y']] = 999
+
+    return (train, test), test_o
+
+def df_to_sequence_string(df):
+    df = df.drop(columns=['uid'], errors='ignore')
+
+    # Function to convert each value to int if possible, otherwise keep as is
+    def to_int(x):
+        try:
+            return int(x)
+        except:
+            return x
+
+    # Convert the DataFrame header to a string
+    header_string = ' '.join(df.columns.astype(str))
+
+    # Apply the conversion to int, then to string, and finally join with spaces for each row
+    predictions = df.map(to_int).astype(str).apply(lambda row: ' '.join(row), axis=1).tolist()
+
+    # Join the list of strings with a newline character, starting with the header
+    return header_string + '\n' + '\n'.join(predictions)
+
+def organise_input(data):
+    sequence, test = data
+    combined_df = pd.concat([sequence, test])
+
+    input_str = df_to_sequence_string(combined_df)
+    return input_str
 
 class LlamaInvoker:
 
@@ -24,17 +69,7 @@ class LlamaInvoker:
         self.max_uid = 60000
         self.train_days = [0, 59]
         self.test_days = [60, 74]
-        self.steps = data_config["steps"]
-
-        # Model Configuration
-        model_config = config["model_config"]
-        self.ckpt_dir = model_config["ckpt_dir"]
-        self.tokenizer_path = model_config["tokenizer_path"]
-        self.max_seq_len = model_config["max_seq_len"]
-        self.max_batch_size = model_config["max_batch_size"]
-        self.temp = model_config["temp"]
-        self.top_p = model_config["top_p"]
-        self.max_gen_len = model_config.get("max_gen_len", None)  # 默认值为 None
+        # self.steps = data_config["steps"]
 
         print("==================================" + " Llama Initialization " + "==================================")
         
@@ -51,8 +86,6 @@ class LlamaInvoker:
         return {"input_str": input_str, "test_o": test_o.to_dict()}
     
     def run(self):
-        geobleu_scores = []
-        dtw_scores = []
         data_to_save = []
 
         # 使用 ThreadPoolExecutor 创建一个线程池，最大线程数为 5
@@ -76,8 +109,3 @@ class LlamaInvoker:
         # 将结果保存到 JSON 文件
         with open(f'dataThread.json', 'w', encoding='utf-8') as f:
             json.dump(data_to_save, f, ensure_ascii=False, indent=4)
-
-        # 这里的 geobleu_scores 和 dtw_scores 处理代码暂时注释掉了
-        # avg_geobleu = sum(geobleu_scores) / len(geobleu_scores)
-        # avg_dtw = sum(dtw_scores) / len(dtw_scores)
-        # save_geobleu_dtw('outputs/Llama_prediction_HumanMobility', geobleu_scores, dtw_scores, avg_geobleu, avg_dtw)
