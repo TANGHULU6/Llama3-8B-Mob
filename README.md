@@ -14,7 +14,7 @@
 
 ### 📦 Dependencies
 Dependencies can be installed using the following command:
-```
+```conda env remove --name test
 conda create --name test \
     python=3.10 \
     pytorch-cuda=12.1 \
@@ -26,23 +26,27 @@ pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"
 pip install --no-deps trl peft accelerate bitsandbytes 
 conda install -y scipy 
 pip install wandb
+pip install pandas==2.0.0
 ```
 ### ⚙️ Usage 
 To get started with Llama-3-8B-Mob, follow these steps:
 
 1. Download the dataset from the [official source](https://wp.nyu.edu/humobchallenge2024/datasets/), or use a custom dataset with a similar format.
-2. data
-3. Login your wandb and Try your first own finetuning!
+2. Modify the configuration in [make_dataset.py](./tools/Data_tools/make_dataset.py), and then execute the script to convert the data into conversation datasets.
+```
+python tools/Data_tools/make_dataset.py
+```
+3. Login your wandb account and try your first own finetuning!
 ```
 python Finetune_Llama3.py
 ```
-4. Evaluate
+4. Evaluate the performance of your own finetuned model!
 ```
 python Evaluate_Llama3.py
 ```
-5. Infer 
+5. Infer with Llama-3-8B-Mob.
 ```
-python main.py --l_idx 1700 --r_idx 1800 --city c &
+python infer.py --l_idx <left_index> --r_idx <right_index> --city <city_abbreviation>
 ```
 
 <!-- #### Citation -->

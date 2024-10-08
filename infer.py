@@ -1,5 +1,5 @@
 import argparse
-from Infer import run_inference
+from Inference import run_inference
 
 city_mapping = {
     'a': 'datasetA_test_0-9999.json',

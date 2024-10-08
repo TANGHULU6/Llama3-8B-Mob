@@ -101,8 +101,8 @@ tokenizer = get_chat_template(
 
 # Load and format the custom dataset
 train_dataset = load_custom_dataset("datasets/datasetB_train_0-17599.json")
-train_dataset = train_dataset.shuffle(seed=42)
-train_dataset = train_dataset.select(range(2000, 2100))
+# train_dataset = train_dataset.shuffle(seed=42)
+# train_dataset = train_dataset.select(range(2000, 2100))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
 val_dataset = load_custom_dataset("datasets/datasetB_eval_17600-21999.json")
 val_dataset = val_dataset.select(range(100))
@@ -134,7 +134,7 @@ trainer = SFTTrainer(
         per_device_train_batch_size = 1,
         gradient_accumulation_steps = 4,
         warmup_steps = 5,
-        num_train_epochs = 1,
+        num_train_epochs = 3,
         learning_rate = 2e-3,
         fp16 = not is_bfloat16_supported(),
         bf16 = is_bfloat16_supported(),
