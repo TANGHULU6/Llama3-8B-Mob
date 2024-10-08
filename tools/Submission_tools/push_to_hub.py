@@ -14,4 +14,4 @@ model, tokenizer = FastLanguageModel.from_pretrained(
     load_in_4bit=load_in_4bit,
 )
 # FastLanguageModel.for_inference(model)
-model.push_to_hub("HuMob2024", token = "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") # Online saving
+model.push_to_hub("HuMob2024", token = "hf_obNotrealkwUialQFMYRbzldBbSSehBBBGy") # Online saving

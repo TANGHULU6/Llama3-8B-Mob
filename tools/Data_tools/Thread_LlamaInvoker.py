@@ -5,7 +5,7 @@ import pandas as pd
 
 def load_data_for_gpt_prediction(filepath, uid):
     # 加载数据
-    df = pd.read_csv(filepath)
+    df = pd.read_csv(filepath, compression='gzip')
 
     # 筛选特定 uid 的数据
     df = df[df['uid'] == uid]
@@ -14,7 +14,7 @@ def load_data_for_gpt_prediction(filepath, uid):
 
     return df
 
-def get_datasets_for_gpt(df, train_days, test_days, predict_steps=15):
+def get_datasets_for_gpt(df, train_days, test_days, predict_steps):
     train_df = df[df['d'].isin(range(train_days[0], train_days[1] + 1))]
     test_df = df[df['d'].isin(range(test_days[0], test_days[1] + 1))]
 
@@ -23,8 +23,10 @@ def get_datasets_for_gpt(df, train_days, test_days, predict_steps=15):
 
     # Split into train and test
     train = train_df
-    # test_o = test_df.iloc[:predict_steps, :]
-    test_o = test_df
+    if predict_steps:
+        test_o = test_df.iloc[:predict_steps, :]
+    else:
+        test_o = test_df
     test = test_o.copy()
     test.loc[:, ['x', 'y']] = 999
 
@@ -65,11 +67,11 @@ class LlamaInvoker:
         # Data Configuration
         data_config = config["data_config"]
         self.input_filepath = data_config["input_filepath"]
-        self.min_uid = 0
-        self.max_uid = 60000
-        self.train_days = [0, 59]
-        self.test_days = [60, 74]
-        # self.steps = data_config["steps"]
+        self.min_uid = data_config["min_uid"]
+        self.max_uid = data_config["max_uid"]
+        self.train_days = data_config["train_days"]
+        self.test_days = data_config["test_days"]
+        self.steps = data_config["steps"]
 
         print("==================================" + " Llama Initialization " + "==================================")
         
@@ -87,25 +89,39 @@ class LlamaInvoker:
     
     def run(self):
         data_to_save = []
-
-        # 使用 ThreadPoolExecutor 创建一个线程池，最大线程数为 5
-        with ThreadPoolExecutor(max_workers=6) as executor:
-            # 提交所有 UID 的处理任务
-            future_to_uid = {
-                executor.submit(self.process_uid, i, self.input_filepath, self.min_uid, self.steps, self.train_days, self.test_days): i
-                for i in range(self.min_uid, self.max_uid)
-            }
-
-            # 处理完成的任务并收集结果
-            for future in as_completed(future_to_uid):
-                i = future_to_uid[future]
-                try:
-                    result = future.result()
-                    if result is not None:
-                        data_to_save.append(result)
-                except Exception as e:
-                    print(f"Processing failed for UID {i}: {e}")
-
+        for i in range(self.min_uid, self.max_uid):
+            # try:
+            print(f"Processing UID {i} started...")
+            result = self.process_uid(i, self.input_filepath, self.min_uid, self.steps, self.train_days, self.test_days)
+            if result is not None:
+                data_to_save.append(result)
+            print(f"UID {i} processed successfully.")
+            # except Exception as e:
+            #     print(f"Processing failed for UID {i}: {e}")
+        
         # 将结果保存到 JSON 文件
         with open(f'dataThread.json', 'w', encoding='utf-8') as f:
             json.dump(data_to_save, f, ensure_ascii=False, indent=4)
+            
+        # can't wait -> use multi-thread
+        # # 使用 ThreadPoolExecutor 创建一个线程池，最大线程数为 5
+        # with ThreadPoolExecutor(max_workers=5) as executor:
+        #     # 提交所有 UID 的处理任务
+        #     future_to_uid = {
+        #         executor.submit(self.process_uid, i, self.input_filepath, self.min_uid, self.steps, self.train_days, self.test_days): i
+        #         for i in range(self.min_uid, self.max_uid)
+        #     }
+
+        #     # 处理完成的任务并收集结果
+        #     for future in as_completed(future_to_uid):
+        #         i = future_to_uid[future]
+        #         try:
+        #             result = future.result()
+        #             if result is not None:
+        #                 data_to_save.append(result)
+        #         except Exception as e:
+        #             print(f"Processing failed for UID {i}: {e}")
+
+        # # 将结果保存到 JSON 文件
+        # with open(f'dataThread.json', 'w', encoding='utf-8') as f:
+        #     json.dump(data_to_save, f, ensure_ascii=False, indent=4)

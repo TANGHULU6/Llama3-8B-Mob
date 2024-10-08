@@ -5,7 +5,7 @@ import wandb
 import os
 os.environ["WANDB_PROJECT"] = "HuMob2024cityA"
 os.environ["WANDB_LOG_MODEL"] = "checkpoint"
-# os.environ["WANDB_MODE"] = "offline"
+os.environ["WANDB_MODE"] = "offline"
 
 
 max_seq_length = 50000 # Choose any! We auto support RoPE Scaling internally!
@@ -100,12 +100,11 @@ tokenizer = get_chat_template(
 )
 
 # Load and format the custom dataset
-train_dataset = load_custom_dataset("datasetB_train_0-17599.json")
+train_dataset = load_custom_dataset("datasets/datasetB_train_0-17599.json")
 train_dataset = train_dataset.shuffle(seed=42)
-train_dataset = train_dataset.select(range(2000, 6000))
-# train_dataset = train_dataset.select(range(85000, 96000))
+train_dataset = train_dataset.select(range(2000, 2100))
 train_dataset = train_dataset.map(formatting_prompts_func, batched=True)
-val_dataset = load_custom_dataset("datasetB_eval_17600-21999.json")
+val_dataset = load_custom_dataset("datasets/datasetB_eval_17600-21999.json")
 val_dataset = val_dataset.select(range(100))
 val_dataset = val_dataset.map(formatting_prompts_func, batched=True)
 
@@ -135,7 +134,7 @@ trainer = SFTTrainer(
         per_device_train_batch_size = 1,
         gradient_accumulation_steps = 4,
         warmup_steps = 5,
-        num_train_epochs = 4,
+        num_train_epochs = 1,
         learning_rate = 2e-3,
         fp16 = not is_bfloat16_supported(),
         bf16 = is_bfloat16_supported(),
@@ -164,8 +163,14 @@ max_memory = round(gpu_stats.total_memory / 1024 / 1024 / 1024, 3)
 print(f"GPU = {gpu_stats.name}. Max memory = {max_memory} GB.")
 print(f"{start_gpu_memory} GB of memory reserved.")
 
-# trainer_stats = trainer.train()
-run = wandb.init(name="B_finetune_2")
-artifact = run.use_artifact('tanghulu/HuMob2024cityA/model-B_eval_finetune:epoch_3.0', type='model')
-artifact_dir = artifact.download()
-trainer.train(resume_from_checkpoint=artifact_dir)
+# Initial finetuning
+trainer_stats = trainer.train()
+
+# If you want to continue finetuning from checkpoints
+# run = wandb.init(name="B_finetune")
+# artifact = run.use_artifact('user/HuMob2024cityA/model-B_eval_finetune:epoch_3.0', type='model')
+# artifact_dir = artifact.download()
+# trainer.train(resume_from_checkpoint=artifact_dir)
+
+model.save_pretrained("lora_model") # Local saving
+# model.push_to_hub("your_name/lora_model", token = "...") # Online saving
