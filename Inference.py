@@ -25,7 +25,7 @@ load_in_4bit = True  # Use 4bit quantization to reduce memory usage. Can be Fals
 
 logging.info("Initializing model and tokenizer...")
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name="artifacts/model-B_eval:v55",  # YOUR MODEL YOU USED FOR TRAINING
+    model_name="tangera/Llama3-8B-Mob",  # YOUR MODEL YOU USED FOR TRAINING
     max_seq_length=max_seq_length,
     dtype=dtype,
     load_in_4bit=load_in_4bit,
@@ -149,6 +149,7 @@ def run_inference(l_idx, r_idx, city):
 
                     assistant_json = json.loads(clean_text)
                     reference_json = json.loads(reference.strip()[7:-3])
+                    # check format
                     geobleu_val, dtw_val = report_geobleu_dtw_gpt(assistant_json['prediction'], reference_json['prediction'])
                     assistant_json_str = json.dumps(assistant_json)  # Convert to string for logging
                     logging.debug(f"Assistant JSON: {assistant_json}")

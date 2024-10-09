@@ -8,7 +8,7 @@ from unsloth.chat_templates import get_chat_template
 import torch
 import wandb
 
-run = wandb.init(project="HuMob2024", name="D_finetune_C")
+run = wandb.init(project="HuMob2024", name="demo")
 # artifact = run.use_artifact('tanghulu/HuMob2024cityD/model-B_eval_loss:v19', type='model')
 # artifact_dir = artifact.download()
 # 假设 `model` 和 `tokenizer` 已经初始化
@@ -19,7 +19,7 @@ dtype = (
 load_in_4bit = True  # Use 4bit quantization to reduce memory usage. Can be False.
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name="artifacts/model-B_eval_loss:v19",  # YOUR MODEL YOU USED FOR TRAINING
+    model_name="tangera/Llama3-8B-Mob",  # YOUR MODEL YOU USED FOR TRAINING
     max_seq_length=max_seq_length,
     dtype=dtype,
     load_in_4bit=load_in_4bit,
@@ -72,9 +72,9 @@ def formatting_prompts_func(examples):
 
 
 l_idx, r_idx = 0, 100
-# city = "datasetD_eval_2400-2999.json"
-# city = "datasetB_eval_17600-21999.json"
-city = "datasetC_eval_13600-16999.json"
+# city = "datasets/datasetD_eval_2400-2999.json"
+# city = "datasets/datasetB_eval_17600-21999.json"
+city = "datasets/datasetC_eval_13600-16999.json"
 test_dataset = load_custom_dataset(city)
 test_dataset = test_dataset.select(range(l_idx, r_idx))
 test_dataset = test_dataset.map(formatting_prompts_func, batched=True)

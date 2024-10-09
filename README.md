@@ -1,5 +1,5 @@
 ## (HuMob'24 @SIGSPATIAL) Instruction-Tuning Llama-3-8B Excels in City-Scale Mobility Prediction
-
+![](Visualization/llama3-8b-mob-demo.gif)
 ### 📖 Introduction 
 **Llama-3-8B-Mob** is a large language model designed for **long-term human mobility prediction across multiple cities**. Leveraging instruction tuning, it models complex spatial-temporal patterns in human mobility data to predict future trajectories over extended periods. Our model was validated on real-world human mobility data from four metropolitan areas in Japan, showcasing significant improvements over previous state-of-the-art models.
 
@@ -9,12 +9,9 @@
 - **Cross-City Generalization**: Fine-tuned on a single city, Llama-3-8B-Mob demonstrates impressive zero-shot generalization to other cities without needing city-specific data.
 - **Top 10 Performance**: The model ranked in the top 10 in the [Human Mobility Prediction Challenge 2024](https://wp.nyu.edu/humobchallenge2024/), outperforming over 100 competing models.
 
-### ▶️ Demo 
-![](Visualization/llama3-8b-mob-demo.gif)
-
 ### 📦 Dependencies
 Dependencies can be installed using the following command:
-```conda env remove --name test
+```
 conda create --name test \
     python=3.10 \
     pytorch-cuda=12.1 \
@@ -28,6 +25,14 @@ conda install -y scipy
 pip install wandb
 pip install pandas==2.0.0
 ```
+
+### ▶️ Demo 
+You can run the demo to experience the predictive capabilities of Llama-3-8B-Mob with the following command:
+```
+python demo.py
+```
+**Note**: Enter `work` for human mobility trajectory inference, enter `chat` to interact with Llama-3-8B-Mob freely.
+
 ### ⚙️ Usage 
 To get started with Llama-3-8B-Mob, follow these steps:
 
@@ -36,15 +41,15 @@ To get started with Llama-3-8B-Mob, follow these steps:
 ```
 python tools/Data_tools/make_dataset.py
 ```
-3. Login your wandb account and try your first own finetuning!
+1. Login your wandb account and try your first own finetuning!
 ```
 python Finetune_Llama3.py
 ```
-4. Evaluate the performance of your own finetuned model!
+1. Evaluate the performance of the finetuned model!
 ```
 python Evaluate_Llama3.py
 ```
-5. Infer with Llama-3-8B-Mob.
+1. Infer with Llama-3-8B-Mob.
 ```
 python infer.py --l_idx <left_index> --r_idx <right_index> --city <city_abbreviation>
 ```

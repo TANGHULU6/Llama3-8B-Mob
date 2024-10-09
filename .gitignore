@@ -2,4 +2,7 @@
 **/*.pt
 **/*.safetensors
 datasets/*.json
+!datasets/dataset_demo.json
 data/*.csv.gz
+!data/demo.csv.gz
+**/__pycache__/
