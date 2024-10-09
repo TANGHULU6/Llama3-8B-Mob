@@ -12,12 +12,12 @@
 ### 📦 Dependencies
 Dependencies can be installed using the following command:
 ```
-conda create --name test \
+conda create --name llm_mob \
     python=3.10 \
     pytorch-cuda=12.1 \
     pytorch cudatoolkit xformers -c pytorch -c nvidia -c xformers \
     -y
-conda activate test
+conda activate llm_mob
 
 pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"
 pip install --no-deps trl peft accelerate bitsandbytes 
