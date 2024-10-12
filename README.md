@@ -41,17 +41,21 @@ To get started with Llama-3-8B-Mob, follow these steps:
 ```
 python tools/Data_tools/make_dataset.py
 ```
-1. Login your wandb account and try your first own finetuning!
+3. Login your wandb account and try your first own finetuning!
 ```
 python Finetune_Llama3.py
 ```
-1. Evaluate the performance of the finetuned model!
+4. Evaluate the performance of the finetuned model!
 ```
 python Evaluate_Llama3.py
 ```
-1. Infer with Llama-3-8B-Mob.
+5. Infer with Llama-3-8B-Mob.
 ```
 python infer.py --l_idx <left_index> --r_idx <right_index> --city <city_abbreviation>
 ```
+
+### 🪨 Baseline
+LP-Bert is the champion of HuMob'23. 
+The reproduction code of [LP-Bert]([./tools/Data_tools/make_dataset.py](https://dl.acm.org/doi/10.1145/3615894.3628498)) by [RobinsonXING](https://github.com/RobinsonXing) can be found [here](https://github.com/RobinsonXing/hmpc2024/tree/post_embed).
 
 <!-- #### Citation -->
