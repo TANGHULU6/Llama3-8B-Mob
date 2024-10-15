@@ -56,6 +56,6 @@ python infer.py --l_idx <left_index> --r_idx <right_index> --city <city_abbrevia
 
 ### 🪨 Baseline
 LP-Bert is the champion of HuMob'23. 
-The reproduction code of [LP-Bert]([./tools/Data_tools/make_dataset.py](https://dl.acm.org/doi/10.1145/3615894.3628498)) by [RobinsonXING](https://github.com/RobinsonXing) can be found [here](https://github.com/RobinsonXing/hmpc2024/tree/post_embed).
+The reproduction code of [LP-Bert](https://dl.acm.org/doi/10.1145/3615894.3628498) by [RobinsonXING](https://github.com/RobinsonXing) can be found [here](https://github.com/RobinsonXing/hmpc2024/tree/post_embed).
 
 <!-- #### Citation -->
