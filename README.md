@@ -1,4 +1,4 @@
-## (HuMob'24 @SIGSPATIAL) Instruction-Tuning Llama-3-8B Excels in City-Scale Mobility Prediction
+## (HuMob'24 @ACM SIGSPATIAL) Instruction-Tuning Llama-3-8B Excels in City-Scale Mobility Prediction
 ![](Visualization/llama3-8b-mob-demo.gif)
 ### 📖 Introduction 
 **Llama-3-8B-Mob** is a large language model designed for **long-term human mobility prediction across multiple cities**. Leveraging instruction tuning, it models complex spatial-temporal patterns in human mobility data to predict future trajectories over extended periods. Our model was validated on real-world human mobility data from four metropolitan areas in Japan, showcasing significant improvements over previous state-of-the-art models.
@@ -6,8 +6,8 @@
 ### ⭐ Highlights
 - **Instruction-Tuned LLM**: Llama-3-8B-Mob employs instruction-tuning, allowing it to handle mobility prediction in a flexible Q&A format.
 - **Long-term Mobility Prediction**: Unlike most models that focus on short-term prediction, Llama-3-8B-Mob excels in predicting individual trajectories up to 15 days in advance.
-- **Cross-City Generalization**: Fine-tuned on a single city, Llama-3-8B-Mob demonstrates impressive zero-shot generalization to other cities without needing city-specific data.
-- **Top 10 Performance**: The model ranked in the top 10 in the [Human Mobility Prediction Challenge 2024](https://wp.nyu.edu/humobchallenge2024/), outperforming over 100 competing teams.
+- **Cross-City Generalization**: Fine-tuned on a single city, Llama-3-8B-Mob demonstrates impressive _zero-shot generalization to other cities_ without needing city-specific data.
+- **Superior Performance**: 1st in Mean Rank, 2nd in Trajectory Semantic Similarity, and 3rd in Trajectory Shape Similarity in [Human Mobility Prediction Challenge@SIGSPATIAL](https://wp.nyu.edu/humobchallenge2024/), 2024.
 
 ### 📦 Dependencies
 Dependencies can be installed using the following command:
@@ -58,4 +58,15 @@ python infer.py --l_idx <left_index> --r_idx <right_index> --city <city_abbrevia
 LP-Bert is the champion of HuMob'23. 
 The reproduction code of [LP-Bert](https://dl.acm.org/doi/10.1145/3615894.3628498) by [RobinsonXING](https://github.com/RobinsonXing) can be found [here](https://github.com/RobinsonXing/hmpc2024/tree/post_embed).
 
-<!-- #### Citation -->
+--- 
+### 🚰 Citation 
+If you find anything in this repository useful to your research, please cite our paper :) We sincerely appreciate it. 
+- Arxiv: [Instruction-Tuning Llama-3-8B Excels in City-Scale Mobility Prediction](https://arxiv.org/abs/2410.23692v1)
+```
+@article{tang2024instruction,
+  title={Instruction-Tuning Llama-3-8B Excels in City-Scale Mobility Prediction},
+  author={Tang, Peizhi and Yang, Chuang and Xing, Tong and Xu, Xiaohang and Jiang, Renhe and Sezaki, Kaoru},
+  journal={arXiv preprint arXiv:2410.23692},
+  year={2024}
+}
+``` 
