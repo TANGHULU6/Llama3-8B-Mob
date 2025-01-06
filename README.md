@@ -10,21 +10,29 @@
 - **Superior Performance**: 1st in Mean Rank, 2nd in Trajectory Semantic Similarity, and 3rd in Trajectory Shape Similarity in [Human Mobility Prediction Challenge@SIGSPATIAL](https://wp.nyu.edu/humobchallenge2024/), 2024.
 
 ### 📦 Dependencies
-Dependencies can be installed using the following command:
+Dependencies can be installed using the following command:(works in 2025/01/06)
 ```
 conda create --name llm_mob \
     python=3.10 \
     pytorch-cuda=12.1 \
-    pytorch cudatoolkit xformers -c pytorch -c nvidia -c xformers \
+    pytorch cudatoolkit xformers=0.0.26 -c pytorch -c nvidia -c xformers \
     -y
+
 conda activate llm_mob
 
-pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"
-pip install --no-deps trl peft accelerate bitsandbytes 
-conda install -y scipy 
-pip install wandb
-pip install pandas==2.0.0
+pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git@d1f3b6c1c4f69cd09ebdcab014bd72ac1217ee71"
+pip install --no-deps trl==0.8.6 peft==0.11.1 accelerate==0.32.1 bitsandbytes==0.43.1
+
+conda install -y scipy=1.12.0
+
+pip install wandb==0.17.8 
+pip install pandas==2.2.2
+pip install transformers==4.42.4
+pip uninstall -y numpy && pip install numpy==1.26.4
 ```
+If you encounter issues while configuring the environment, it's normal.
+I provided the environment.yml, but it's **not recommended** to rely on it. Conda can be slow and may crash easily.
+You can refer to the [official unsloth repository](https://github.com/unslothai/unsloth) guide or try to fix the issues using manual package management commands.
 
 ### ▶️ Demo 
 You can run the demo to experience the predictive capabilities of Llama-3-8B-Mob with the following command:
