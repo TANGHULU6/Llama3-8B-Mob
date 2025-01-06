@@ -10,7 +10,7 @@
 - **Superior Performance**: 1st in Mean Rank, 2nd in Trajectory Semantic Similarity, and 3rd in Trajectory Shape Similarity in [Human Mobility Prediction Challenge@SIGSPATIAL](https://wp.nyu.edu/humobchallenge2024/), 2024.
 
 ### 📦 Dependencies
-Dependencies can be installed using the following command:(works in 2025/01/06)
+Dependencies can be installed using the following command: (works in 2025/01/06)
 ```
 conda create --name llm_mob \
     python=3.10 \
@@ -31,7 +31,9 @@ pip install transformers==4.42.4
 pip uninstall -y numpy && pip install numpy==1.26.4
 ```
 If you encounter issues while configuring the environment, it's normal.
+
 I provided the environment.yml, but it's **not recommended** to rely on it. Conda can be slow and may crash easily.
+
 You can refer to the [official unsloth repository](https://github.com/unslothai/unsloth) guide or try to fix the issues using manual package management commands.
 
 ### ▶️ Demo 
