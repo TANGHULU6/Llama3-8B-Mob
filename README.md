@@ -32,7 +32,7 @@ pip uninstall -y numpy && pip install numpy==1.26.4
 ```
 If you encounter issues while configuring the environment, it's normal.
 
-I provided the environment.yml, but it's **not recommended** to rely on it. Conda can be slow and may crash easily.
+I provided the [environment.yml](environment.yml), but it's **not recommended** to rely on it. Conda can be slow and may crash easily.
 
 You can refer to the [official unsloth repository](https://github.com/unslothai/unsloth) guide or try to fix the issues using manual package management commands.
 
