@@ -47,7 +47,7 @@ python demo.py
 To get started with Llama-3-8B-Mob, follow these steps:
 
 1. Download the dataset from the [official source](https://wp.nyu.edu/humobchallenge2024/datasets/), or use a custom dataset with a similar format.
-2. Modify the configuration in [make_dataset.py](./tools/Data_tools/make_dataset.py), and then execute the script to convert the data into conversation datasets.
+2. Modify the configuration in [make_dataset.py](./tools/Data_tools/make_dataset.py), and then execute the script to convert the data into conversation datasets. You may need to upgrade the version of numpy and pandas if you encounter any error.
 ```
 python tools/Data_tools/make_dataset.py
 ```
