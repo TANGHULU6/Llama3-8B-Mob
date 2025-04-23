@@ -69,7 +69,7 @@ LP-Bert is the champion of HuMob'23.
 The reproduction code of [LP-Bert](https://dl.acm.org/doi/10.1145/3615894.3628498) by [RobinsonXING](https://github.com/RobinsonXing) can be found [here](https://github.com/RobinsonXing/hmpc2024/tree/post_embed).
 
 
-
+--- 
 ### 🏆 Leaderboard
 According to the [final results](https://wp.nyu.edu/humobchallenge2024/final-results/) released by the HuMob'24 organizers, our model's ranking is as follows: 
 | Model | DTW Score | GeoBLEU Score | DTW Rank | GeoBLEU Rank | Mean Rank |
@@ -80,14 +80,21 @@ According to the [final results](https://wp.nyu.edu/humobchallenge2024/final-res
 | [Personalized ST Models](https://dl.acm.org/doi/10.1145/3681771.3699914) | 27.99 | 0.2949 | 4 | 8 | 4 |
 | [Cross-city-aware ST-BERT](https://dl.acm.org/doi/10.1145/3681771.3699915) |30.45| 0.305| 10 | 3 | 5 |
 | [SoloPath](https://dl.acm.org/doi/pdf/10.1145/3681771.3699917) |28.58| 0.2964 | 8 | 6 | 6 |
-| [SVR](https://dl.acm.org/doi/pdf/10.1145/3681771.3699916) | 27.7 | 0.226 | 2 | 12 | 7 |
+| [SVR](https://dl.acm.org/doi/pdf/10.1145/3681771.3699916) | 27.7 | 0.226 | 2 | 12 | 6 |
 | [Mamba+Transformer](https://dl.acm.org/doi/pdf/10.1145/3681771.3699912) | 33.44 | 0.297 | 11 | 5 | 8 |
 | [Random Forests w/ Time Decay & Periodic Features](https://dl.acm.org/doi/pdf/10.1145/3681771.3699918) | 38.15 | 0.2974 | 13 | 4 | 9 |
-| [CrossBag](https://dl.acm.org/doi/10.1145/3681771.3699935)| 28.07 | 0.273 | 6 | 11 | 10 |
+| [CrossBag](https://dl.acm.org/doi/10.1145/3681771.3699935)| 28.07 | 0.273 | 6 | 11 | 9 |
 | [TT-KNN](https://dl.acm.org/doi/pdf/10.1145/3681771.3699913) | 28.01 | 0.214 | 5 | 13 | 11 |
 | [HuMob_Cucumber](https://dl.acm.org/doi/pdf/10.1145/3681771.3700130) | 34.97 | 0.2961 | 12 | 7 | 12 |
 | [Day of the Week probability](https://dl.acm.org/doi/pdf/10.1145/3681771.3699911) | 38.86 | 0.294 | 14 | 9 | 13 |
-| [Multiple Systems Combination](https://dl.acm.org/doi/pdf/10.1145/3681771.3700573) | 28.84 | 0.196 | 9 | 14 | 14 |
+| [Multiple Systems Combination](https://dl.acm.org/doi/pdf/10.1145/3681771.3700573) | 28.84 | 0.196 | 9 | 14 | 13 |
+
+### 💨 Quick Replication of Our Results
+Since the competition organizers have released the [evaluation data](https://zenodo.org/records/14219563) for the competition, you can replicate our results using the following code: 
+```python
+cd replication 
+python fast_eval.py --city cityB/cityC/cityD/all
+```
 
 
 
@@ -95,11 +102,16 @@ According to the [final results](https://wp.nyu.edu/humobchallenge2024/final-res
 ### 🚰 Citation 
 If you find anything in this repository useful to your research, please cite our paper :) We sincerely appreciate it. 
 - Arxiv: [Instruction-Tuning Llama-3-8B Excels in City-Scale Mobility Prediction](https://arxiv.org/abs/2410.23692v1)
+- ACM: [Instruction-Tuning Llama-3-8B Excels in City-Scale Mobility Prediction](https://dl.acm.org/doi/10.1145/3681771.3699908)
 ```
-@article{tang2024instruction,
-  title={Instruction-Tuning Llama-3-8B Excels in City-Scale Mobility Prediction},
-  author={Tang, Peizhi and Yang, Chuang and Xing, Tong and Xu, Xiaohang and Jiang, Renhe and Sezaki, Kaoru},
-  journal={arXiv preprint arXiv:2410.23692},
-  year={2024}
+@inproceedings{tang2024instruction,
+    title = {Instruction-Tuning Llama-3-8B Excels in City-Scale Mobility Prediction},
+    author = {Tang, Peizhi and Yang, Chuang and Xing, Tong and Xu, Xiaohang and Jiang, Renhe and Sezaki, Kaoru},
+    booktitle = {Proceedings of the 2nd ACM SIGSPATIAL International Workshop on Human Mobility Prediction Challenge},
+    series = {HuMob'24},
+    pages = {1–4},
+    location = {Atlanta, GA, USA},
+    year = {2024},
+    doi = {10.1145/3681771.3699908}
 }
 ``` 
