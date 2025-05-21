@@ -14,17 +14,16 @@ Dependencies can be installed using the following command: (works in 2025/01/06)
 ```
 conda create --name llm_mob \
     python=3.10 \
-    pytorch=2.3.0 \
     pytorch-cuda=12.1 \
-    xformers=0.0.26 \
-    -c pytorch -c nvidia -c xformers -y
+    pytorch cudatoolkit xformers=0.0.26 -c pytorch -c nvidia -c xformers \
+    -y
 
 conda activate llm_mob
 
 pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git@d1f3b6c1c4f69cd09ebdcab014bd72ac1217ee71"
 pip install --no-deps trl==0.8.6 peft==0.11.1 accelerate==0.32.1 bitsandbytes==0.43.1
 
-conda install -y scipy=1.12.0
+conda install -y scipy=1.12.0 --no-update-deps
 
 pip install wandb==0.17.8 
 pip install pandas==2.2.2
