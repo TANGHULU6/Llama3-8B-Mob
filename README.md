@@ -14,9 +14,10 @@ Dependencies can be installed using the following command: (works in 2025/01/06)
 ```
 conda create --name llm_mob \
     python=3.10 \
+    pytorch=2.3.0 \
     pytorch-cuda=12.1 \
-    pytorch cudatoolkit xformers=0.0.26 -c pytorch -c nvidia -c xformers \
-    -y
+    xformers=0.0.26 \
+    -c pytorch -c nvidia -c xformers -y
 
 conda activate llm_mob
 
