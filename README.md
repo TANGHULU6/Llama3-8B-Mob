@@ -10,7 +10,7 @@
 - **Superior Performance**: 1st in Mean Rank, 2nd in Trajectory Semantic Similarity, and 3rd in Trajectory Shape Similarity in [Human Mobility Prediction Challenge@SIGSPATIAL](https://wp.nyu.edu/humobchallenge2024/), 2024.
 
 ### 📦 Dependencies
-Dependencies can be installed using the following command: (works in 2025/05/22)
+Dependencies can be installed using the following command: (works in 2025/06)
 ```
 conda create --name llm_mob \
     python=3.10 \
@@ -20,10 +20,10 @@ conda create --name llm_mob \
 
 conda activate llm_mob
 
-pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git@d1f3b6c1c4f69cd09ebdcab014bd72ac1217ee71"
+pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git@5ab565fb2c811d0b85d68dadd2ac1b32dee05e8b"
 pip install --no-deps trl==0.8.6 peft==0.11.1 accelerate==0.32.1 bitsandbytes==0.43.1
 
-conda install -y scipy=1.12.0 --no-update-deps
+conda install -y scipy=1.12.0 pytorch=2.3.0=*cuda* --no-update-deps
 
 pip install wandb==0.17.8 
 pip install pandas==2.2.2
