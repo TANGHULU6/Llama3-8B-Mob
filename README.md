@@ -64,6 +64,22 @@ python Evaluate_Llama3.py
 python infer.py --l_idx <left_index> --r_idx <right_index> --city <city_abbreviation>
 ```
 
+### 🏙️ Extension to Next POI Prediction Task
+
+This repository also supports an extension to the **Next POI prediction** task on three public datasets (NYC/TKY/CA).
+
+You can quickly reproduce our reported performance with the following command:
+```
+bash poi/reproduce.sh
+```
+
+- **Evaluation using our open-weight Llama-Mob**: `python poi/Llama-Mob.py --city <nyc|tky|ca>`
+- **Data location**: `datasets/nextpoi/` (JSON files, each sample contains a `messages` field in dialogue style: system / user / assistant)
+- **Training**: `python poi/Finetune_Llama3_POI.py --city <nyc|tky|ca>`
+- **Evaluation after training**: `python poi/Evaluate_Llama3_POI.py --city <nyc|tky|ca>`
+
+We evaluate the Next POI task with **Acc@1 / Acc@5 / Acc@10** and **MRR**, using beam search to generate multiple candidate POI predictions.
+
 ### 🪨 Baseline
 LP-Bert is the champion of HuMob'23. 
 The reproduction code of [LP-Bert](https://dl.acm.org/doi/10.1145/3615894.3628498) by [RobinsonXING](https://github.com/RobinsonXing) can be found [here](https://github.com/RobinsonXing/hmpc2024/tree/post_embed).
