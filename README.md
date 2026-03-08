@@ -73,12 +73,12 @@ You can quickly reproduce our reported performance with the following command:
 bash poi/reproduce.sh
 ```
 
-- **Evaluation using our open-weight Llama-Mob**: `python poi/Llama-Mob.py --city <nyc|tky|ca>`
-- **Data location**: `datasets/nextpoi/` (JSON files, each sample contains a `messages` field in dialogue style: system / user / assistant)
-- **Training**: `python poi/Finetune_Llama3_POI.py --city <nyc|tky|ca>`
-- **Evaluation after training**: `python poi/Evaluate_Llama3_POI.py --city <nyc|tky|ca>`
+- **Evaluation using our open-weight Llama-Mob**: `python poi/Llama-Mob.py --city {nyc/tky/ca}`
+- **Data location**: [Llama-Mob NextPOI Dataset](datasets/nextpoi/) (JSON files, each sample contains a messages field in dialogue style)
+- **Training**: `python poi/Finetune_Llama3_POI.py --city {nyc/tky/ca}`
+- **Evaluation after training**: `python poi/Evaluate_Llama3_POI.py --city {nyc/tky/ca}`
 
-We evaluate the Next POI task with **Acc@1 / Acc@5 / Acc@10** and **MRR**, using beam search to generate multiple candidate POI predictions.
+We evaluate the Next POI task with Acc@1 / Acc@5 / Acc@10 and MRR, using beam search to generate multiple candidate POI predictions.
 
 ### 🪨 Baseline
 LP-Bert is the champion of HuMob'23. 
